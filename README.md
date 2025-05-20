@@ -1,4 +1,4 @@
-# 👋 Hi, I'm Attila Grynaeus
+# 👋 Hey, I'm Attila
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn--blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/attila-grynaeus)
 [![GitHub followers](https://img.shields.io/github/followers/attilagrynaeus?label=Follow&style=social)](https://github.com/attilagrynaeus)
