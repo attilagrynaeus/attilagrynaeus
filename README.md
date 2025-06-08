@@ -38,7 +38,7 @@ Passionate about delivering seamless, clean-code, cutting-edge solutions.
 ## ✨ GitHub stats
 
 
-![Commits](badges/commits.svg)
+<img src="badges/commits.svg" height="40">
 
 ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=attilagrynaeus&theme=dark&hide_border=true)
 
