@@ -38,13 +38,7 @@ Passionate about delivering seamless, clean-code, cutting-edge solutions.
 ## ✨ GitHub stats
 
 
-<a href="https://github.com/attilagrynaeus/Promptee">
-  <img
-    src="https://img.shields.io/github/commit-activity/t/attilagrynaeus/Promptee?branch=main&label=COMMITS&style=for-the-badge&labelColor=1e2024&color=blue&logo=github&logoColor=white"
-    height="38"
-    alt="Total commits of attilagrynaeus"
-  />
-</a>
+![Commits](badges/commits.svg)
 
 ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=attilagrynaeus&theme=dark&hide_border=true)
 
