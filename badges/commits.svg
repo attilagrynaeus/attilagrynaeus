@@ -1,6 +1,6 @@
 <!-- badges/commits.svg – generálva pl. npx badge vagy FMorschel/commit-count-badge Actionnel -->
 <svg xmlns="http://www.w3.org/2000/svg" width="98" height="20" role="img" aria-label="COMMITS: 60">
-  <title>COMMITS: 267</title>
+  <title>COMMITS:  </title>
 
   <linearGradient id="g" x2="0" y2="100%">
     <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
