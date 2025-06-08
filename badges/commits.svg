@@ -1,4 +1,12 @@
-<!-- badges/commits.svg – generálva pl. npx badge vagy FMorschel/commit-count-badge Actionnel -->
+
+<!-- badges/commits.svg – AUTO-generated FILE ! by npx badge or FMorschel/commit-count-badge Action -->
+<!-- chore(badge): update commits.svg via scheduled workflow -->
+<!-- The cron-based workflow in .github/workflows/commit-badge.yml -->
+<!-- runs hourly, retrieves the current commit count with -->
+<!-- and regenerates badges/commits.svg using the badge CLI. -->
+<!-- Committing the updated SVG keeps the README badge accurate -->
+<!-- while avoiding external GitHub API rate-limit issues. -->
+
 <svg xmlns="http://www.w3.org/2000/svg" width="98" height="20" role="img" aria-label="COMMITS:">
   <title>COMMITS: </title>
 
