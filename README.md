@@ -37,9 +37,22 @@ Passionate about delivering seamless, clean-code, cutting-edge solutions.
 
 ## ✨ GitHub stats
 
-![Attila's GitHub stats](https://github-readme-stats.vercel.app/api?username=attilagrynaeus&show_icons=true&hide=issues&count_private=true)
+
+<a href="https://github.com/attilagrynaeus/Promptee">
+  <img
+    src="https://img.shields.io/github/commit-activity/t/attilagrynaeus/Promptee?branch=main&label=COMMITS&style=for-the-badge&labelColor=1e2024&color=blue&logo=github&logoColor=white"
+    height="38"
+    alt="Total commits of attilagrynaeus"
+  />
+</a>
+
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=attilagrynaeus&theme=dark&hide_border=true)
+
+
+![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=attilagrynaeus&theme=github-dark&hide_border=true&area=true)
 
 ---
+
 
 ## 📫 How to reach me
 
