@@ -33,7 +33,18 @@ Passionate about delivering seamless, clean-code, cutting-edge solutions.
 | **Data & Messaging** | Oracle DB, PostgreSQL, Kafka, RabbitMQ |
 | **Practices** | Test-Driven Development, Clean Architecture, Domain-Driven Design, Continuous Integration |
 
----
+
+<details open>
+  <summary><strong>☝️ Featured project with Serverless Backend: <a href="https://github.com/attilagrynaeus/Promptee">Promptee</a></strong></summary>
+
+  <br/>
+
+  <a href="https://github.com/attilagrynaeus/Promptee">
+    <img src="https://github-readme-stats.vercel.app/api/pin/?username=attilagrynaeus&repo=Promptee&theme=github_dark&hide_border=true" alt="Promptee repo card">
+  </a>
+</details>
+
+
 
 ## ✨ GitHub stats
 
