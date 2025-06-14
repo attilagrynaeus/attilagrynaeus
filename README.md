@@ -26,7 +26,7 @@ Passionate about delivering seamless, clean-code, cutting-edge solutions.
 
 | Domain | Tools & Tech |
 | ------ | ------------ |
-| **Languages** | Java 17/21, TypeScript (Angular), SQL, Bash |
+| **Languages** | Java 17/21, Python 3.12, TypeScript (Angular), SQL, Bash |
 | **Frameworks** | Spring Boot, Spring Cloud, Jakarta EE, EJB 3.x, GraphQL |
 | **Build & CI/CD** | Maven, Gradle, Git, GitHub Actions, Jenkins |
 | **Cloud & Container** | AWS fundamentals, Docker, Kubernetes |
