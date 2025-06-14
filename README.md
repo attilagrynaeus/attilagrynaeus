@@ -28,7 +28,7 @@ Passionate about delivering seamless, clean-code, cutting-edge solutions.
 | ------ | ------------ |
 | **Languages** | Java 17/21, Python 3.12, TypeScript (Angular), SQL, Bash |
 | **Frameworks** | Spring Boot, Spring Cloud, Jakarta EE, EJB 3.x, GraphQL |
-| **Build & CI/CD** | Maven, Gradle, Git, GitHub Actions, Jenkins |
+| **Build & CI/CD** | Maven, Gradle, Git, GitHub Actions, Jenkins, Gitlab |
 | **Cloud & Container** | AWS fundamentals, Docker, Kubernetes |
 | **Data & Messaging** | Oracle DB, PostgreSQL, Kafka, RabbitMQ |
 | **Practices** | Test-Driven Development, Clean Architecture, Domain-Driven Design, Continuous Integration |
