@@ -16,9 +16,9 @@ Passionate about delivering seamless, clean-code, cutting-edge solutions.
 
 - 🔹 **Senior full-stack developer** specialising in Java & Spring Boot  
 - 🔹 **Sun-certified** Java Programmer (SCJP) & **EJB Developer** (SCBCD) with **25+ yrs** enterprise experience  
+- 🔹 **Passionate about AI-driven development** –  creating smarter apps with LLMs, GenAI, and cutting-edge integrations 
+- 🔹 **Lifelong Learner** –  exploring event-driven architecture, Domain-Driven Design (DDD), Test-Driven Architecture (TDA), and AI Agent technologies
 - 🔹 **Team lead & mentor** – helping engineers deliver clean, maintainable code faster  
-- 🔹 **Cloud-native & DevOps enthusiast** – Docker, Kubernetes, GitHub Actions, Terraform  
-- 🔹 **Conference speaker** – event-driven architecture, DDD and software resilience  
 
 ---
 
