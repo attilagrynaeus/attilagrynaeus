@@ -3,7 +3,7 @@ name: Supabase keep-alive
 on:
   schedule:
     - cron: '0 3 * * *'           # every day @ 03:00 UTC
-  workflow_dispatch:              # manual trigger button
+  workflow_dispatch:
 
 env:
   SUPABASE_URL:              ${{ secrets.SUPABASE_URL }}
@@ -12,12 +12,9 @@ env:
 jobs:
   ping:
     runs-on: ubuntu-latest
-
     steps:
-      # 1 ▸ check out repo so we can append the log file
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4        # needed to update the log file
 
-      # 2 ▸ ping Supabase REST endpoint
       - name: Ping Supabase
         id: call
         run: |
@@ -27,14 +24,12 @@ jobs:
             "$SUPABASE_URL/rest/v1/?select=1")
           echo "status=$STATUS" >> "$GITHUB_OUTPUT"
 
-      # 3 ▸ append result to plaintext log inside repo
       - name: Append result to log
         run: |
           TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           STATUS="${{ steps.call.outputs.status }}"
           echo "$TS  Supabase keep-alive  HTTP:$STATUS" >> .supabase-ping.log
 
-      # 4 ▸ commit & push the log on every run
       - name: Commit and push log
         run: |
           git config user.name  "github-actions[bot]"
@@ -44,7 +39,6 @@ jobs:
             || echo "Nothing to commit"
           git push
 
-      # 5 ▸ fail workflow (so GitHub sends e-mail) if status ≠ 200
       - name: Fail workflow on bad status
         if: steps.call.outputs.status != '200'
         run: |
