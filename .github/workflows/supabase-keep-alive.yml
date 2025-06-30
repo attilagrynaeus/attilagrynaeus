@@ -1,11 +1,17 @@
-
 name: Supabase keep-alive
 
 on:
   schedule:
-    - cron: '0 3 * * *'   # every day @ 03:00 UTC
-  workflow_dispatch:
+    - cron: '0 3 * * *'           # every day @ 03:00 UTC
+  workflow_dispatch:              # manual trigger button
 
+# ---------------------------------------------------------------------
+# Environment variables – read from repository secrets
+# (Settings ▸ Secrets ▸ Actions ▸ New repository secret)
+#   • SUPABASE_URL              → https://cqfymnmdiqaloagqebir.supabase.co
+#   • SUPABASE_SERVICE_ROLE_KEY → the Service-role key from
+#                                 Settings ▸ API ▸ "Service role"
+# ---------------------------------------------------------------------
 env:
   SUPABASE_URL:              ${{ secrets.SUPABASE_URL }}
   SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -13,34 +19,41 @@ env:
 jobs:
   ping:
     runs-on: ubuntu-latest
+
     steps:
+      # checkout repo (needed to append the log file)
       - uses: actions/checkout@v4
 
+      # ping the Supabase REST endpoint
       - name: Ping Supabase
         id: call
         run: |
           STATUS=$(curl -s -o /dev/null -w '%{http_code}' \
             -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" \
             -H "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY" \
-            "$https://<cqfymnmdiqaloagqebir>.supabase.co/rest/v1/?select=1")
+            "$SUPABASE_URL/rest/v1/?select=1")
           echo "status=$STATUS" >> "$GITHUB_OUTPUT"
 
+      # append result to a plaintext log inside the repo
       - name: Append result to log
         run: |
           TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          echo "$TS  ${GITHUB_WORKFLOW}  HTTP:$STATUS" >> .supabase-ping.log
+          STATUS="${{ steps.call.outputs.status }}"
+          echo "$TS  Supabase keep-alive  HTTP:$STATUS" >> .supabase-ping.log
 
+      # commit & push the log (runs EVERY time)
       - name: Commit and push log
         run: |
+          STATUS="${{ steps.call.outputs.status }}"
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .supabase-ping.log
-          git commit -m "chore: log Supabase ping result (${STATUS})" || echo "Nothing to commit"
+          git commit -m "chore: log Supabase ping (${STATUS})" || echo "Nothing to commit"
           git push
 
-      # Mark job as failed if status ≠ 200
+      # fail the workflow if the DB did not return 200
       - name: Fail workflow on bad status
         if: steps.call.outputs.status != '200'
         run: |
-          echo "::error::Unexpected HTTP ${STATUS}"
+          echo "::error::Unexpected HTTP ${{ steps.call.outputs.status }}"
           exit 1
