@@ -5,13 +5,6 @@ on:
     - cron: '0 3 * * *'           # every day @ 03:00 UTC
   workflow_dispatch:              # manual trigger button
 
-# ---------------------------------------------------------------------
-# Environment variables – read from repository secrets
-# (Settings ▸ Secrets ▸ Actions ▸ New repository secret)
-#   • SUPABASE_URL              → https://cqfymnmdiqaloagqebir.supabase.co
-#   • SUPABASE_SERVICE_ROLE_KEY → the Service-role key from
-#                                 Settings ▸ API ▸ "Service role"
-# ---------------------------------------------------------------------
 env:
   SUPABASE_URL:              ${{ secrets.SUPABASE_URL }}
   SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -21,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # checkout repo (needed to append the log file)
+      # 1 ▸ check out repo so we can append the log file
       - uses: actions/checkout@v4
 
-      # ping the Supabase REST endpoint
+      # 2 ▸ ping Supabase REST endpoint
       - name: Ping Supabase
         id: call
         run: |
@@ -34,24 +27,24 @@ jobs:
             "$SUPABASE_URL/rest/v1/?select=1")
           echo "status=$STATUS" >> "$GITHUB_OUTPUT"
 
-      # append result to a plaintext log inside the repo
+      # 3 ▸ append result to plaintext log inside repo
       - name: Append result to log
         run: |
           TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           STATUS="${{ steps.call.outputs.status }}"
           echo "$TS  Supabase keep-alive  HTTP:$STATUS" >> .supabase-ping.log
 
-      # commit & push the log (runs EVERY time)
+      # 4 ▸ commit & push the log on every run
       - name: Commit and push log
         run: |
-          STATUS="${{ steps.call.outputs.status }}"
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .supabase-ping.log
-          git commit -m "chore: log Supabase ping (${STATUS})" || echo "Nothing to commit"
+          git commit -m "chore: log Supabase ping (HTTP:${{ steps.call.outputs.status }})" \
+            || echo "Nothing to commit"
           git push
 
-      # fail the workflow if the DB did not return 200
+      # 5 ▸ fail workflow (so GitHub sends e-mail) if status ≠ 200
       - name: Fail workflow on bad status
         if: steps.call.outputs.status != '200'
         run: |
