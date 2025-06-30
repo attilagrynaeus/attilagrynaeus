@@ -1,35 +1,46 @@
-# .github/workflows/commit-badge.yml
-name: Update commit badge
+name: Supabase keep-alive
 
 on:
-  push:                       # every push to main
-    branches: [ main ]
-  schedule:                   # once per hour
-    - cron: '17 * * * *'      # hh:17 UTC
-  workflow_dispatch:          # manual trigger button
+  schedule:
+    - cron: '0 3 * * *'           # every day @ 03:00 UTC
+  workflow_dispatch:
 
-permissions:
-  contents: write             # required for git commit & push
+env:
+  SUPABASE_URL:              ${{ secrets.SUPABASE_URL }}
+  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
 jobs:
-  badge:
+  ping:
     runs-on: ubuntu-latest
     steps:
-      # 1 ▸ check out repo
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4        # needed to update the log file
 
-      - name: Generate commit badge
-        uses: FMorschel/commit-count-badge@v1
-        with:
-          repository: ${{ github.repository }}   # current repo
-          text: COMMITS                          # label on the badge
-          outputPath: badges/commits.svg         # where to save SVG
-          token: ${{ secrets.GITHUB_TOKEN }}     # auto-injected
+      - name: Ping Supabase
+        id: call
+        run: |
+          STATUS=$(curl -s -o /dev/null -w '%{http_code}' \
+            -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY" \
+            "$SUPABASE_URL/rest/v1/?select=1")
+          echo "status=$STATUS" >> "$GITHUB_OUTPUT"
 
-      - name: Commit and push if changed
+      - name: Append result to log
+        run: |
+          TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          STATUS="${{ steps.call.outputs.status }}"
+          echo "$TS  Supabase keep-alive  HTTP:$STATUS" >> .supabase-ping.log
+
+      - name: Commit and push log
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add badges/commits.svg
-          git diff --cached --quiet && echo "No changes" || \
-            (git commit -m "chore: update commit badge" && git push)
+          git add .supabase-ping.log
+          git commit -m "chore: log Supabase ping (HTTP:${{ steps.call.outputs.status }})" \
+            || echo "Nothing to commit"
+          git push
+
+      - name: Fail workflow on bad status
+        if: steps.call.outputs.status != '200'
+        run: |
+          echo "::error::Unexpected HTTP ${{ steps.call.outputs.status }}"
+          exit 1
