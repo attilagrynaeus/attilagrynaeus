@@ -1,0 +1,45 @@
+name: supabase-keep-alive
+on:
+  schedule:
+    - cron: '0 3 * * *'     # minden nap 03:00 UTC
+  workflow_dispatch:
+
+env:
+  SUPABASE_URL:              ${{ secrets.SUPABASE_URL }}
+  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping database via PostgREST
+        id: curl
+        run: |
+          set -e
+          CODE=$(curl -s -o /dev/null -w '%{http_code}' \
+            -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY" \
+            "$SUPABASE_URL/rest/v1?select=1")
+          echo "http_code=$CODE" >> "$GITHUB_OUTPUT"
+
+      - name: Fail if not 200
+        if: steps.curl.outputs.http_code != '200'
+        run: |
+          echo "::error::Unexpected HTTP ${{ steps.curl.outputs.http_code }}"
+          exit 1
+
+      - name: Send e-mail on failure
+        if: failure()                            # csak bukáskor
+        uses: dawidd6/action-send-mail@v3        # :contentReference[oaicite:3]{index=3}
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          secure: true
+          to: attila@grynaeus.dev
+          from: Supabase Monitor <${{ secrets.SMTP_USER }}>
+          subject: "⚠️ Supabase keep-alive FAILED"
+          body: |
+            A ping nem érte el a DB-t.
+            Log: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
