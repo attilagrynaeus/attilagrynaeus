@@ -1,14 +1,14 @@
 name: Update commit badge
 
 on:
-  push:                       # run on every push to main
+  push:
     branches: [ main ]
-  schedule:                   # plus once per hour
-    - cron: '17 * * * *'      # HH:17 UTC
-  workflow_dispatch:          # manual trigger button
+  schedule:
+    - cron: '17 * * * *'      # hourly, at hh:17 UTC
+  workflow_dispatch:
 
 permissions:
-  contents: write             # required for git push
+  contents: write
 
 jobs:
   badge:
@@ -16,19 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Generate commit badge
+        uses: FMorschel/commit-count-badge@v1
         with:
-          node-version: '20'  # any LTS is fine
-      - name: Install badge-cli
-        run: npm install -g badge-cli
+          repository: ${{ github.repository }}
+          text: COMMITS
+          outputPath: badges/commits.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      # generate or refresh the SVG badge
-      - name: Generate badge
-        run: |
-          COUNT=$(git rev-list --count HEAD)
-          badge -l COMMITS -m "$COUNT" -c blue -C 1e2024 > badges/commits.svg
-
-      # ommit & push only if the file changed
       - name: Commit and push if changed
         run: |
           git config user.name  "github-actions[bot]"
