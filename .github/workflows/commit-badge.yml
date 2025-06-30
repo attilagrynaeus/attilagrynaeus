@@ -1,0 +1,30 @@
+name: Update commit badge
+
+on:
+  push:                       # update badge on every push…
+    branches: [ main ]
+  schedule:                   # …and once per hour
+    - cron: '17 * * * *'      # at hh:17 UTC
+
+permissions:
+  contents: write             # needed for git push
+
+jobs:
+  build-badge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create/refresh badge
+        run: |
+          COUNT=$(git rev-list --count HEAD)
+          npx --yes badge --label "COMMITS" --message "$COUNT" \
+               --color blue --labelColor 1e2024 > badges/commits.svg
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add badges/commits.svg
+          git diff --cached --quiet && echo "No changes" || \
+            (git commit -m "chore: update commit badge (${COUNT})" && git push)
