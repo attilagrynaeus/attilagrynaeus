@@ -5,25 +5,30 @@ on:
     branches: [ main ]
   schedule:                   # plus once per hour
     - cron: '17 * * * *'      # HH:17 UTC
+  workflow_dispatch:          # manual trigger button
 
 permissions:
   contents: write             # required for git push
 
 jobs:
-  build-badge:
+  badge:
     runs-on: ubuntu-latest
     steps:
-      # 1 ▸ check out repo
       - uses: actions/checkout@v4
 
-      # 2 ▸ generate / refresh the SVG badge
-      - name: Create or refresh badge
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # any LTS is fine
+      - name: Install badge-cli
+        run: npm install -g badge-cli
+
+      # generate or refresh the SVG badge
+      - name: Generate badge
         run: |
           COUNT=$(git rev-list --count HEAD)
-          npx --yes badge --label "COMMITS" --message "${COUNT}" \
-               --color blue --labelColor 1e2024 > badges/commits.svg
+          badge -l COMMITS -m "$COUNT" -c blue -C 1e2024 > badges/commits.svg
 
-      # 3 ▸ commit & push only if the file changed
+      # ommit & push only if the file changed
       - name: Commit and push if changed
         run: |
           git config user.name  "github-actions[bot]"
