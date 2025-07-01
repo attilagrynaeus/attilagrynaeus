@@ -1,4 +1,4 @@
-name: Supabase keep-alive
+name: Supabase keep-alive task
 
 on:
   schedule:
