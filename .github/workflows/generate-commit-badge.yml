@@ -1,4 +1,4 @@
-name: Generate Commit Badge (Promptee)
+name: Generate Commit Badge for Promptee Repo
 
 on:
   schedule:
