@@ -2,21 +2,21 @@ name: Supabase keep-alive
 
 on:
   schedule:
-    - cron: '0 3 * * *'           # every day @ 03:00 UTC
+    - cron: '0 3 * * *'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 env:
   SUPABASE_URL:              ${{ secrets.SUPABASE_URL }}
   SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
-permissions:
-  contents: write 
-
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4        # needed to update the log file
+      - uses: actions/checkout@v4
 
       - name: Ping Supabase
         id: call
@@ -31,15 +31,14 @@ jobs:
         run: |
           TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           STATUS="${{ steps.call.outputs.status }}"
-          echo "$TS  Supabase keep-alive  HTTP:$STATUS" >> .supabase-ping.log
+          echo "$TS  Supabase keep-alive  HTTP:$STATUS" >> ${{ github.workspace }}/.supabase-ping.log
 
       - name: Commit and push log
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .supabase-ping.log
-          git commit -m "chore: log Supabase ping (HTTP:${{ steps.call.outputs.status }})" \
-            || echo "Nothing to commit"
+          git commit -m "chore: log Supabase ping (HTTP:${{ steps.call.outputs.status }})" || echo "Nothing to commit"
           git push
 
       - name: Fail workflow on bad status
