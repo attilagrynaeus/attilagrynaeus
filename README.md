@@ -30,7 +30,7 @@ Passionate about delivering seamless, clean-code, cutting-edge solutions.
 | **Frameworks** | Spring Boot, Spring Cloud, Jakarta EE, EJB 3.x, GraphQL |
 | **Build & CI/CD** | Maven, Gradle, Git, GitHub Actions, Jenkins, Gitlab |
 | **Cloud & Container** | AWS fundamentals, Docker, Kubernetes |
-| **Data & Messaging** | Oracle DB, PostgreSQL, Kafka, RabbitMQ |
+| **Data & Messaging** | Oracle DB, PostgreSQL, RabbitMQ |
 | **Practices** | Test-Driven Development, Clean Architecture, Domain-Driven Design, Continuous Integration |
 
 
