@@ -31,7 +31,7 @@ jobs:
         run: |
           TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           STATUS="${{ steps.call.outputs.status }}"
-          echo "$TS  Supabase keep-alive  HTTP:$STATUS" >> ${{ github.workspace }}/.supabase-ping.log
+          echo "$TS  Supabase keep-alive  HTTP:$STATUS" >> .supabase-ping.log
 
       - name: Commit and push log
         run: |
