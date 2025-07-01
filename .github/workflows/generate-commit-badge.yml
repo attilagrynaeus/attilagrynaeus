@@ -1,8 +1,8 @@
-name: Generate Commit Badge
+name: Generate Commit Badge SVG
 
 on:
   schedule:
-    - cron: '15 3 * * *'  # Minden nap UTC 03:15-kor fut, nem ütközik másik workflow-val
+    - cron: '15 3 * * *'
   workflow_dispatch:
 
 permissions:
@@ -10,7 +10,7 @@ permissions:
 
 env:
   TARGET_REPO: "Promptee"
-  BADGE_PATH: "commit-count-badge.svg"
+  BADGE_PATH: "badges/commits.svg"   # Most a helyes mappába kerül, amit használsz is
 
 jobs:
   generate_badge:
@@ -25,7 +25,6 @@ jobs:
           COMMITS=$(curl -s "https://api.github.com/repos/attilagrynaeus/$TARGET_REPO" | jq '.["size"]')
           echo "commits=$COMMITS" >> "$GITHUB_OUTPUT"
           
-          # Check if commit count is positive integer
           if ! [[ "$COMMITS" =~ ^[0-9]+$ ]] || [[ "$COMMITS" -le 0 ]]; then
             echo "::error::Invalid commit count detected: $COMMITS"
             exit 1
@@ -37,7 +36,7 @@ jobs:
           label: "Commits"
           status: "${{ steps.commits.outputs.commits }}"
           color: "green"
-          outputPath: "${{ env.BADGE_PATH }}"
+          path: "${{ env.BADGE_PATH }}"   # <-- javított paraméter itt!
 
       - name: Commit and Push Badge
         run: |
