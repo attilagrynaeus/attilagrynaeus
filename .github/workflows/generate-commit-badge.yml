@@ -1,4 +1,4 @@
-name: Generate Commit Badge SVG
+name: Generate Commit Badge (Promptee)
 
 on:
   schedule:
