@@ -63,10 +63,7 @@ jobs:
           BADGE_FILE="${BADGE_DIR}/${{ matrix.repo }}_commits.svg"
           git add "${BADGE_FILE}"
 
-          if ! git commit -m "chore(badge): update ${{ matrix.repo }} → ${{ steps.commits.outputs.commits }} commits"; then
-            echo "No changes for ${{ matrix.repo }} – skipping push."
-            exit 0
-          fi
+          git commit … || { echo "No changes – skipping push."; exit 0; }
 
           for attempt in 1 2 3; do
             echo "Push attempt $attempt…"
