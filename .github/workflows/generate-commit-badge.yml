@@ -54,17 +54,17 @@ jobs:
 
           git add "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
 
-          # if git status is clean, skip push entirely
+          # ➜ 1) Ha nincs staged változás: kilépünk, nincs push
           if git diff --cached --quiet; then
-            echo "ℹ️  Nothing to commit for ${{ matrix.repo }}; skipping push."
+            echo "ℹ️  Nothing to commit for ${{ matrix.repo }} – skipping push."
             exit 0
           fi
 
+          # ➜ 2) Commit, majd max 3 rebase-elt push-kísérlet
           git commit -m "chore(badge): update ${{ matrix.repo }} ➜ ${{ steps.commits.outputs.commits }} commits"
 
-          # rebase‐and‐push with up to 3 retries
           for attempt in 1 2 3; do
-            echo "🔄  Attempt $attempt to rebase & push ..."
+            echo "🔄  Attempt $attempt to rebase & push …"
             if git pull --rebase --autostash origin main && git push; then
               echo "✅  Pushed badge for ${{ matrix.repo }}"
               exit 0
@@ -74,3 +74,4 @@ jobs:
 
           echo "::error::Failed to push badge for ${{ matrix.repo }} after 3 attempts"
           exit 1
+
