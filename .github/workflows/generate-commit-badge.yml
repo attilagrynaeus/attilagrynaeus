@@ -1,4 +1,4 @@
-name: Generate Commit Badges (multi-repo)
+name: Generate Commit Badges (multi-repo author-specific)
 
 on:
   schedule:
@@ -13,38 +13,41 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        repo: [Promptee, troubleshoot-ai-assist]
+        repo: [Promptee, troubleshoot-ai-assist] 
 
     env:
       OWNER: attilagrynaeus
       BADGE_DIR: badges
+      AUTHOR_PATTERN: 'Attila Grynaeus\|attilagrynaeus\|damiancrowsnest\|unknown' 
 
     steps:
       - uses: actions/checkout@v4
-        with: { fetch-depth: 0 }
+        with:
+          fetch-depth: 0
 
-      # --- COMMIT counter ---
-      - name: Count commits
-        id: commits
+      - name: Count author commits from external repo
+        id: author_commits
         shell: bash
         run: |
           set -euo pipefail
           REPO="${{ matrix.repo }}"
           git clone --quiet --filter=blob:none --mirror \
             "https://github.com/${OWNER}/${REPO}.git" tmp_repo
-          COUNT=$(git --git-dir tmp_repo rev-list --all --count)
+          COUNT=$(git --git-dir tmp_repo rev-list --count --all --author="${AUTHOR_PATTERN}")
           rm -rf tmp_repo
           echo "commits=$COUNT" >> "$GITHUB_OUTPUT"
+          echo "Total commits by author in ${REPO}: $COUNT"
 
-      # --- BADGE ---
+      # --- Badge ---
       - name: Generate badge SVG
         uses: emibcn/badge-action@v1
         with:
           label: "${{ matrix.repo }} commits"
-          status: "${{ steps.commits.outputs.commits }}"
+          status: "${{ steps.author_commits.outputs.commits }}"
           color: green
           path: "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
 
+      # --- Commit and push badge ---
       - name: Commit and push badge
         shell: bash
         run: |
@@ -63,7 +66,7 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore(badge): update ${{ matrix.repo }} → ${{ steps.commits.outputs.commits }} commits"
+          git commit -m "chore(badge): update ${{ matrix.repo }} → ${{ steps.author_commits.outputs.commits }} author commits"
 
           for i in 1 2 3; do
             git push --force-with-lease && exit 0
