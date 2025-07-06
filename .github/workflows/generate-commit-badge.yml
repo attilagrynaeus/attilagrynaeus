@@ -1,47 +1,65 @@
-name: Generate Commit Badge for Promptee Repo
+name: Generate Commit Badges (multi-repo)
 
 on:
   schedule:
-    - cron: '15 3 * * *'
+    - cron: '15 3 * * *'       # every day 03:15 UTC
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write              #  for the git push
 
-env:
-  TARGET_REPO: "Promptee"
-  BADGE_PATH: "badges/commits.svg" 
-
+################################################################################
+# Generate Commit Badges (multi-repo)  <<<   – put every repo you want in this list
+################################################################################
 jobs:
   generate_badge:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo:           
+          - Promptee
+          - troubleshoot-ai-assist
+          # - another-repo
+          # - yet-another-repo
+    env:
+      OWNER: attilagrynaeus
+      BADGE_DIR: badges
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0       # accurate commit count
 
-      - name: Fetch total commits count
+      - name: Fetch commit count
         id: commits
         run: |
-          COMMITS=$(curl -s "https://api.github.com/repos/attilagrynaeus/$TARGET_REPO" | jq '.["size"]')
+          REPO="${{ matrix.repo }}"
+          COMMITS=$(git ls-remote --heads "https://github.com/${OWNER}/${REPO}.git" \
+                      | cut -f1 \
+                      | xargs -I{} git rev-list --count {} | paste -sd+ - | bc)
+
           echo "commits=$COMMITS" >> "$GITHUB_OUTPUT"
-          
+
           if ! [[ "$COMMITS" =~ ^[0-9]+$ ]] || [[ "$COMMITS" -le 0 ]]; then
-            echo "::error::Invalid commit count detected: $COMMITS"
+            echo "::error::Invalid commit count for ${REPO}: $COMMITS"
             exit 1
           fi
 
-      - name: Generate Badge SVG
+      - name: Generate badge SVG
         uses: emibcn/badge-action@v1
         with:
-          label: "Commits"
+          label: "${{ matrix.repo }} commits"
           status: "${{ steps.commits.outputs.commits }}"
-          color: "green"
-          path: "${{ env.BADGE_PATH }}" 
+          color: green
+          path: "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
 
-      - name: Commit and Push Badge
+      - name: Commit & push badge
         run: |
-          git config user.name "github-actions[bot]"
+          mkdir -p "${{ env.BADGE_DIR }}"
+          git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "${{ env.BADGE_PATH }}"
-          git commit -m "chore: update commit badge (Commits: ${{ steps.commits.outputs.commits }})" || echo "Nothing to commit"
+          git add "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
+          git commit -m "chore: update commit badge for ${{ matrix.repo }} (Commits: ${{ steps.commits.outputs.commits }})" \
+            || echo "Nothing to commit for ${{ matrix.repo }}"
           git push
