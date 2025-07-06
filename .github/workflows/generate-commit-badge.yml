@@ -12,12 +12,8 @@ jobs:
   generate_badge:
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 1
       matrix:
-        repo:
-          - Promptee
-          - troubleshoot-ai-assist
-          # add more repos here
+        repo: [Promptee, troubleshoot-ai-assist]
 
     env:
       OWNER: attilagrynaeus
@@ -25,67 +21,55 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        with: { fetch-depth: 0 }
 
-      # calculate commits from target repo
+      # --- COMMIT counter ---
       - name: Count commits
         id: commits
         shell: bash
         run: |
           set -euo pipefail
           REPO="${{ matrix.repo }}"
-          git clone --filter=blob:none --quiet --mirror \
+          git clone --quiet --filter=blob:none --mirror \
             "https://github.com/${OWNER}/${REPO}.git" tmp_repo
           COUNT=$(git --git-dir tmp_repo rev-list --all --count)
           rm -rf tmp_repo
           echo "commits=$COUNT" >> "$GITHUB_OUTPUT"
 
-
-      # generate the badge
-      - name: Generate Badge SVG
+      # --- BADGE ---
+      - name: Generate badge SVG
         uses: emibcn/badge-action@v1
         with:
           label: "${{ matrix.repo }} commits"
           status: "${{ steps.commits.outputs.commits }}"
           color: green
           path: "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
-          
 
-      - name: Commit and Push Badge
+      - name: Commit and push badge
         shell: bash
         run: |
-          set -euo pipefail               # stop on any error
-          mkdir -p "${BADGE_DIR}"
-
+          set -euo pipefail
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git fetch origin main
           git rebase origin/main
 
-          BADGE_FILE="${BADGE_DIR}/${{ matrix.repo }}_commits.svg"
-          git add "${BADGE_FILE}"
+          FILE="${BADGE_DIR}/${{ matrix.repo }}_commits.svg"
+          git add "$FILE"
 
-          # ──► commit only if there is an actual change
-          if ! git diff --cached --quiet; then
-            git commit -m "chore(badge): update ${{ matrix.repo }} badge → ${{ steps.commits.outputs.commits }} commits"
-          else
+          if git diff --cached --quiet; then
             echo "No changes for ${{ matrix.repo }} – skipping push."
             exit 0
           fi
 
-          # push with automatic rebase, max 3 attempts
-          for attempt in 1 2 3; do
-            echo "Push attempt $attempt…"
-            if git push --force-with-lease; then
-              echo "✔ Push succeeded."
-              exit 0
-            fi
-            echo "❗ Remote ahead, rebasing…"
+          git commit -m "chore(badge): update ${{ matrix.repo }} → ${{ steps.commits.outputs.commits }} commits"
+
+          for i in 1 2 3; do
+            git push --force-with-lease && exit 0
+            echo "Push failed, rebasing (try $i)…"
             git fetch origin main
             git rebase origin/main
-            sleep 2
           done
 
           echo "::error::Failed to push badge after 3 attempts"
