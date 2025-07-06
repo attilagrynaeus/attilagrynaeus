@@ -31,12 +31,16 @@ jobs:
       # calculate commits from target repo
       - name: Count commits
         id: commits
+        shell: bash
         run: |
+          set -euo pipefail
           REPO="${{ matrix.repo }}"
-          git clone --quiet --mirror "https://github.com/${OWNER}/${REPO}.git" tmp_repo
+          git clone --filter=blob:none --quiet --mirror \
+            "https://github.com/${OWNER}/${REPO}.git" tmp_repo
           COUNT=$(git --git-dir tmp_repo rev-list --all --count)
           rm -rf tmp_repo
-          echo "commits=${COUNT}" >> "$GITHUB_OUTPUT"
+          echo "commits=$COUNT" >> "$GITHUB_OUTPUT"
+
 
       # generate the badge
       - name: Generate Badge SVG
