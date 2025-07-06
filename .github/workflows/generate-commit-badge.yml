@@ -2,7 +2,7 @@ name: Generate Commit Badges (multi-repo)
 
 on:
   schedule:
-    - cron: '15 3 * * *'        # every day 03:15 UTC
+    - cron: '15 3 * * *'
   workflow_dispatch:
 
 permissions:
@@ -12,24 +12,24 @@ jobs:
   generate_badge:
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 1            # avoid concurrent pushes
+      max-parallel: 1
       matrix:
         repo:
           - Promptee
           - troubleshoot-ai-assist
-          # - add-more-here
+          # add more repos here
 
     env:
       OWNER: attilagrynaeus
       BADGE_DIR: badges
 
     steps:
-
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0         # full history → safe rebase later
+          fetch-depth: 0
 
-      - name: Count commits in ${{ matrix.repo }}
+      # calculate commits from target repo
+      - name: Count commits
         id: commits
         run: |
           REPO="${{ matrix.repo }}"
@@ -38,40 +38,35 @@ jobs:
           rm -rf tmp_repo
           echo "commits=${COUNT}" >> "$GITHUB_OUTPUT"
 
-      - name: Generate badge SVG
-        uses: emibcn/badge-action@v1   # uses set-output; harmless warning
+      # generate the badge
+      - name: Generate Badge SVG
+        uses: emibcn/badge-action@v1
         with:
           label: "${{ matrix.repo }} commits"
           status: "${{ steps.commits.outputs.commits }}"
           color: green
           path: "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
 
-      - name: Commit and push badge
+      - name: Commit and Push Badge
         run: |
           mkdir -p "${{ env.BADGE_DIR }}"
-          git config user.name  "github-actions[bot]"
+          git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
+          git remote set-url origin "https://github.com/${OWNER}/${GITHUB_REPOSITORY#*/}.git"
           git add "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
 
-          # ➜ 1) Ha nincs staged változás: kilépünk, nincs push
           if git diff --cached --quiet; then
-            echo "ℹ️  Nothing to commit for ${{ matrix.repo }} – skipping push."
+            echo "Nothing to commit for ${{ matrix.repo }} – skipping push."
             exit 0
           fi
 
-          # ➜ 2) Commit, majd max 3 rebase-elt push-kísérlet
-          git commit -m "chore(badge): update ${{ matrix.repo }} ➜ ${{ steps.commits.outputs.commits }} commits"
+          git commit -m "chore(badge): update ${{ matrix.repo }} badge → ${{ steps.commits.outputs.commits }} commits"
 
           for attempt in 1 2 3; do
-            echo "🔄  Attempt $attempt to rebase & push …"
-            if git pull --rebase --autostash origin main && git push; then
-              echo "✅  Pushed badge for ${{ matrix.repo }}"
-              exit 0
-            fi
+            echo "Attempt $attempt: pulling latest and pushing..."
+            git pull --rebase origin main && git push && exit 0
             sleep 3
           done
 
-          echo "::error::Failed to push badge for ${{ matrix.repo }} after 3 attempts"
+          echo "::error::Failed to push badge after 3 attempts"
           exit 1
-
