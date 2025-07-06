@@ -48,25 +48,39 @@ jobs:
           path: "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
 
       - name: Commit and Push Badge
+        shell: bash
         run: |
-          mkdir -p "${{ env.BADGE_DIR }}"
-          git config user.name "github-actions[bot]"
+          set -eo pipefail                
+          mkdir -p "${BADGE_DIR}"
+
+          git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin "https://github.com/${OWNER}/${GITHUB_REPOSITORY#*/}.git"
-          git add "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
+
+          git fetch origin
+          git rebase origin/main
+
+          # badge stage-elése
+          git add "${BADGE_DIR}/${{ matrix.repo }}_commits.svg"
 
           if git diff --cached --quiet; then
-            echo "Nothing to commit for ${{ matrix.repo }} – skipping push."
+            echo "No changes for ${{ matrix.repo }} – skipping commit & push."
             exit 0
           fi
 
           git commit -m "chore(badge): update ${{ matrix.repo }} badge → ${{ steps.commits.outputs.commits }} commits"
 
           for attempt in 1 2 3; do
-            echo "Attempt $attempt: pulling latest and pushing..."
-            git pull --rebase origin main && git push && exit 0
-            sleep 3
+            echo "Push attempt $attempt"
+            if git push --force-with-lease; then
+              echo "Push succeeded."
+              exit 0
+            fi
+            echo "Remote ahead, rebasing…"
+            git fetch origin
+            git rebase origin/main
+            sleep 2
           done
 
           echo "::error::Failed to push badge after 3 attempts"
           exit 1
+
