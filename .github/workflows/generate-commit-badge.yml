@@ -1,4 +1,4 @@
-name: Generate Commit Badges (multi-repo author-specific)
+name: Generate Total Commit Badge
 
 on:
   schedule:
@@ -9,43 +9,44 @@ permissions:
   contents: write
 
 jobs:
-  generate_badge:
+  generate_total_commit_badge:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        repo: [Promptee, troubleshoot-ai-assist] 
-
     env:
       OWNER: attilagrynaeus
       BADGE_DIR: badges
-      AUTHOR_PATTERN: 'Attila Grynaeus\|attilagrynaeus\|damiancrowsnest\|unknown' 
+      AUTHOR_PATTERN: 'Attila Grynaeus\|attilagrynaeus\|damiancrowsnest\|unknown'
 
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Count author commits from external repo
-        id: author_commits
+      - name: Count total commits across all repos
+        id: total_commits
         shell: bash
         run: |
           set -euo pipefail
-          REPO="${{ matrix.repo }}"
-          git clone --quiet --filter=blob:none --mirror \
-            "https://github.com/${OWNER}/${REPO}.git" tmp_repo
-          COUNT=$(git --git-dir tmp_repo rev-list --count --all --author="${AUTHOR_PATTERN}")
-          rm -rf tmp_repo
-          echo "commits=$COUNT" >> "$GITHUB_OUTPUT"
-          echo "Total commits by author in ${REPO}: $COUNT"
+          REPOS=("Promptee" "troubleshoot-ai-assist") # <-- Ide tedd az összes repót
+          TOTAL=0
+          for REPO in "${REPOS[@]}"; do
+            git clone --quiet --filter=blob:none --mirror \
+              "https://github.com/${OWNER}/${REPO}.git" tmp_repo
+            COUNT=$(git --git-dir tmp_repo rev-list --count --all --author="${AUTHOR_PATTERN}")
+            rm -rf tmp_repo
+            echo "${REPO}: $COUNT commits"
+            TOTAL=$((TOTAL + COUNT))
+          done
+          echo "Total commits across all repos: $TOTAL"
+          echo "total_commits=$TOTAL" >> "$GITHUB_OUTPUT"
 
       # --- Badge ---
-      - name: Generate badge SVG
+      - name: Generate total commits badge SVG
         uses: emibcn/badge-action@v1
         with:
-          label: "${{ matrix.repo }} commits"
-          status: "${{ steps.author_commits.outputs.commits }}"
+          label: "Total Commits"
+          status: "${{ steps.total_commits.outputs.total_commits }}"
           color: green
-          path: "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
+          path: "${{ env.BADGE_DIR }}/commits.svg"
 
       # --- Commit and push badge ---
       - name: Commit and push badge
@@ -58,15 +59,15 @@ jobs:
           git fetch origin main
           git rebase origin/main
 
-          FILE="${BADGE_DIR}/${{ matrix.repo }}_commits.svg"
+          FILE="${BADGE_DIR}/commits.svg"
           git add "$FILE"
 
           if git diff --cached --quiet; then
-            echo "No changes for ${{ matrix.repo }} – skipping push."
+            echo "No changes – skipping push."
             exit 0
           fi
 
-          git commit -m "chore(badge): update ${{ matrix.repo }} → ${{ steps.author_commits.outputs.commits }} author commits"
+          git commit -m "chore(badge): update total commits → ${{ steps.total_commits.outputs.total_commits }}"
 
           for i in 1 2 3; do
             git push --force-with-lease && exit 0
