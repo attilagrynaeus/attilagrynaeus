@@ -26,7 +26,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          REPOS=("Promptee" "troubleshoot-ai-assist") # <-- Ide tedd az összes repót
+          REPOS=("Promptee" "troubleshoot-ai-assist" "attilagrynaeus") # <-- Ide tedd az összes repót
           TOTAL=0
           for REPO in "${REPOS[@]}"; do
             git clone --quiet --filter=blob:none --mirror \
