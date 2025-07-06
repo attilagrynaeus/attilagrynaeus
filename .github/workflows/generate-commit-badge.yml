@@ -14,7 +14,7 @@ jobs:
     env:
       OWNER: attilagrynaeus
       BADGE_DIR: badges
-      AUTHOR_PATTERN: 'Attila Grynaeus\|attilagrynaeus\|damiancrowsnest\|unknown'
+      AUTHOR_PATTERN: 'Attila Grynaeus\|attilagrynaeus\|damiancrowsnest\|unknown'   #having lots of alias
 
     steps:
       - uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          REPOS=("Promptee" "troubleshoot-ai-assist" "attilagrynaeus") # <-- Ide tedd az összes repót
+          REPOS=("Promptee" "troubleshoot-ai-assist" "attilagrynaeus")
           TOTAL=0
           for REPO in "${REPOS[@]}"; do
             git clone --quiet --filter=blob:none --mirror \
@@ -57,7 +57,6 @@ jobs:
 
           FILE="${BADGE_DIR}/commits.svg"
 
-          # Ha nem változott a fájl, lépjünk ki
           if git diff --quiet "$FILE"; then
             echo "No changes – skipping push."
             exit 0
@@ -66,10 +65,8 @@ jobs:
           git add "$FILE"
           git commit -m "chore(badge): update total commits → ${{ steps.total_commits.outputs.total_commits }}"
 
-          # Frissítsünk úgy, hogy közben automatikusan stasheljük a commitolt fájl(oka)t
           git pull --rebase --autostash origin main
 
-          # Push, ütközés esetén 3× próbálkozzunk
           for i in 1 2 3; do
             git push --force-with-lease && exit 0
             echo "Push failed, retrying ($i)…"
