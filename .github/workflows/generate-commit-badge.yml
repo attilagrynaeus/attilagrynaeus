@@ -2,50 +2,62 @@ name: Generate Commit Badges (multi-repo)
 
 on:
   schedule:
-    - cron: '15 3 * * *'       # every day 03:15 UTC
+    # runs every day at 03:15 UTC
+    - cron: '15 3 * * *'
   workflow_dispatch:
 
 permissions:
-  contents: write              #  for the git push
+  contents: write
 
 ################################################################################
-# Generate Commit Badges (multi-repo)  <<<   – put every repo you want in this list
+# ── EDIT THIS LIST ANYTIME ────────────────────────────────────────────────────
+# Add or remove repository names that belong to the same OWNER.
 ################################################################################
 jobs:
   generate_badge:
     runs-on: ubuntu-latest
     strategy:
+      # run the matrix **one job at a time** to avoid push collisions
+      max-parallel: 1
       matrix:
-        repo:           
+        repo:
           - Promptee
           - troubleshoot-ai-assist
           # - another-repo
           # - yet-another-repo
+
+    # global environment variables
     env:
-      OWNER: attilagrynaeus
-      BADGE_DIR: badges
+      OWNER: attilagrynaeus          # GitHub user / organisation
+      BADGE_DIR: badges              # folder where SVGs are stored
 
     steps:
-      - name: Checkout
+      - name: Checkout workflow repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0       # accurate commit count
+          fetch-depth: 0             # full history → safe rebase before push
 
-      - name: Fetch commit count
+      - name: Calculate commit count for ${{ matrix.repo }}
         id: commits
         run: |
           REPO="${{ matrix.repo }}"
-          COMMITS=$(git ls-remote --heads "https://github.com/${OWNER}/${REPO}.git" \
-                      | cut -f1 \
-                      | xargs -I{} git rev-list --count {} | paste -sd+ - | bc)
 
-          echo "commits=$COMMITS" >> "$GITHUB_OUTPUT"
+          echo "▶️  Cloning https://github.com/${OWNER}/${REPO}.git ..."
+          git clone --quiet --mirror "https://github.com/${OWNER}/${REPO}.git" "tmp_repo"
 
-          if ! [[ "$COMMITS" =~ ^[0-9]+$ ]] || [[ "$COMMITS" -le 0 ]]; then
-            echo "::error::Invalid commit count for ${REPO}: $COMMITS"
+          COMMITS=$(git --git-dir=tmp_repo rev-list --all --count)
+          rm -rf tmp_repo
+
+          echo "ℹ️  ${REPO} has ${COMMITS} commits"
+          echo "commits=${COMMITS}" >> "$GITHUB_OUTPUT"
+
+          # basic sanity check
+          if ! [[ "${COMMITS}" =~ ^[0-9]+$ ]] || [[ "${COMMITS}" -le 0 ]]; then
+            echo "::error::Invalid commit count for ${REPO}: ${COMMITS}"
             exit 1
           fi
 
+      # 3) Build a fresh SVG badge
       - name: Generate badge SVG
         uses: emibcn/badge-action@v1
         with:
@@ -54,12 +66,24 @@ jobs:
           color: green
           path: "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
 
-      - name: Commit & push badge
+      #    A rebase ensures we stay in sync with remote main before pushing.
+      - name: Commit and push badge
         run: |
           mkdir -p "${{ env.BADGE_DIR }}"
+
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git add "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
-          git commit -m "chore: update commit badge for ${{ matrix.repo }} (Commits: ${{ steps.commits.outputs.commits }})" \
-            || echo "Nothing to commit for ${{ matrix.repo }}"
-          git push
+          git commit -m "chore(badge): update commit badge for ${{ matrix.repo }} ↗️  (${{ steps.commits.outputs.commits }} commits)" \
+            || { echo "Nothing to commit for ${{ matrix.repo }}"; exit 0; }
+
+          # keep trying in case upstream moved since checkout
+          for attempt in 1 2 3; do
+            echo "🔄  Attempt ${attempt} to rebase & push ..."
+            git pull --rebase --autostash origin main && git push && exit 0
+            sleep 3
+          done
+
+          echo "::error::Failed to push badge for ${{ matrix.repo }} after 3 attempts"
+          exit 1
