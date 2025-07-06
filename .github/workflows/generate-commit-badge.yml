@@ -51,20 +51,27 @@ jobs:
       - name: Commit and Push Badge
         shell: bash
         run: |
-          set -eo pipefail      
+          set -euo pipefail               # stop on any error
           mkdir -p "${BADGE_DIR}"
 
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git fetch origin
+          git fetch origin main
           git rebase origin/main
 
           BADGE_FILE="${BADGE_DIR}/${{ matrix.repo }}_commits.svg"
           git add "${BADGE_FILE}"
 
-          git commit … || { echo "No changes – skipping push."; exit 0; }
+          # ──► commit only if there is an actual change
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(badge): update ${{ matrix.repo }} badge → ${{ steps.commits.outputs.commits }} commits"
+          else
+            echo "No changes for ${{ matrix.repo }} – skipping push."
+            exit 0
+          fi
 
+          # push with automatic rebase, max 3 attempts
           for attempt in 1 2 3; do
             echo "Push attempt $attempt…"
             if git push --force-with-lease; then
@@ -72,7 +79,7 @@ jobs:
               exit 0
             fi
             echo "❗ Remote ahead, rebasing…"
-            git fetch origin
+            git fetch origin main
             git rebase origin/main
             sleep 2
           done
