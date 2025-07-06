@@ -2,86 +2,73 @@ name: Generate Commit Badges (multi-repo)
 
 on:
   schedule:
-    # runs every day at 03:15 UTC
-    - cron: '15 3 * * *'
+    - cron: '15 3 * * *'        # every day 03:15 UTC
   workflow_dispatch:
 
 permissions:
   contents: write
 
-################################################################################
-# ── EDIT THIS LIST ANYTIME ────────────────────────────────────────────────────
-# Add or remove repository names that belong to the same OWNER.
-################################################################################
 jobs:
   generate_badge:
     runs-on: ubuntu-latest
     strategy:
-      # run the matrix **one job at a time** to avoid push collisions
-      max-parallel: 1
+      max-parallel: 1            # avoid concurrent pushes
       matrix:
         repo:
           - Promptee
           - troubleshoot-ai-assist
-          # - another-repo
-          # - yet-another-repo
+          # - add-more-here
 
-    # global environment variables
     env:
-      OWNER: attilagrynaeus          # GitHub user / organisation
-      BADGE_DIR: badges              # folder where SVGs are stored
+      OWNER: attilagrynaeus
+      BADGE_DIR: badges
 
     steps:
-      - name: Checkout workflow repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0             # full history → safe rebase before push
 
-      - name: Calculate commit count for ${{ matrix.repo }}
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0         # full history → safe rebase later
+
+      - name: Count commits in ${{ matrix.repo }}
         id: commits
         run: |
           REPO="${{ matrix.repo }}"
-
-          echo "▶️  Cloning https://github.com/${OWNER}/${REPO}.git ..."
-          git clone --quiet --mirror "https://github.com/${OWNER}/${REPO}.git" "tmp_repo"
-
-          COMMITS=$(git --git-dir=tmp_repo rev-list --all --count)
+          git clone --quiet --mirror "https://github.com/${OWNER}/${REPO}.git" tmp_repo
+          COUNT=$(git --git-dir tmp_repo rev-list --all --count)
           rm -rf tmp_repo
+          echo "commits=${COUNT}" >> "$GITHUB_OUTPUT"
 
-          echo "ℹ️  ${REPO} has ${COMMITS} commits"
-          echo "commits=${COMMITS}" >> "$GITHUB_OUTPUT"
-
-          # basic sanity check
-          if ! [[ "${COMMITS}" =~ ^[0-9]+$ ]] || [[ "${COMMITS}" -le 0 ]]; then
-            echo "::error::Invalid commit count for ${REPO}: ${COMMITS}"
-            exit 1
-          fi
-
-      # 3) Build a fresh SVG badge
       - name: Generate badge SVG
-        uses: emibcn/badge-action@v1
+        uses: emibcn/badge-action@v1   # uses set-output; harmless warning
         with:
           label: "${{ matrix.repo }} commits"
           status: "${{ steps.commits.outputs.commits }}"
           color: green
           path: "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
 
-      #    A rebase ensures we stay in sync with remote main before pushing.
       - name: Commit and push badge
         run: |
           mkdir -p "${{ env.BADGE_DIR }}"
-
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add "${{ env.BADGE_DIR }}/${{ matrix.repo }}_commits.svg"
-          git commit -m "chore(badge): update commit badge for ${{ matrix.repo }} ↗️  (${{ steps.commits.outputs.commits }} commits)" \
-            || { echo "Nothing to commit for ${{ matrix.repo }}"; exit 0; }
 
-          # keep trying in case upstream moved since checkout
+          # if git status is clean, skip push entirely
+          if git diff --cached --quiet; then
+            echo "ℹ️  Nothing to commit for ${{ matrix.repo }}; skipping push."
+            exit 0
+          fi
+
+          git commit -m "chore(badge): update ${{ matrix.repo }} ➜ ${{ steps.commits.outputs.commits }} commits"
+
+          # rebase‐and‐push with up to 3 retries
           for attempt in 1 2 3; do
-            echo "🔄  Attempt ${attempt} to rebase & push ..."
-            git pull --rebase --autostash origin main && git push && exit 0
+            echo "🔄  Attempt $attempt to rebase & push ..."
+            if git pull --rebase --autostash origin main && git push; then
+              echo "✅  Pushed badge for ${{ matrix.repo }}"
+              exit 0
+            fi
             sleep 3
           done
 
