@@ -48,7 +48,6 @@ jobs:
           color: green
           path: "${{ env.BADGE_DIR }}/commits.svg"
 
-      # --- Commit and push badge ---
       - name: Commit and push badge
         shell: bash
         run: |
@@ -56,24 +55,25 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git fetch origin main
-          git rebase origin/main
-
           FILE="${BADGE_DIR}/commits.svg"
-          git add "$FILE"
 
-          if git diff --cached --quiet; then
+          # Ha nem változott a fájl, lépjünk ki
+          if git diff --quiet "$FILE"; then
             echo "No changes – skipping push."
             exit 0
           fi
 
+          git add "$FILE"
           git commit -m "chore(badge): update total commits → ${{ steps.total_commits.outputs.total_commits }}"
 
+          # Frissítsünk úgy, hogy közben automatikusan stasheljük a commitolt fájl(oka)t
+          git pull --rebase --autostash origin main
+
+          # Push, ütközés esetén 3× próbálkozzunk
           for i in 1 2 3; do
             git push --force-with-lease && exit 0
-            echo "Push failed, rebasing (try $i)…"
-            git fetch origin main
-            git rebase origin/main
+            echo "Push failed, retrying ($i)…"
+            git pull --rebase --autostash origin main
           done
 
           echo "::error::Failed to push badge after 3 attempts"
