@@ -1,0 +1,20 @@
+<svg width="145.7" height="20" viewBox="0 0 1457 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Promptee commits: 129">
+  <title>Promptee commits: 129</title>
+  <linearGradient id="a" x2="0" y2="100%">
+    <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
+    <stop offset="1" stop-opacity=".1"/>
+  </linearGradient>
+  <mask id="m"><rect width="1457" height="200" rx="30" fill="#FFF"/></mask>
+  <g mask="url(#m)">
+    <rect width="1147" height="200" fill="#555"/>
+    <rect width="310" height="200" fill="#3C1" x="1147"/>
+    <rect width="1457" height="200" fill="url(#a)"/>
+  </g>
+  <g aria-hidden="true" fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
+    <text x="60" y="148" textLength="1047" fill="#000" opacity="0.25">Promptee commits</text>
+    <text x="50" y="138" textLength="1047">Promptee commits</text>
+    <text x="1202" y="148" textLength="210" fill="#000" opacity="0.25">129</text>
+    <text x="1192" y="138" textLength="210">129</text>
+  </g>
+  
+</svg>
