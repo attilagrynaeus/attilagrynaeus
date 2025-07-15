@@ -40,8 +40,8 @@ jobs:
         INSERT_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
           -X POST -H "Content-Type: application/json" \
           -H "Prefer: return=minimal" \
-          -H "apikey: $SUPABASE_ANON_KEY" \
-          -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+          -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" \
+          -H "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY" \
           -d '{"random":"'"$(date +%s)"'"}' \
           "$API")
 
