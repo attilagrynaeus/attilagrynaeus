@@ -26,7 +26,6 @@ jobs:
         set -e
         API="$SUPABASE_URL/rest/v1/keep_alive"
 
-        # ---- EXAKT SORSZÁM ----
         HEADERS=$(curl -s -D - -o /dev/null \
           -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" \
           -H "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY" \
@@ -43,7 +42,7 @@ jobs:
           -H "Prefer: return=minimal" \
           -H "apikey: $SUPABASE_ANON_KEY" \
           -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
-          -d '{}' \
+          -d '{"random":"'"$(date +%s)"'"}' \
           "$API")
 
         echo "select_status=$SELECT_STATUS"  >> "$GITHUB_OUTPUT"
