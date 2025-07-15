@@ -1,0 +1,91 @@
+name: Supabase keep‑alive task Advanced
+
+on:
+  schedule:
+    - cron: '5 3 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+env:
+  SUPABASE_URL:         ${{ secrets.SUPABASE_URL }}
+  SUPABASE_ANON_KEY:    ${{ secrets.SUPABASE_ANON_KEY }}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # SELECT count(*) + INSERT
+    - name: Count rows + insert heartbeat
+      id: call
+      run: |
+        set -e
+        API="$SUPABASE_URL/rest/v1/keep_alive"
+
+        # ---- EXAKT SORSZÁM ----
+        HEADERS=$(curl -s -D - -o /dev/null \
+          -H "apikey: $SUPABASE_ANON_KEY" \
+          -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+          -H "Prefer: count=exact" \
+          -H "Range: 0-0" \
+          "$API?select=id")
+
+        SELECT_STATUS=$(echo "$HEADERS" | head -n1 | awk '{print $2}')
+        COUNT=$(echo "$HEADERS" | tr -d '\r' | awk -F'/' '/[cC]ontent-[rR]ange/ {print $2}')
+
+        #  INSERT 
+        INSERT_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+          -X POST -H "Content-Type: application/json" \
+          -H "Prefer: return=minimal" \
+          -H "apikey: $SUPABASE_ANON_KEY" \
+          -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+          -d '{}' \
+          "$API")
+
+        echo "select_status=$SELECT_STATUS"  >> "$GITHUB_OUTPUT"
+        echo "insert_status=$INSERT_STATUS"  >> "$GITHUB_OUTPUT"
+        echo "row_count=$COUNT"              >> "$GITHUB_OUTPUT"
+
+    #  LOG and COMMIT
+    - name: Append result to .supabase‑ping.log
+      run: |
+        TS=$(date -u "+%Y-%m-%dT%H:%M:%SZ")
+        echo "$TS  keep_alive rows:${{ steps.call.outputs.row_count }}  SELECT:${{ steps.call.outputs.select_status }}  INSERT:${{ steps.call.outputs.insert_status }}" >> .supabase-ping.log
+
+    - name: Commit and push log
+      run: |
+        git config user.name  "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add .supabase-ping.log
+        git commit -m "chore: log keep_alive (${{
+                      steps.call.outputs.row_count }}) \
+                      SELECT:${{ steps.call.outputs.select_status }} \
+                      INSERT:${{ steps.call.outputs.insert_status }}" \
+          || echo "Nothing to commit"
+        git push
+
+    - name: Send alert e‑mail
+      if: failure()   
+      uses: dawidd6/action-send-mail@v6
+      with:
+        connection_url: ${{ secrets.MAIL_CONNECTION }}  
+        to:            ${{ secrets.MAIL_TO }}          
+        subject:       "❌ Supabase keep‑alive failed"
+        body: |
+          The daily Supabase keep-alive workflow ran into errors.
+          Repo:  ${{ github.repository }}
+          Run:   ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+    - name: Fail workflow on bad HTTP status
+      if: |
+        (steps.call.outputs.select_status != '200' &&
+         steps.call.outputs.select_status != '206') ||
+        (steps.call.outputs.insert_status != '200' &&
+         steps.call.outputs.insert_status != '201')
+      run: |
+        echo "::error::Unexpected HTTP status. SELECT=${{ steps.call.outputs.select_status }} INSERT=${{ steps.call.outputs.insert_status }}"
+        exit 1
