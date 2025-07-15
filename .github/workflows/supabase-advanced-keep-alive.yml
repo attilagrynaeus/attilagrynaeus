@@ -10,7 +10,7 @@ permissions:
 
 env:
   SUPABASE_URL:         ${{ secrets.SUPABASE_URL }}
-  SUPABASE_ANON_KEY:    ${{ secrets.SUPABASE_ANON_KEY }}
+  SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
 
 jobs:
   ping:
@@ -28,8 +28,8 @@ jobs:
 
         # ---- EXAKT SORSZÁM ----
         HEADERS=$(curl -s -D - -o /dev/null \
-          -H "apikey: $SUPABASE_ANON_KEY" \
-          -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+          -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" \
+          -H "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY" \
           -H "Prefer: count=exact" \
           -H "Range: 0-0" \
           "$API?select=id")
