@@ -22,6 +22,19 @@ Passionate about delivering seamless, clean-code, cutting-edge solutions.
 
 ---
 
+## 🌐 Blog & Articles
+
+I regularly write about AI-driven development, software architecture, and cloud native technologies on my blog:
+
+🌐 [mindjourneylabs.com](https://mindjourneylabs.com)
+
+---
+
+Ezt a részt a „🛠 Tech toolbox” és a „Featured Project” közötti helyre, vagy akár közvetlenül a bevezető (Intro) szakasz után érdemes elhelyezni, mert ezek a helyek a legnagyobb figyelmet kapják.
+
+Így erősíti szakmai hitelességed és könnyen elérhető az érdeklődők számára.
+
+
 ## 🛠 Tech toolbox
 
 | Domain | Tools & Tech |
