@@ -39,7 +39,7 @@ Ezt a részt a „🛠 Tech toolbox” és a „Featured Project” közötti he
 
 | Domain | Tools & Tech |
 | ------ | ------------ |
-| **Languages** | Java 17/21, Python 3.12, TypeScript (Angular), SQL, Bash |
+| **Languages** | Java 17/21, Python 3.12, TypeScript (React), SQL, Bash |
 | **Frameworks** | Spring Boot, Spring Cloud, Jakarta EE, EJB 3.x, GraphQL |
 | **Build & CI/CD** | Maven, Gradle, Git, GitHub Actions, Jenkins, Gitlab |
 | **Cloud & Container** | AWS fundamentals, Docker, Kubernetes |
