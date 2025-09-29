@@ -86,6 +86,15 @@ I regularly write about AI-driven development, software architecture, and cloud 
 </details>
 
 
+## ✨ GitHub stats
+
+
+<img src="badges/commits.svg" height="40">
+<img src="badges/commits.svg" height="30">
+
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=attilagrynaeus&theme=dark&hide_border=true)
+
+
 
 
 ## 📫 How to reach me
