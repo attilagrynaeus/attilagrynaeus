@@ -2,7 +2,7 @@ name: generate-commit-badges
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # 6 óránként frissít
+    - cron: "0 */6 * * *" 
   workflow_dispatch:
 
 permissions:
