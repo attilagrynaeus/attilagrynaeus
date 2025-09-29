@@ -47,6 +47,39 @@ I regularly write about AI-driven development, software architecture, and cloud 
 
   <br/>
 
+
+
+<!-- Activity badges (auto-updates via generate-commit-badge.yml) -->
+<p align="left">
+  <img alt="Commits this week"
+       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=commits%20this%20week&query=%24.week.commits&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
+  <img alt="Commits this month"
+       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=commits%20this%20month&query=%24.month.commits&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
+  <img alt="Commits YTD"
+       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=commits%20YTD&query=%24.ytd.commits&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
+  <img alt="PRs this week"
+       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=PRs%20this%20week&query=%24.week.prs&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
+  <img alt="Reviews this week"
+       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=reviews%20this%20week&query=%24.week.reviews&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
+  <img alt="Issues this week"
+       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=issues%20this%20week&query=%24.week.issues&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
+</p>
+
+<!-- Workflow status badges (a meglévő workflow-jaidhoz) -->
+<p align="left">
+  <img alt="Badge Bot"
+       src="https://img.shields.io/github/actions/workflow/status/attilagrynaeus/attilagrynaeus/generate-commit-badge.yml?branch=main&label=badge%20bot" />
+  <img alt="Supabase keep-alive"
+       src="https://img.shields.io/github/actions/workflow/status/attilagrynaeus/attilagrynaeus/supabase-keep-alive.yml?branch=main&label=supabase%20ping" />
+  <img alt="Supabase advanced keep-alive"
+       src="https://img.shields.io/github/actions/workflow/status/attilagrynaeus/attilagrynaeus/supabase-advanced-keep-alive.yml?branch=main&label=supabase%20adv%20ping" />
+  <img alt="README last update"
+       src="https://img.shields.io/github/last-commit/attilagrynaeus/attilagrynaeus?label=README%20last%20update" />
+  <img alt="Followers"
+       src="https://img.shields.io/github/followers/attilagrynaeus?style=flat&logo=github" />
+</p>
+
+
   <a href="https://github.com/attilagrynaeus/Promptee">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=attilagrynaeus&repo=Promptee&theme=github_dark&hide_border=true" alt="Promptee repo card">
   </a>
