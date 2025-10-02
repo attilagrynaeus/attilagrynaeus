@@ -43,7 +43,7 @@ I regularly write about AI-driven development, software architecture, and cloud 
 
 
 <details open>
-  <summary><strong>☝️ Featured project with Serverless Backend: <a href="https://github.com/attilagrynaeus/Promptee">Promptee</a></strong></summary>
+  <summary><strong> Featured project with Serverless Backend: <a href="https://github.com/attilagrynaeus/Promptee">Promptee</a></strong></summary>
 
   <br/>
 
