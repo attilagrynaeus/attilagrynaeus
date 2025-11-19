@@ -98,3 +98,5 @@ I regularly write about AI-driven development, software architecture, and cloud 
 - 💼 **LinkedIn (DM quickest):** [linkedin.com/in/attila-grynaeus](https://www.linkedin.com/in/attila-grynaeus)  
 - 📧 **Email:** [attila@grynaeus.dev](mailto:attila@grynaeus.dev)
 
+
+![GitHub Streak](https://streak-stats.demolab.com/?user=attilagrynaeus&theme=dark&hide_border=true)
