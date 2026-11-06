@@ -8,6 +8,12 @@ on:
     branches: [main, profile/premium-portfolio-2026-11]
     paths:
       - .github/workflows/profile-visuals.yml
+      - README.md
+      - assets/**
+      - docs/**
+      - config/profile-3d.json
+      - tools/**
+      - tests/**
 
 permissions:
   contents: read
@@ -28,11 +34,15 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.ref_name }}
 
+      - name: Test profile validator
+        run: python3 -m unittest discover -s tests -p test_profile.py
+
       - name: Generate the contribution landscape
         uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
         env:
           GITHUB_TOKEN: ${{ github.token }}
           USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: config/profile-3d.json
 
       - name: Generate public activity card
         uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
@@ -66,8 +76,8 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p profile
-          cp profile-3d-contrib/profile-night-rainbow.svg profile/activity-dark.svg
-          cp profile-3d-contrib/profile-green.svg profile/activity-light.svg
+          cp profile-3d-contrib/activity-dark.svg profile/activity-dark.svg
+          cp profile-3d-contrib/activity-light.svg profile/activity-light.svg
           curl --fail --silent --show-error --location --retry 2 --max-time 30 \
             'https://skillicons.dev/icons?i=java,spring,postgres,docker,kubernetes,ts,react,python&theme=dark' \
             -o profile/stack.svg
@@ -91,6 +101,7 @@ jobs:
                   raise ValueError(f'Oversized SVG: {name}')
           print('Validated all six generated graphics')
           PY
+          python3 tools/validate_profile.py
 
       - name: Commit only generated profile graphics
         env:

@@ -1,79 +1,76 @@
 <div align="center">
-  <img src="assets/hero.svg" width="100%" alt="Attila Grynaeus — Senior Software Architect | Java, Cloud, AI and Multiplayer Systems" />
-
+  <picture>
+    <source media="(max-width: 600px)" srcset="assets/header-mobile.svg" />
+    <img src="assets/header.svg" width="100%" alt="Attila Grynaeus — Java and Spring engineer; software architecture and AI tools" />
+  </picture>
+  <img src="assets/typing.svg" width="480" alt="25+ years of building software." />
   <p>
-    <a href="https://www.linkedin.com/in/attila-grynaeus"><img src="https://img.shields.io/badge/LinkedIn-Connect-0d1225?style=for-the-badge&amp;logo=linkedin&amp;logoColor=80efcd&amp;labelColor=0d1225" alt="LinkedIn" /></a>
-    <a href="https://mindjourneylabs.com"><img src="https://img.shields.io/badge/Blog-MindJourney_Labs-0d1225?style=for-the-badge&amp;logo=readme&amp;logoColor=80efcd&amp;labelColor=0d1225" alt="MindJourney Labs blog" /></a>
-    <a href="mailto:attila@grynaeus.dev"><img src="https://img.shields.io/badge/Email-Say_Hello-0d1225?style=for-the-badge&amp;logo=gmail&amp;logoColor=80efcd&amp;labelColor=0d1225" alt="Email Attila" /></a>
+    <a href="https://www.linkedin.com/in/attila-grynaeus">LinkedIn ↗</a> &nbsp; · &nbsp;
+    <a href="https://mindjourneylabs.com">MindJourney Labs ↗</a> &nbsp; · &nbsp;
+    <a href="mailto:attila@grynaeus.dev">Email ↗</a>
   </p>
 </div>
 
-## Hello, I'm Attila 👋
+I'm Attila, a **senior Java/Spring engineer** with **25+ years in enterprise software**. I work across backend design, delivery and the awkward bugs between services. I also lead and mentor engineers.
 
-I'm a **senior software engineer and architect** with **25+ years of enterprise development experience**, focused on Java, Spring, reliable backends, and developer productivity.
+Alongside my enterprise work, I'm building a multiplayer farming game and experimenting with tools that make development less repetitive.
 
-Today I also explore **AI-powered developer tools**, **agent-assisted engineering**, and **multiplayer game systems**. My approach stays the same across all of them: clear contracts, simple architecture, good tests, and systems that can be operated with confidence.
+**Sun-certified:** Java Programmer (SCJP) · Business Component Developer (SCBCD)
 
-Previously certified as a **Sun Certified Java Programmer (SCJP)** and **Sun Certified Business Component Developer (SCBCD)**.
+## R.A.M. FARM
 
-## Selected work
+A multiplayer farming world I'm building. The interesting engineering problem isn't drawing a crop: it's making sure two players cannot harvest it twice, and that reconnecting doesn't bring old state back.
 
-### [PrompTee](https://github.com/attilagrynaeus/Promptee) · Collaborative prompt management
-
-<a href="https://github.com/attilagrynaeus/Promptee">
-  <img src="assets/promptee.svg" width="100%" alt="Illustrated PrompTee project card: collaborative prompt workspace with search, organization, and real-time collaboration" />
+<a href="docs/ram-farm.md">
+  <picture>
+    <source media="(max-width: 900px)" srcset="assets/system-mobile.svg" />
+    <img src="assets/system.svg" width="100%" alt="R.A.M. FARM architecture: browser clients, Node.js gameplay runtime, Java/Spring transactions and PostgreSQL persistence" />
+  </picture>
 </a>
+<br />
 
-A workspace for creating, organizing, sharing, and finding AI prompts. Its public repository documents real-time collaboration, authentication, export, and a serverless delivery pipeline.
+The client handles input and presentation. The server validates shared actions; persistent inventory and ownership changes are transactional. Browser-driven gameplay tests exercise the same paths a player uses.
 
-**Built with:** React · TypeScript · Supabase / PostgreSQL · Netlify
+**[Read the engineering notes →](docs/ram-farm.md)**
 
-### [WildFly AI Assist](https://github.com/attilagrynaeus/troubleshoot-ai-assist) · Troubleshooting with AI
+<sub>Private project · In development</sub>
 
-<a href="https://github.com/attilagrynaeus/troubleshoot-ai-assist">
-  <img src="assets/wildfly-ai.svg" width="100%" alt="Illustrated WildFly AI Assist project card: application error goes through document retrieval and produces a suggested fix" />
-</a>
-
-A retrieval-augmented assistant (**RAG**) that connects WildFly stack traces to internal documentation and suggests actionable fixes instead of leaving engineers to search through logs by hand.
-
-**Built with:** Python · FastAPI · FAISS · Confluence
-
-### R.A.M. FARM · Multiplayer game world
-
-<img src="assets/ram-farm.svg" width="100%" alt="Concept artwork for R.A.M. FARM, a private multiplayer farming game project; not a gameplay screenshot" />
-
-A **private, in-development** multiplayer farming game project. My focus is on the engineering behind a shared world: dependable server-owned gameplay, clear client/server boundaries, and automated gameplay verification.
-
-**Focus:** Game architecture · TypeScript · Java / Spring · Multiplayer systems
-
-<sub>Concept illustration only. The game repository, source code, and production assets remain private.</sub>
-
-### [AI Test Generator](https://github.com/attilagrynaeus/ai-test-generator) · Java proof of concept
-
-An experimental Java/Spring tool for generating JUnit 5 test scaffolding from REST and GraphQL API descriptions. **Demo repository, not an actively maintained service.**
-
-## Engineering focus
-
-| Area | What I build |
-| --- | --- |
-| **Backend architecture** | Java, Spring Boot, APIs, domain modeling, PostgreSQL |
-| **Delivery and operations** | Docker, Kubernetes, CI/CD, GitHub Actions, observability |
-| **AI-assisted engineering** | LLM integrations, retrieval, coding agents, developer tools |
-| **Interactive systems** | TypeScript, event-driven systems, multiplayer synchronization |
-
-## How I work
-
-- **Solve the real problem.** Prefer a small reliable solution over an impressive but unnecessary platform.
-- **Make behavior explicit.** Strong contracts, clear ownership, and predictable failures.
-- **Prove it works.** Automated tests and real user journeys matter more than dashboards full of badges.
-- **Keep improving.** I enjoy mentoring, learning, and connecting product goals with engineering decisions.
-
-## Connect
-
-I write about software architecture, AI-powered development, and engineering practice at **[MindJourney Labs](https://mindjourneylabs.com)**.
-
-Find me on **[LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** or reach out at **[attila@grynaeus.dev](mailto:attila@grynaeus.dev)**.
+## Public code
 
 <div align="center">
-  <img src="assets/footer.svg" width="100%" alt="Engineering with clarity. Building with curiosity." />
+  <a href="https://github.com/attilagrynaeus/Promptee"><img src="profile/promptee.svg" width="395" alt="PrompTee public repository" /></a>
+  <a href="https://github.com/attilagrynaeus/ai-test-generator"><img src="profile/ai-test-generator.svg" width="395" alt="AI Test Generator public Java demo repository" /></a>
 </div>
+
+**[PrompTee](https://github.com/attilagrynaeus/Promptee)** — A shared workspace for saving, finding and reusing prompts. React, Supabase and a serverless backend. [A small UI regression test](https://github.com/attilagrynaeus/Promptee/blob/main/src/__tests__/PromptCard.deleteConfirm.test.jsx).
+
+**[AI Test Generator](https://github.com/attilagrynaeus/ai-test-generator)** — A Java/Spring experiment that turns API descriptions into JUnit test scaffolding. [Start with the input validator](https://github.com/attilagrynaeus/ai-test-generator/blob/main/server/src/main/java/com/ag/server/validation/ApiSpecValidator.java). A demo, not a maintained service.
+
+Also: **[WildFly AI Assist](https://github.com/attilagrynaeus/troubleshoot-ai-assist)** connects application errors with relevant internal documentation using retrieval-augmented generation.
+
+## Working stack
+
+<p align="center">
+  <img src="profile/stack.svg" width="440" alt="Java, Spring, PostgreSQL, Docker, Kubernetes, TypeScript, React and Python" />
+</p>
+
+Java and Spring are my core. Around them: PostgreSQL, containers, CI/CD and TypeScript. Python is useful for the AI tooling.
+
+## GitHub activity
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="profile/activity-dark.svg" />
+  <img src="profile/activity-light.svg" width="100%" alt="My actual GitHub contribution history, rendered as a 3D calendar" />
+</picture>
+
+<details>
+  <summary>Activity details</summary>
+  <br />
+  <img src="profile/stats.svg" width="440" alt="GitHub activity statistics, generated from the GitHub API" />
+</details>
+
+<sub>Updated daily. Only activity exposed by GitHub is shown; private project details stay private.</sub>
+
+---
+
+I write at **[MindJourney Labs](https://mindjourneylabs.com)**. For a conversation about Java/Spring engineering, architecture or developer tooling: **[LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** or **[attila@grynaeus.dev](mailto:attila@grynaeus.dev)**.

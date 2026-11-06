@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="38" viewBox="0 0 480 38" role="img" aria-labelledby="title desc">
+  <title id="title">25+ years of building software.</title>
+  <desc id="desc">A short typewriter animation. The complete text remains available to assistive technology.</desc>
+  <defs><clipPath id="reveal"><rect class="reveal" x="67" y="0" width="346" height="38"/></clipPath></defs>
+  <style>
+    text{fill:#91b7ed;font:18px ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace}
+    .reveal{animation:type 9s steps(32,end) infinite}
+    .cursor{fill:#91b7ed;animation:cursor 9s steps(32,end) infinite}
+    @keyframes type{0%,5%{width:0}42%,92%{width:346px}100%{width:0}}
+    @keyframes cursor{0%,5%{transform:translateX(0);opacity:1}42%,92%{transform:translateX(346px);opacity:1}96%{opacity:0}100%{transform:translateX(0);opacity:0}}
+    @media(prefers-color-scheme:light){text{fill:#356594}.cursor{fill:#356594}}
+    @media(prefers-reduced-motion:reduce){.reveal{animation:none}.cursor{display:none}}
+  </style>
+  <text x="67" y="25" clip-path="url(#reveal)">25+ years of building software.</text>
+  <rect class="cursor" x="67" y="9" width="2" height="20"/>
+</svg>

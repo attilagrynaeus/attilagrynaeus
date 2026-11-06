@@ -1,0 +1,24 @@
+[
+  {
+    "type": "normal",
+    "fileName": "activity-dark.svg",
+    "backgroundColor": "#0d1117",
+    "foregroundColor": "#e6edf3",
+    "strongColor": "#91b7ed",
+    "weakColor": "#8b9bad",
+    "radarColor": "#5b91b8",
+    "growingAnimation": false,
+    "contribColors": ["#17212b", "#284968", "#3f7197", "#659db5", "#9acfc9"]
+  },
+  {
+    "type": "normal",
+    "fileName": "activity-light.svg",
+    "backgroundColor": "#ffffff",
+    "foregroundColor": "#23364a",
+    "strongColor": "#326a9c",
+    "weakColor": "#65778a",
+    "radarColor": "#5b91b8",
+    "growingAnimation": false,
+    "contribColors": ["#e9eff4", "#bbd6e4", "#84b4cb", "#4c8fac", "#2c657f"]
+  }
+]

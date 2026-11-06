@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="178" viewBox="0 0 440 178" role="img" aria-labelledby="title desc">
+  <title id="title">Attila Grynaeus</title>
+  <desc id="desc">Java and Spring engineer. Software architecture and AI tools.</desc>
+  <defs><linearGradient id="wave"><stop stop-color="#274b77" stop-opacity=".03"/><stop offset=".5" stop-color="#638fc8" stop-opacity=".45"/><stop offset="1" stop-color="#8bc8c5" stop-opacity=".1"/></linearGradient></defs>
+  <style>
+    .name{fill:#e6edf3;font:600 43px -apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;letter-spacing:-1.5px}
+    .role{fill:#9daec1;font:14px -apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;letter-spacing:.6px}
+    .wave{animation:drift 12s ease-in-out infinite alternate}
+    @keyframes drift{to{transform:translateY(-5px)}}
+    @media(prefers-color-scheme:light){.name{fill:#192c42}.role{fill:#50647a}}
+    @media(prefers-reduced-motion:reduce){.wave{animation:none}}
+  </style>
+  <text class="name" x="220" y="63" text-anchor="middle">Attila Grynaeus</text>
+  <text class="role" x="220" y="100" text-anchor="middle">JAVA &amp; SPRING · SOFTWARE ARCHITECTURE</text>
+  <text class="role" x="220" y="123" text-anchor="middle">CLOUD · AI TOOLS</text>
+  <path class="wave" d="M0 153C100 124 150 175 240 150S370 136 440 154V178H0Z" fill="url(#wave)"/>
+</svg>
