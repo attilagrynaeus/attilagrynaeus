@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="76" viewBox="0 0 960 76" role="img" aria-labelledby="title">
+  <title id="title">Engineering with clarity. Building with curiosity.</title>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#0b1025"/><stop offset="1" stop-color="#21163e"/></linearGradient>
+    <linearGradient id="line" x1="0" x2="1"><stop stop-color="#76efca"/><stop offset="1" stop-color="#a59eff"/></linearGradient>
+  </defs>
+  <rect width="960" height="76" rx="16" fill="url(#bg)"/>
+  <path d="M28 16H932" stroke="url(#line)" stroke-opacity=".68"/>
+  <text x="480" y="49" text-anchor="middle" fill="#d9dcf5" font-family="Segoe UI, Arial, sans-serif" font-size="18" letter-spacing="1.1">Engineering with clarity. Building with curiosity.</text>
+</svg>

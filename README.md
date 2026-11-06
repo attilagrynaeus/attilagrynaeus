@@ -1,100 +1,79 @@
-# 👋 Hey, I'm Attila
+<div align="center">
+  <img src="assets/hero.svg" width="100%" alt="Attila Grynaeus — Senior Software Architect | Java, Cloud, AI and Multiplayer Systems" />
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn--blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/attila-grynaeus)
-[![GitHub followers](https://img.shields.io/github/followers/attilagrynaeus?label=Follow&style=social)](https://github.com/attilagrynaeus)
-![Profile views](https://komarev.com/ghpvc/?username=attila-grynaeus&style=flat)
+  <p>
+    <a href="https://www.linkedin.com/in/attila-grynaeus"><img src="https://img.shields.io/badge/LinkedIn-Connect-0d1225?style=for-the-badge&amp;logo=linkedin&amp;logoColor=80efcd&amp;labelColor=0d1225" alt="LinkedIn" /></a>
+    <a href="https://mindjourneylabs.com"><img src="https://img.shields.io/badge/Blog-MindJourney_Labs-0d1225?style=for-the-badge&amp;logo=readme&amp;logoColor=80efcd&amp;labelColor=0d1225" alt="MindJourney Labs blog" /></a>
+    <a href="mailto:attila@grynaeus.dev"><img src="https://img.shields.io/badge/Email-Say_Hello-0d1225?style=for-the-badge&amp;logo=gmail&amp;logoColor=80efcd&amp;labelColor=0d1225" alt="Email Attila" /></a>
+  </p>
+</div>
 
-### Senior full-stack Dev&nbsp;|&nbsp;Java & Spring Advanced • Swiss-based
+## Hello, I'm Attila 👋
 
-Full-stack developer at **Bison Schweiz AG**, well-versed in Java and Spring Boot.  
-Proud holder of several Sun/Oracle Java certifications.  
-Passionate about delivering seamless, clean-code, cutting-edge solutions.
+I'm a **senior software engineer and architect** with **25+ years of enterprise development experience**, focused on Java, Spring, reliable backends, and developer productivity.
 
----
+Today I also explore **AI-powered developer tools**, **agent-assisted engineering**, and **multiplayer game systems**. My approach stays the same across all of them: clear contracts, simple architecture, good tests, and systems that can be operated with confidence.
 
-### 🔑  What I do
+Previously certified as a **Sun Certified Java Programmer (SCJP)** and **Sun Certified Business Component Developer (SCBCD)**.
 
-- 🔹 **Senior full-stack developer** specialising in Java & Spring Boot  
-- 🔹 **Sun-certified** Java Programmer (SCJP) & **EJB Developer** (SCBCD) with **25+ yrs** enterprise experience  
-- 🔹 **Passionate about AI-driven development** –  creating smarter apps with LLMs, GenAI, and cutting-edge integrations 
-- 🔹 **Lifelong Learner** –  exploring event-driven architecture, Domain-Driven Design (DDD), Test-Driven Architecture (TDA), and AI Agent technologies
-- 🔹 **Team lead & mentor** – helping engineers deliver clean, maintainable code faster  
+## Selected work
 
----
+### [PrompTee](https://github.com/attilagrynaeus/Promptee) · Collaborative prompt management
 
-## 🌐 Blog & Articles
+<a href="https://github.com/attilagrynaeus/Promptee">
+  <img src="assets/promptee.svg" width="100%" alt="Illustrated PrompTee project card: collaborative prompt workspace with search, organization, and real-time collaboration" />
+</a>
 
-I regularly write about AI-driven development, software architecture, and cloud native technologies on my blog:
+A workspace for creating, organizing, sharing, and finding AI prompts. Its public repository documents real-time collaboration, authentication, export, and a serverless delivery pipeline.
 
-🌐 [mindjourneylabs.com](https://mindjourneylabs.com)
+**Built with:** React · TypeScript · Supabase / PostgreSQL · Netlify
 
----
+### [WildFly AI Assist](https://github.com/attilagrynaeus/troubleshoot-ai-assist) · Troubleshooting with AI
 
-## 🛠 Tech toolbox
+<a href="https://github.com/attilagrynaeus/troubleshoot-ai-assist">
+  <img src="assets/wildfly-ai.svg" width="100%" alt="Illustrated WildFly AI Assist project card: application error goes through document retrieval and produces a suggested fix" />
+</a>
 
-| Domain | Tools & Tech |
-| ------ | ------------ |
-| **Languages** | Java 17/21, Python 3.12, TypeScript (React), SQL, Bash |
-| **Frameworks** | Spring Boot, Spring Cloud, Jakarta EE, EJB 3.x, GraphQL |
-| **Build & CI/CD** | Maven, Gradle, Git, GitHub Actions, Jenkins, Gitlab |
-| **Cloud & Container** | AWS fundamentals, Docker, Kubernetes |
-| **Data & Messaging** | Oracle DB, PostgreSQL, RabbitMQ |
-| **Practices** | Test-Driven Development, Clean Architecture, Domain-Driven Design, Continuous Integration |
+A retrieval-augmented assistant (**RAG**) that connects WildFly stack traces to internal documentation and suggests actionable fixes instead of leaving engineers to search through logs by hand.
 
+**Built with:** Python · FastAPI · FAISS · Confluence
 
-<details open>
-  <summary><strong> Featured project with Serverless Backend: <a href="https://github.com/attilagrynaeus/Promptee">Promptee</a></strong></summary>
+### R.A.M. FARM · Multiplayer game world
 
-  <br/>
+<img src="assets/ram-farm.svg" width="100%" alt="Concept artwork for R.A.M. FARM, a private multiplayer farming game project; not a gameplay screenshot" />
 
+A **private, in-development** multiplayer farming game project. My focus is on the engineering behind a shared world: dependable server-owned gameplay, clear client/server boundaries, and automated gameplay verification.
 
+**Focus:** Game architecture · TypeScript · Java / Spring · Multiplayer systems
 
-<!-- Activity badges (auto-updates via generate-commit-badge.yml) -->
-<p align="left">
-  <img alt="Commits this week"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=commits%20this%20week&query=%24.week.commits&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-  <img alt="Commits this month"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=commits%20this%20month&query=%24.month.commits&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-  <img alt="Commits YTD"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=commits%20YTD&query=%24.ytd.commits&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-  <img alt="PRs this week"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=PRs%20this%20week&query=%24.week.prs&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-  <img alt="Reviews this week"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=reviews%20this%20week&query=%24.week.reviews&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-  <img alt="Issues this week"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=issues%20this%20week&query=%24.week.issues&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-</p>
+<sub>Concept illustration only. The game repository, source code, and production assets remain private.</sub>
 
-<!-- Workflow status badges (a meglévő workflow-jaidhoz) -->
-<p align="left">
-  <img alt="Badge Bot"
-       src="https://img.shields.io/github/actions/workflow/status/attilagrynaeus/attilagrynaeus/generate-commit-badge.yml?branch=main&label=badge%20bot" />
-  <img alt="Supabase keep-alive"
-       src="https://img.shields.io/github/actions/workflow/status/attilagrynaeus/attilagrynaeus/supabase-keep-alive.yml?branch=main&label=supabase%20ping" />
-  <img alt="Supabase advanced keep-alive"
-       src="https://img.shields.io/github/actions/workflow/status/attilagrynaeus/attilagrynaeus/supabase-advanced-keep-alive.yml?branch=main&label=supabase%20adv%20ping" />
-  <img alt="README last update"
-       src="https://img.shields.io/github/last-commit/attilagrynaeus/attilagrynaeus?label=README%20last%20update" />
-  <img alt="Followers"
-       src="https://img.shields.io/github/followers/attilagrynaeus?style=flat&logo=github" />
-</p>
+### [AI Test Generator](https://github.com/attilagrynaeus/ai-test-generator) · Java proof of concept
 
+An experimental Java/Spring tool for generating JUnit 5 test scaffolding from REST and GraphQL API descriptions. **Demo repository, not an actively maintained service.**
 
-  <a href="https://github.com/attilagrynaeus/Promptee">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=attilagrynaeus&repo=Promptee&theme=github_dark&hide_border=true" alt="Promptee repo card">
-  </a>
-</details>
+## Engineering focus
 
+| Area | What I build |
+| --- | --- |
+| **Backend architecture** | Java, Spring Boot, APIs, domain modeling, PostgreSQL |
+| **Delivery and operations** | Docker, Kubernetes, CI/CD, GitHub Actions, observability |
+| **AI-assisted engineering** | LLM integrations, retrieval, coding agents, developer tools |
+| **Interactive systems** | TypeScript, event-driven systems, multiplayer synchronization |
 
-## ✨ GitHub stats
+## How I work
 
-[![GitHub Streak](
-  https://github-readme-streak-stats-eight.vercel.app/?user=attilagrynaeus&theme=dark&hide_border=true
-)](https://git.io/streak-stats)
+- **Solve the real problem.** Prefer a small reliable solution over an impressive but unnecessary platform.
+- **Make behavior explicit.** Strong contracts, clear ownership, and predictable failures.
+- **Prove it works.** Automated tests and real user journeys matter more than dashboards full of badges.
+- **Keep improving.** I enjoy mentoring, learning, and connecting product goals with engineering decisions.
 
-<img src="badges/commits.svg" height="40" alt="Commits badge">
+## Connect
 
-## 📫 How to reach me
+I write about software architecture, AI-powered development, and engineering practice at **[MindJourney Labs](https://mindjourneylabs.com)**.
 
-- 💼 **LinkedIn (DM quickest):** [linkedin.com/in/attila-grynaeus](https://www.linkedin.com/in/attila-grynaeus)  
-- 📧 **Email:** [attila@grynaeus.dev](mailto:attila@grynaeus.dev)
+Find me on **[LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** or reach out at **[attila@grynaeus.dev](mailto:attila@grynaeus.dev)**.
+
+<div align="center">
+  <img src="assets/footer.svg" width="100%" alt="Engineering with clarity. Building with curiosity." />
+</div>
