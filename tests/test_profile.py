@@ -73,5 +73,43 @@ class PositioningRegressionTests(unittest.TestCase):
         self.assertIn('https://eventfrog.de/en/help/organizer/boostprofits/promotion/ai-search.html', readme)
         self.assertNotIn('OAuth integration completed', readme)
 
+class EventfrogCaseStudyTests(unittest.TestCase):
+    """Public case study must remain navigable, evidence-backed and privacy-safe."""
+
+    def test_case_study_is_linked_from_featured_work(self):
+        root = Path(__file__).resolve().parents[1]
+        readme = (root / 'README.md').read_text(encoding='utf-8')
+        eventfrog_section = readme.split('### Eventfrog', 1)[1].split('### R.A.M.', 1)[0]
+        self.assertIn('docs/eventfrog-chatgpt-mcp.md', eventfrog_section)
+        self.assertEqual(readme.count('(docs/eventfrog-chatgpt-mcp.md)'), 1)
+
+    def test_case_study_has_public_sources_and_truthful_scope(self):
+        root = Path(__file__).resolve().parents[1]
+        case = (root / 'docs/eventfrog-chatgpt-mcp.md').read_text(encoding='utf-8')
+        for expected in (
+            'sole AI integration and MCP engineer',
+            'August 2026',
+            'Google Cloud Kubernetes',
+            'list_rubrics', 'search_events', 'get_event',
+            'https://eventfrog.ch/en/about-us/product-updates.html',
+            'https://eventfrog.de/en/help/organizer/boostprofits/promotion/ai-search.html',
+            'OAuth 2.0 integration was still in progress',
+        ):
+            self.assertIn(expected, case)
+        self.assertNotIn('OAuth 2.0 is deployed', case)
+        self.assertNotIn('github.com/attilagrynaeus/farm', case)
+
+    def test_case_study_has_responsive_diagrams(self):
+        root = Path(__file__).resolve().parents[1]
+        case = (root / 'docs/eventfrog-chatgpt-mcp.md').read_text(encoding='utf-8')
+        for svg in (
+            'eventfrog-case-hero.svg',
+            'eventfrog-case-hero-mobile.svg',
+            'eventfrog-architecture.svg',
+            'eventfrog-architecture-mobile.svg',
+        ):
+            self.assertIn(svg, case)
+            self.assertTrue((root / 'assets' / svg).is_file())
+
 if __name__ == '__main__':
     unittest.main()

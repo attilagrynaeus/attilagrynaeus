@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="420" viewBox="0 0 520 420" role="img" aria-labelledby="title desc">
+<title id="title">Eventfrog and ChatGPT — production MCP integration</title>
+<desc id="desc">Mobile dark indigo case-study banner with a simple cyan and violet tool network.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0f1021"/><stop offset="1" stop-color="#1b1741"/></linearGradient><linearGradient id="a" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#87eddf"/><stop offset="1" stop-color="#b7a1ff"/></linearGradient><radialGradient id="halo"><stop stop-color="#645bd0" stop-opacity=".32"/><stop offset="1" stop-color="#645bd0" stop-opacity="0"/></radialGradient></defs>
+<rect width="520" height="420" rx="20" fill="url(#bg)"/><rect x="1" y="1" width="518" height="418" rx="19" fill="none" stroke="#605b8b"/>
+<rect x="28" y="26" width="37" height="29" rx="8" fill="#222043" stroke="#7770bd"/><text x="46.5" y="46" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="13" font-weight="700" fill="#ccc6ff">AG.</text>
+<text x="76" y="45" fill="#a0aac9" font-family="Segoe UI,Arial,sans-serif" font-size="12" letter-spacing="1.55">ENGINEERING CASE STUDY</text>
+<path d="M28 69H491" stroke="#74709c" stroke-opacity=".28"/>
+<g font-family="Segoe UI,Arial,sans-serif"><text x="29" y="128" font-weight="700" font-size="37" fill="#fbfaff">Eventfrog ×</text><text x="29" y="170" font-weight="700" font-size="37" fill="#fbfaff">ChatGPT</text><text x="30" y="213" font-weight="600" font-size="21" fill="url(#a)">An MCP integration that shipped.</text><text x="30" y="244" font-size="15" fill="#b7bdd5">Typed tools. Real event data.</text><text x="30" y="266" font-size="15" fill="#b7bdd5">Cloud delivery.</text><rect x="29" y="289" rx="15" width="138" height="32" fill="#222244" stroke="#6c65aa"/><text x="98" y="310" text-anchor="middle" font-size="12" font-weight="700" fill="#d9d7ff">PUBLIC · 2026</text><rect x="176" y="289" rx="15" width="116" height="32" fill="#163c42" stroke="#70d6c8"/><text x="234" y="310" text-anchor="middle" font-size="12" font-weight="700" fill="#b9f6e5">3 MCP TOOLS</text></g>
+<ellipse cx="407" cy="322" rx="110" ry="99" fill="url(#halo)"/>
+<path d="M328 345Q357 301 382 342T430 341T479 313" fill="none" stroke="#a5e3ff" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+<path d="M328 345Q357 388 382 348T430 349T479 382" fill="none" stroke="#c4a2ff" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+<circle cx="382" cy="342" r="5" fill="#89eae0"/><circle cx="430" cy="349" r="5" fill="#cfb7ff"/><circle cx="479" cy="314" r="4" fill="#a4dfff"/><circle cx="479" cy="383" r="4" fill="#cfa4ff"/>
+<path d="M28 394H492" stroke="#746e9b" stroke-opacity=".3"/><text x="30" y="412" fill="#878db0" font-family="Segoe UI,Arial,sans-serif" font-size="10.5">MCP  /  LLM APPLICATION ARCHITECTURE  /  GCP</text>
+</svg>

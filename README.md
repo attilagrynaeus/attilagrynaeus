@@ -28,7 +28,7 @@ As Eventfrog's sole AI integration engineer, I designed, built and shipped its *
 
 The challenge was making agent tool calls reliable: validated inputs, localized results, controlled access and responses grounded in Eventfrog data. The integration is live, not a concept demo.
 
-**[Eventfrog in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a3a779388f48191b85e9d2f28b8c95d)** · **[Official product information](https://eventfrog.de/en/help/organizer/boostprofits/promotion/ai-search.html)**
+**[Read the engineering case study →](docs/eventfrog-chatgpt-mcp.md)** · [Try the live ChatGPT app](https://chatgpt.com/plugins/plugin_asdk_app_6a3a779388f48191b85e9d2f28b8c95d) · [Official Eventfrog information](https://eventfrog.de/en/help/organizer/boostprofits/promotion/ai-search.html)
 
 ### R.A.M. FARM — multiplayer farming world
 

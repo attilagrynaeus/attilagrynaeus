@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="340" viewBox="0 0 1180 340" role="img" aria-labelledby="title desc">
+<title id="title">Eventfrog and ChatGPT — production MCP integration</title>
+<desc id="desc">Dark indigo editorial engineering banner with three luminous tool nodes connected to a ChatGPT and Eventfrog data boundary.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1021"/><stop offset=".56" stop-color="#101127"/><stop offset="1" stop-color="#1c1742"/></linearGradient>
+<linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#85efe1"/><stop offset=".55" stop-color="#8fc9ff"/><stop offset="1" stop-color="#b9a1ff"/></linearGradient>
+<radialGradient id="glow"><stop stop-color="#665ac8" stop-opacity=".35"/><stop offset="1" stop-color="#665ac8" stop-opacity="0"/></radialGradient>
+<filter id="blur" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="8"/></filter>
+<style>
+.spark{animation:shimmer 8s ease-in-out infinite alternate}@keyframes shimmer{to{opacity:.48;transform:translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){.spark{animation:none}}
+</style>
+</defs>
+<rect width="1180" height="340" rx="22" fill="url(#bg)"/>
+<rect x="1" y="1" width="1178" height="338" rx="21" fill="none" stroke="#625b92" stroke-opacity=".65"/>
+<ellipse cx="1008" cy="176" rx="198" ry="224" fill="url(#glow)"/>
+<path d="M44 70H1136" stroke="#6e6791" stroke-opacity=".36"/>
+<rect x="48" y="30" width="39" height="30" rx="8" fill="#1d1b3c" stroke="#8175cb"/>
+<text x="67.5" y="51" font-size="14" fill="#c6c0ff" font-weight="700" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">AG.</text>
+<text x="104" y="51" font-size="13" fill="#98a4c3" letter-spacing="2.1" font-family="Segoe UI,Arial,sans-serif">ENGINEERING CASE STUDY</text>
+<g font-family="Segoe UI,Arial,sans-serif">
+<text x="52" y="135" fill="#ffffff" font-size="42" font-weight="700" letter-spacing="-1.4">Eventfrog × ChatGPT</text>
+<text x="54" y="181" fill="url(#accent)" font-size="26" font-weight="600">An MCP integration that shipped.</text>
+<text x="54" y="226" fill="#b7bdd8" font-size="17">Typed tools. Real event data. Cloud delivery.</text>
+<rect x="52" y="259" width="150" height="35" rx="16" fill="#222244" stroke="#7467b6" stroke-opacity=".72"/>
+<text x="127" y="282" fill="#d7d4ff" font-size="12" text-anchor="middle" letter-spacing="1.4" font-weight="700">PUBLIC · 2026</text>
+<rect x="213" y="259" width="128" height="35" rx="16" fill="#153b40" stroke="#6bd5c3" stroke-opacity=".62"/>
+<text x="277" y="282" fill="#aaf4e6" font-size="12" text-anchor="middle" letter-spacing="1.2" font-weight="700">3 MCP TOOLS</text>
+</g>
+<g fill="none" stroke-linecap="round"><path d="M770 171C824 171 835 101 888 101S967 170 1022 170S1084 101 1137 101" stroke="#9ccfff" stroke-width="9" opacity=".3" filter="url(#blur)"/>
+<path d="M770 171C824 171 835 101 888 101S967 170 1022 170S1084 101 1137 101" stroke="url(#accent)" stroke-width="2.4" opacity=".8" stroke-dasharray="2 10"/>
+<path d="M770 171C824 171 835 240 888 240S967 172 1022 172S1084 240 1137 240" stroke="#ac91ff" stroke-width="9" opacity=".25" filter="url(#blur)"/>
+<path d="M770 171C824 171 835 240 888 240S967 172 1022 172S1084 240 1137 240" stroke="#c7a9ff" stroke-width="2.4" opacity=".8" stroke-dasharray="2 10"/></g>
+<g class="spark"><circle cx="888" cy="101" r="6" fill="#8debfa"/><circle cx="1022" cy="170" r="7" fill="#d5c6ff"/><circle cx="888" cy="240" r="6" fill="#d0b6ff"/><circle cx="1135" cy="101" r="4" fill="#8edff7"/><circle cx="1135" cy="240" r="4" fill="#e0b8ff"/></g>
+<g fill="#5c63a1" opacity=".22"><circle cx="760" cy="86" r="13"/><circle cx="1087" cy="284" r="10"/><circle cx="955" cy="53" r="7"/></g>
+<path d="M48 309H1132" stroke="#6c6592" stroke-opacity=".31"/>
+<text x="53" y="328" fill="#7781a9" font-family="Segoe UI,Arial,sans-serif" font-size="11" letter-spacing="1.15">MCP  /  LLM APPLICATION ARCHITECTURE  /  GOOGLE CLOUD</text>
+</svg>
