@@ -68,7 +68,7 @@ These are design and test concerns, not a claim that a language model can never 
 
 I owned the MCP server, three agent-facing tools, API-gateway integration and deployment path on **Google Cloud / Kubernetes**. I tested tool calls, error cases and agent workflows both in **ChatGPT Developer Mode** and against the published ChatGPT integration. The important acceptance question was whether a tool response could be traced back to Eventfrog data, not merely whether the assistant produced convincing prose.
 
-The production scope described here is **public event discovery**. OAuth 2.0 integration was still in progress when I documented this work; I am not presenting it as a completed launch feature. Likewise, I am not publishing private infrastructure details, customer data, traffic figures or latency claims that I cannot substantiate publicly.
+The production scope described here is **public event discovery**. This case study does not describe private account access or unpublished authentication plans. I am also not publishing internal infrastructure details, customer data, traffic figures or latency claims that I cannot substantiate publicly.
 
 ## Outcome and evidence
 

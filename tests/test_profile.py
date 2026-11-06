@@ -93,7 +93,7 @@ class EventfrogCaseStudyTests(unittest.TestCase):
             'list_rubrics', 'search_events', 'get_event',
             'https://eventfrog.ch/en/about-us/product-updates.html',
             'https://eventfrog.de/en/help/organizer/boostprofits/promotion/ai-search.html',
-            'OAuth 2.0 integration was still in progress',
+            'unpublished authentication plans',
         ):
             self.assertIn(expected, case)
         self.assertNotIn('OAuth 2.0 is deployed', case)
