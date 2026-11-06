@@ -1,0 +1,109 @@
+name: Refresh profile visuals
+
+on:
+  schedule:
+    - cron: '37 4 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main, profile/premium-portfolio-2026-11]
+    paths:
+      - .github/workflows/profile-visuals.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-visuals-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
+
+      - name: Generate the contribution landscape
+        uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          USERNAME: ${{ github.repository_owner }}
+
+      - name: Generate public activity card
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&show_icons=true&hide_rank=true&hide=stars,issues&show=reviews&include_all_commits=false&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=91b7ed&icon_color=91b7ed&text_color=b8c4d0&custom_title=GitHub%20activity
+          path: profile/stats.svg
+          token: ${{ github.token }}
+          fail_on_error: true
+
+      - name: Generate PrompTee repository card
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: pin
+          options: username=${{ github.repository_owner }}&repo=Promptee&theme=github_dark&hide_border=false&border_color=30363d&bg_color=0d1117&title_color=91b7ed&icon_color=91b7ed&text_color=b8c4d0&description_lines_count=2
+          path: profile/promptee.svg
+          token: ${{ github.token }}
+          fail_on_error: true
+
+      - name: Generate Java demo repository card
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: pin
+          options: username=${{ github.repository_owner }}&repo=ai-test-generator&theme=github_dark&hide_border=false&border_color=30363d&bg_color=0d1117&title_color=91b7ed&icon_color=91b7ed&text_color=b8c4d0&description_lines_count=2
+          path: profile/ai-test-generator.svg
+          token: ${{ github.token }}
+          fail_on_error: true
+
+      - name: Collect and validate graphics
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p profile
+          cp profile-3d-contrib/profile-night-rainbow.svg profile/activity-dark.svg
+          cp profile-3d-contrib/profile-green.svg profile/activity-light.svg
+          curl --fail --silent --show-error --location --retry 2 --max-time 30 \
+            'https://skillicons.dev/icons?i=java,spring,postgres,docker,kubernetes,ts,react,python&theme=dark' \
+            -o profile/stack.svg
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import xml.etree.ElementTree as ET
+          names = ['activity-dark.svg', 'activity-light.svg', 'stats.svg',
+                   'promptee.svg', 'ai-test-generator.svg', 'stack.svg']
+          for name in names:
+              path = Path('profile') / name
+              data = path.read_text()
+              root = ET.fromstring(data)
+              if root.tag != '{http://www.w3.org/2000/svg}svg' or not root.get('viewBox'):
+                  raise ValueError(f'Invalid SVG: {name}')
+              if re.search(r'<script\b|<foreignObject\b|\bon\w+\s*=|data:font|@font-face', data, re.I):
+                  raise ValueError(f'Unsafe SVG: {name}')
+              if 'Something went wrong' in data:
+                  raise ValueError(f'Upstream error card: {name}')
+              if path.stat().st_size > 2_000_000:
+                  raise ValueError(f'Oversized SVG: {name}')
+          print('Validated all six generated graphics')
+          PY
+
+      - name: Commit only generated profile graphics
+        env:
+          TARGET_BRANCH: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- profile/activity-dark.svg profile/activity-light.svg profile/stats.svg \
+            profile/promptee.svg profile/ai-test-generator.svg profile/stack.svg
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'chore(profile): refresh verified GitHub graphics'
+          git fetch origin "$TARGET_BRANCH"
+          git rebase FETCH_HEAD
+          git push origin "HEAD:refs/heads/$TARGET_BRANCH"
