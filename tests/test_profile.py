@@ -65,13 +65,48 @@ class PositioningRegressionTests(unittest.TestCase):
             self.assertIn('27+ YEARS IN ENTERPRISE SOFTWARE', svg)
             self.assertNotIn('25+ YEARS IN ENTERPRISE SOFTWARE', svg)
 
-    def test_ai_claim_is_backed_by_eventfrog_reference(self):
+    def test_llm_case_study_is_anonymized(self):
         root = Path(__file__).resolve().parents[1]
         readme = (root / 'README.md').read_text(encoding='utf-8')
-        for phrase in ('LLM application architecture', 'Eventfrog', 'three typed tools', 'MCP'):
-            self.assertIn(phrase, readme)
-        self.assertIn('https://eventfrog.de/en/help/organizer/boostprofits/promotion/ai-search.html', readme)
-        self.assertNotIn('OAuth integration completed', readme)
+        case = (root / 'docs/velyndra-mcp-case-study.md').read_text(encoding='utf-8')
+        legacy = 'event' + 'frog'
+        for text in (readme, case):
+            self.assertNotIn(legacy, text.lower())
+        self.assertIn('LLM application architecture', readme)
+        self.assertIn('three read-only MCP tools', readme)
+        self.assertIn('fictional client alias', readme)
+        self.assertIn('fictional client alias', case)
+
+    def test_case_study_is_linked_from_featured_work(self):
+        root = Path(__file__).resolve().parents[1]
+        readme = (root / 'README.md').read_text(encoding='utf-8')
+        client_section = readme.split('### Velyndra', 1)[1].split('### R.A.M.', 1)[0]
+        self.assertIn('docs/velyndra-mcp-case-study.md', client_section)
+        self.assertEqual(readme.count('(docs/velyndra-mcp-case-study.md)'), 1)
+
+    def test_case_study_has_responsive_diagrams_and_no_original_links(self):
+        root = Path(__file__).resolve().parents[1]
+        case = (root / 'docs/velyndra-mcp-case-study.md').read_text(encoding='utf-8')
+        self.assertNotIn('http', case)
+        self.assertNotIn('list_' + 'rubrics', case)
+        self.assertNotIn('search_' + 'events', case)
+        self.assertNotIn('get_' + 'event', case)
+        for svg in (
+            'velyndra-case-hero.svg',
+            'velyndra-case-hero-mobile.svg',
+            'velyndra-architecture.svg',
+            'velyndra-architecture-mobile.svg',
+        ):
+            self.assertIn(svg, case)
+            self.assertTrue((root / 'assets' / svg).is_file())
+
+    def test_old_branded_assets_are_not_part_of_current_tree(self):
+        root = Path(__file__).resolve().parents[1]
+        forbidden = 'event' + 'frog'
+        for path in (root / 'docs').glob('*.md'):
+            self.assertNotIn(forbidden, path.name.lower())
+        for path in (root / 'assets').glob('*.svg'):
+            self.assertNotIn(forbidden, path.name.lower())
 
 if __name__ == '__main__':
     unittest.main()

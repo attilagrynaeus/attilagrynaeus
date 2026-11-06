@@ -22,13 +22,13 @@ I've built production systems in event technology, retail/ERP, banking and publi
 
 ## Selected work
 
-### Eventfrog — ChatGPT app and MCP integration (2026)
+### Velyndra Event Systems — LLM/MCP integration *(anonymized client)*
 
-As Eventfrog's sole AI integration engineer, I designed, built and shipped its **public ChatGPT integration** end to end. I developed the MCP server and three typed tools for event categories, event search and event details, connected them through an API gateway and deployed the services on **Google Cloud Kubernetes**.
+I designed and delivered an AI-assisted event discovery integration: **three read-only MCP tools**, typed schemas, controlled API access and Kubernetes deployment. The important work was making tool calls reliable and results traceable to existing business data.
 
-The challenge was making agent tool calls reliable: validated inputs, localized results, controlled access and responses grounded in Eventfrog data. The integration is live, not a concept demo.
+**[Read the engineering case study →](docs/velyndra-mcp-case-study.md)**
 
-**[Eventfrog in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a3a779388f48191b85e9d2f28b8c95d)** · **[Official product information](https://eventfrog.de/en/help/organizer/boostprofits/promotion/ai-search.html)**
+<sub>Velyndra Event Systems is a fictional client alias, not a real employer or company reference.</sub>
 
 ### R.A.M. FARM — multiplayer farming world
 
