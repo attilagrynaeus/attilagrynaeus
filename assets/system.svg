@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300" role="img" aria-labelledby="title desc">
+  <title id="title">R.A.M. FARM: one shared world, explicit ownership</title>
+  <desc id="desc">Browser clients send player intent to a Node.js world runtime. Java and Spring own durable transactions in PostgreSQL. Confirmed, versioned state returns to the players. Simplified architecture, not a gameplay screenshot.</desc>
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#263341"/></pattern>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="none" stroke="#7b9dbc" stroke-width="1.2"/></marker>
+  </defs>
+  <style>
+    text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}
+    .label{font:11px ui-monospace,Consolas,monospace;fill:#91a3b6;letter-spacing:.7px}
+    .name{font-size:19px;font-weight:600;fill:#e6edf3}
+    .detail{font-size:13px;fill:#9baec0}
+    .pulse{stroke-dasharray:5 125;animation:flow 6s linear infinite}
+    @keyframes flow{to{stroke-dashoffset:-130}}
+    @media(prefers-reduced-motion:reduce){.pulse{animation:none;stroke-dasharray:none;opacity:.25}}
+  </style>
+  <rect x=".5" y=".5" width="899" height="299" rx="12" fill="#0d1117" stroke="#30363d"/>
+  <rect x="1" y="1" width="898" height="298" rx="12" fill="url(#grid)"/>
+  <text x="28" y="33" class="label">R.A.M. FARM / SYSTEM BOUNDARIES</text>
+  <text x="872" y="33" class="label" text-anchor="end">PRIVATE PROJECT · IN DEVELOPMENT</text>
+  <path d="M28 52H872" stroke="#263341"/>
+  <g fill="#141d27" stroke="#34475c">
+    <rect x="28" y="104" width="170" height="100" rx="7"/>
+    <rect x="254" y="104" width="180" height="100" rx="7"/>
+    <rect x="490" y="104" width="180" height="100" rx="7"/>
+    <rect x="726" y="104" width="146" height="100" rx="7"/>
+  </g>
+  <g stroke="#7b9dbc" fill="none" stroke-width="1.3" marker-end="url(#arrow)">
+    <path d="M200 150H250"/><path d="M436 150H486"/><path d="M672 150H722"/>
+    <path d="M344 206V250H113V206"/>
+  </g>
+  <path class="pulse" d="M200 150H250M436 150H486M672 150H722" stroke="#98d9cf" fill="none" stroke-width="2"/>
+  <text x="113" y="86" class="label" text-anchor="middle">PRESENTATION</text>
+  <text x="344" y="86" class="label" text-anchor="middle">LIVE GAMEPLAY</text>
+  <text x="580" y="86" class="label" text-anchor="middle">DURABLE STATE</text>
+  <text x="799" y="86" class="label" text-anchor="middle">STORAGE</text>
+  <text x="48" y="137" class="name">Browser clients</text>
+  <text x="48" y="165" class="detail">Input · UI · rendering</text>
+  <text x="48" y="186" class="detail">Send intent, not truth</text>
+  <text x="274" y="137" class="name">Node.js</text>
+  <text x="274" y="165" class="detail">World simulation</text>
+  <text x="274" y="186" class="detail">Scope · command checks</text>
+  <text x="510" y="137" class="name">Java / Spring</text>
+  <text x="510" y="165" class="detail">Inventory · ownership</text>
+  <text x="510" y="186" class="detail">Atomic transactions</text>
+  <text x="744" y="137" class="name">PostgreSQL</text>
+  <text x="744" y="165" class="detail">Persisted facts</text>
+  <text x="744" y="186" class="detail">Replay protection</text>
+  
+  <text x="331" y="274" class="label" text-anchor="middle">CONFIRMED STATE / MONOTONIC VERSIONS</text>
+  <text x="872" y="278" class="label" text-anchor="end">Simplified architecture</text>
+</svg>

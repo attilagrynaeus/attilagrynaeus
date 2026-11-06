@@ -1,100 +1,84 @@
-# 👋 Hey, I'm Attila
+<div align="center">
+  <picture>
+    <source media="(max-width: 600px)" srcset="assets/header-mobile.svg" />
+    <img src="assets/header.svg" width="100%" alt="Hi, I'm Attila. Senior software engineer working in Java, Spring, developer tools and multiplayer systems." />
+  </picture>
+  <p>
+    <a href="#selected-work"><img src="assets/cta-work.svg" width="176" alt="Explore my work" /></a>&nbsp;
+    <a href="mailto:attila@grynaeus.dev"><img src="assets/cta-contact.svg" width="152" alt="Get in touch by email" /></a>
+  </p>
+  <p>
+    <a href="https://www.linkedin.com/in/attila-grynaeus">LinkedIn</a> &nbsp;·&nbsp;
+    <a href="https://mindjourneylabs.com">Writing</a> &nbsp;·&nbsp;
+    <a href="#working-stack">Stack</a>
+  </p>
+</div>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn--blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/attila-grynaeus)
-[![GitHub followers](https://img.shields.io/github/followers/attilagrynaeus?label=Follow&style=social)](https://github.com/attilagrynaeus)
-![Profile views](https://komarev.com/ghpvc/?username=attila-grynaeus&style=flat)
+I'm a **software architect and hands-on engineer with 27+ years in enterprise software**. Java, Spring and cloud systems are my foundation. Today, much of my work is in **LLM application architecture**: connecting AI agents to business APIs through well-defined, secure tools.
 
-### Senior full-stack Dev&nbsp;|&nbsp;Java & Spring Advanced • Swiss-based
+I've built production systems in event technology, retail/ERP, banking and public services. I care about clear contracts, tests, and services that people can actually operate.
 
-Full-stack developer at **Bison Schweiz AG**, well-versed in Java and Spring Boot.  
-Proud holder of several Sun/Oracle Java certifications.  
-Passionate about delivering seamless, clean-code, cutting-edge solutions.
+**Sun certifications:** Java Programmer (SCJP) · Business Component Developer (SCBCD).
 
----
+## Selected work
 
-### 🔑  What I do
+### Eventfrog — ChatGPT app and MCP integration (2026)
 
-- 🔹 **Senior full-stack developer** specialising in Java & Spring Boot  
-- 🔹 **Sun-certified** Java Programmer (SCJP) & **EJB Developer** (SCBCD) with **25+ yrs** enterprise experience  
-- 🔹 **Passionate about AI-driven development** –  creating smarter apps with LLMs, GenAI, and cutting-edge integrations 
-- 🔹 **Lifelong Learner** –  exploring event-driven architecture, Domain-Driven Design (DDD), Test-Driven Architecture (TDA), and AI Agent technologies
-- 🔹 **Team lead & mentor** – helping engineers deliver clean, maintainable code faster  
+As Eventfrog's sole AI integration engineer, I designed, built and shipped its **public ChatGPT integration** end to end. I developed the MCP server and three typed tools for event categories, event search and event details, connected them through an API gateway and deployed the services on **Google Cloud Kubernetes**.
 
----
+The challenge was making agent tool calls reliable: validated inputs, localized results, controlled access and responses grounded in Eventfrog data. The integration is live, not a concept demo.
 
-## 🌐 Blog & Articles
+**[Eventfrog in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a3a779388f48191b85e9d2f28b8c95d)** · **[Official product information](https://eventfrog.de/en/help/organizer/boostprofits/promotion/ai-search.html)**
 
-I regularly write about AI-driven development, software architecture, and cloud native technologies on my blog:
+### R.A.M. FARM — multiplayer farming world
 
-🌐 [mindjourneylabs.com](https://mindjourneylabs.com)
+I'm building a multiplayer farming game. The difficult part isn't growing a crop on screen; it's making sure two players can't harvest the same crop twice, and that an old update cannot undo a newer one after reconnecting.
 
----
+The game uses server-owned gameplay state, transactional persistence and browser-driven gameplay tests. It's an engineering project as much as a game.
 
-## 🛠 Tech toolbox
+**[Read the technical notes](docs/ram-farm.md)** · Private project, in development. No private source or gameplay screenshots are published here.
 
-| Domain | Tools & Tech |
-| ------ | ------------ |
-| **Languages** | Java 17/21, Python 3.12, TypeScript (React), SQL, Bash |
-| **Frameworks** | Spring Boot, Spring Cloud, Jakarta EE, EJB 3.x, GraphQL |
-| **Build & CI/CD** | Maven, Gradle, Git, GitHub Actions, Jenkins, Gitlab |
-| **Cloud & Container** | AWS fundamentals, Docker, Kubernetes |
-| **Data & Messaging** | Oracle DB, PostgreSQL, RabbitMQ |
-| **Practices** | Test-Driven Development, Clean Architecture, Domain-Driven Design, Continuous Integration |
+### Bison Schweiz AG — cloud pricing and ERP modernization
 
+I built Spring Boot pricing services on **Azure and Kubernetes**, worked on REST and messaging integrations, and helped bring GitOps, automated testing and production observability into the delivery process.
 
-<details open>
-  <summary><strong> Featured project with Serverless Backend: <a href="https://github.com/attilagrynaeus/Promptee">Promptee</a></strong></summary>
+### Public projects
 
-  <br/>
+<div align="center">
+  <a href="https://github.com/attilagrynaeus/Promptee"><img src="profile/promptee.svg" width="395" alt="PrompTee GitHub repository card, generated from live repository data" /></a>
+  <a href="https://github.com/attilagrynaeus/ai-test-generator"><img src="profile/ai-test-generator.svg" width="395" alt="AI Test Generator GitHub repository card, generated from live repository data" /></a>
+</div>
 
+**[PrompTee](https://github.com/attilagrynaeus/Promptee)** — A collaborative prompt workspace built with React, Supabase and serverless functions. [Example: UI regression test](https://github.com/attilagrynaeus/Promptee/blob/main/src/__tests__/PromptCard.deleteConfirm.test.jsx).
 
+**[AI Test Generator](https://github.com/attilagrynaeus/ai-test-generator)** — A Java/Spring proof of concept that generates JUnit test scaffolding from API descriptions. [Example: input validator](https://github.com/attilagrynaeus/ai-test-generator/blob/main/server/src/main/java/com/ag/server/validation/ApiSpecValidator.java). This is a demo, not a maintained product.
 
-<!-- Activity badges (auto-updates via generate-commit-badge.yml) -->
-<p align="left">
-  <img alt="Commits this week"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=commits%20this%20week&query=%24.week.commits&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-  <img alt="Commits this month"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=commits%20this%20month&query=%24.month.commits&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-  <img alt="Commits YTD"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=commits%20YTD&query=%24.ytd.commits&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-  <img alt="PRs this week"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=PRs%20this%20week&query=%24.week.prs&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-  <img alt="Reviews this week"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=reviews%20this%20week&query=%24.week.reviews&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-  <img alt="Issues this week"
-       src="https://img.shields.io/badge/dynamic/json?style=flat&logo=github&label=issues%20this%20week&query=%24.week.issues&url=https%3A%2F%2Fraw.githubusercontent.com%2Fattilagrynaeus%2Fattilagrynaeus%2Fmain%2Fbadges%2Fgh-contributions.json" />
-</p>
+**[WildFly AI Assist](https://github.com/attilagrynaeus/troubleshoot-ai-assist)** — An experiment using internal documentation to suggest fixes for WildFly application errors.
 
-<!-- Workflow status badges (a meglévő workflow-jaidhoz) -->
-<p align="left">
-  <img alt="Badge Bot"
-       src="https://img.shields.io/github/actions/workflow/status/attilagrynaeus/attilagrynaeus/generate-commit-badge.yml?branch=main&label=badge%20bot" />
-  <img alt="Supabase keep-alive"
-       src="https://img.shields.io/github/actions/workflow/status/attilagrynaeus/attilagrynaeus/supabase-keep-alive.yml?branch=main&label=supabase%20ping" />
-  <img alt="Supabase advanced keep-alive"
-       src="https://img.shields.io/github/actions/workflow/status/attilagrynaeus/attilagrynaeus/supabase-advanced-keep-alive.yml?branch=main&label=supabase%20adv%20ping" />
-  <img alt="README last update"
-       src="https://img.shields.io/github/last-commit/attilagrynaeus/attilagrynaeus?label=README%20last%20update" />
-  <img alt="Followers"
-       src="https://img.shields.io/github/followers/attilagrynaeus?style=flat&logo=github" />
-</p>
+## Working stack
 
+<div align="center">
+  <img src="profile/stack.svg" width="440" alt="Java, Spring, PostgreSQL, Docker, Kubernetes, TypeScript, React, Python" />
+</div>
 
-  <a href="https://github.com/attilagrynaeus/Promptee">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=attilagrynaeus&repo=Promptee&theme=github_dark&hide_border=true" alt="Promptee repo card">
-  </a>
+**AI and LLM systems:** MCP, ChatGPT Apps, tool/function calling, typed tool schemas, agent workflows, RAG and secure API access. I test tool outcomes and failure cases, not just whether a model produces fluent text.
+
+**Backend and cloud:** Java 17–25, Spring Boot, PostgreSQL, REST/OpenAPI, Kafka, Redis, Node.js, TypeScript, Kubernetes, Docker, Azure, Google Cloud, GitOps and OpenTelemetry.
+
+## GitHub activity
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="profile/activity-dark.svg" />
+  <img src="profile/activity-light.svg" width="100%" alt="3D calendar generated from GitHub's actual contribution history" />
+</picture>
+
+<details>
+  <summary>Detailed GitHub statistics</summary>
+  <p><img src="profile/stats.svg" width="440" alt="GitHub activity statistics based on API data" /></p>
 </details>
 
+<sub>Generated daily from GitHub data. Private repository names and source remain private.</sub>
 
-## ✨ GitHub stats
+---
 
-[![GitHub Streak](
-  https://github-readme-streak-stats-eight.vercel.app/?user=attilagrynaeus&theme=dark&hide_border=true
-)](https://git.io/streak-stats)
-
-<img src="badges/commits.svg" height="40" alt="Commits badge">
-
-## 📫 How to reach me
-
-- 💼 **LinkedIn (DM quickest):** [linkedin.com/in/attila-grynaeus](https://www.linkedin.com/in/attila-grynaeus)  
-- 📧 **Email:** [attila@grynaeus.dev](mailto:attila@grynaeus.dev)
+I'm interested in engineering teams building reliable platforms and practical AI-enabled products — beyond prototypes and chatbot demos. **[Connect on LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** or **[send me an email](mailto:attila@grynaeus.dev)**.
