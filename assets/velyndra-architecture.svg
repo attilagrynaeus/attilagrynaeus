@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="470" viewBox="0 0 1180 470" role="img" aria-labelledby="title desc">
-<title id="title">Eventfrog ChatGPT MCP logical system architecture</title>
-<desc id="desc">From left to right: ChatGPT tool calls enter the MCP service with three read tools, flow through an API gateway, then reach Eventfrog services that own public event data. The MCP and gateway run in a Google Cloud Kubernetes boundary.</desc>
+<title id="title">Velyndra ChatGPT MCP logical system architecture</title>
+<desc id="desc">From left to right: ChatGPT tool calls enter the MCP service with three read tools, flow through an API gateway, then reach Velyndra services that own public event data. The MCP and gateway run in a Google Cloud Kubernetes boundary.</desc>
 <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0e1225"/><stop offset="1" stop-color="#17162e"/></linearGradient><linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#78dfcd"/><stop offset="1" stop-color="#ae9bff"/></linearGradient><filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter></defs>
 <rect x="0" y="0" width="1180" height="470" rx="19" fill="url(#bg)"/><rect x=".8" y=".8" width="1178.4" height="468.4" rx="18" stroke="#625b94" stroke-opacity=".47" fill="none"/>
 <g font-family="Segoe UI,Arial,sans-serif"><text x="35" y="45" font-size="15" font-weight="700" letter-spacing="1.8" fill="#9ed4ff">LOGICAL ARCHITECTURE</text><text x="35" y="72" font-size="13" fill="#a0a8c5">Public event discovery · deliberately limited read surface</text></g>
 <rect x="304" y="96" width="620" height="292" rx="19" fill="#151a36" fill-opacity=".58" stroke="#776dbb" stroke-dasharray="8 7" stroke-opacity=".6"/>
-<g font-family="Segoe UI,Arial,sans-serif"><text x="327" y="123" font-size="13" font-weight="700" fill="#a9a1ee" letter-spacing="1.2">GOOGLE CLOUD  /  KUBERNETES</text></g>
+<g font-family="Segoe UI,Arial,sans-serif"><text x="327" y="123" font-size="13" font-weight="700" fill="#a9a1ee" letter-spacing="1.2">CLOUD  /  KUBERNETES</text></g>
 <g font-family="Segoe UI,Arial,sans-serif">
 <rect x="34" y="153" width="236" height="198" rx="14" fill="#1b2240" stroke="#63719c"/>
 <circle cx="62" cy="183" r="6" fill="#86e8d4"/><text x="79" y="189" font-size="21" font-weight="700" fill="#f5f5ff">ChatGPT app</text>
@@ -14,18 +14,18 @@
 <rect x="327" y="145" width="342" height="228" rx="14" fill="#192341" stroke="#6c7f9f"/>
 <circle cx="355" cy="175" r="6" fill="#83e7d4"/><text x="372" y="181" font-size="20" font-weight="700" fill="#f4f7ff">MCP tool server</text>
 <text x="355" y="212" font-size="13" fill="#a1b2cf">Schema validation · errors · localization</text>
-<rect x="351" y="237" width="294" height="37" rx="9" fill="#25364b" stroke="#4c8c95"/><text x="364" y="261" font-size="15" fill="#c0fff0">list_rubrics</text><text x="629" y="260" font-size="12" fill="#85c5be" text-anchor="end">categories</text>
-<rect x="351" y="281" width="294" height="37" rx="9" fill="#282b4b" stroke="#6466a5"/><text x="364" y="305" font-size="15" fill="#e0d6ff">search_events</text><text x="629" y="304" font-size="12" fill="#b5a8e3" text-anchor="end">search</text>
-<rect x="351" y="325" width="294" height="37" rx="9" fill="#282b4b" stroke="#6466a5"/><text x="364" y="349" font-size="15" fill="#e0d6ff">get_event</text><text x="629" y="348" font-size="12" fill="#b5a8e3" text-anchor="end">details</text>
+<rect x="351" y="237" width="294" height="37" rx="9" fill="#25364b" stroke="#4c8c95"/><text x="364" y="261" font-size="15" fill="#c0fff0">Categories</text><text x="629" y="260" font-size="12" fill="#85c5be" text-anchor="end">categories</text>
+<rect x="351" y="281" width="294" height="37" rx="9" fill="#282b4b" stroke="#6466a5"/><text x="364" y="305" font-size="15" fill="#e0d6ff">Event search</text><text x="629" y="304" font-size="12" fill="#b5a8e3" text-anchor="end">search</text>
+<rect x="351" y="325" width="294" height="37" rx="9" fill="#282b4b" stroke="#6466a5"/><text x="364" y="349" font-size="15" fill="#e0d6ff">Event details</text><text x="629" y="348" font-size="12" fill="#b5a8e3" text-anchor="end">details</text>
 <rect x="719" y="169" width="183" height="165" rx="14" fill="#242440" stroke="#7c719d"/>
 <text x="810.5" y="219" text-anchor="middle" font-size="19" font-weight="700" fill="#f2f0ff">API gateway</text>
 <text x="810.5" y="248" text-anchor="middle" font-size="14" fill="#b4b8d1">Controlled bridge</text><text x="810.5" y="269" text-anchor="middle" font-size="14" fill="#b4b8d1">to existing APIs</text>
 <rect x="951" y="153" width="194" height="198" rx="14" fill="#192d36" stroke="#4b9d91"/>
-<circle cx="978" cy="184" r="6" fill="#89f0d6"/><text x="994" y="190" font-size="19" font-weight="700" fill="#ecfff7">Eventfrog</text>
+<circle cx="978" cy="184" r="6" fill="#89f0d6"/><text x="994" y="190" font-size="19" font-weight="700" fill="#ecfff7">Velyndra</text>
 <text x="976" y="224" font-size="14" fill="#b1d2ca">Existing services</text><text x="976" y="247" font-size="14" fill="#b1d2ca">and public events</text>
 <rect x="971" y="271" width="154" height="51" rx="10" fill="#203c40" stroke="#467e79"/><text x="1048" y="294" text-anchor="middle" font-size="13" fill="#c1f5e7">Source of truth</text><text x="1048" y="312" text-anchor="middle" font-size="12" fill="#9ecfc1">for event data</text>
 </g>
 <g fill="none" stroke="url(#line)" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"><path d="M272 254H321"/><path d="M315 248L323 254L315 260"/><path d="M672 254H711"/><path d="M705 248L713 254L705 260"/><path d="M904 254H946"/><path d="M940 248L948 254L940 260"/></g>
 <g font-family="Segoe UI,Arial,sans-serif" font-size="12" fill="#b0a9d6"><text x="296" y="242" text-anchor="middle">MCP</text><text x="690" y="243" text-anchor="middle">API</text><text x="926" y="243" text-anchor="middle">data</text></g>
-<path d="M32 413H1148" stroke="#6d6b95" stroke-opacity=".43"/><text x="38" y="440" font-family="Segoe UI,Arial,sans-serif" font-size="13.5" fill="#aab3cc">The model interprets intent. Tools enforce contracts. Eventfrog remains authoritative.</text>
+<path d="M32 413H1148" stroke="#6d6b95" stroke-opacity=".43"/><text x="38" y="440" font-family="Segoe UI,Arial,sans-serif" font-size="13.5" fill="#aab3cc">The model interprets intent. Tools enforce contracts. The platform remains authoritative.</text>
 </svg>

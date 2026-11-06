@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1180" height="340" viewBox="0 0 1180 340" role="img" aria-labelledby="title desc">
-<title id="title">Eventfrog and ChatGPT — production MCP integration</title>
-<desc id="desc">Dark indigo editorial engineering banner with three luminous tool nodes connected to a ChatGPT and Eventfrog data boundary.</desc>
+<title id="title">Velyndra and ChatGPT — production MCP integration</title>
+<desc id="desc">Dark indigo editorial engineering banner with three luminous tool nodes connected to a ChatGPT and Velyndra data boundary.</desc>
 <defs>
 <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f1021"/><stop offset=".56" stop-color="#101127"/><stop offset="1" stop-color="#1c1742"/></linearGradient>
 <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#85efe1"/><stop offset=".55" stop-color="#8fc9ff"/><stop offset="1" stop-color="#b9a1ff"/></linearGradient>
@@ -19,11 +19,11 @@
 <text x="67.5" y="51" font-size="14" fill="#c6c0ff" font-weight="700" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">AG.</text>
 <text x="104" y="51" font-size="13" fill="#98a4c3" letter-spacing="2.1" font-family="Segoe UI,Arial,sans-serif">ENGINEERING CASE STUDY</text>
 <g font-family="Segoe UI,Arial,sans-serif">
-<text x="52" y="135" fill="#ffffff" font-size="42" font-weight="700" letter-spacing="-1.4">Eventfrog × ChatGPT</text>
+<text x="52" y="135" fill="#ffffff" font-size="42" font-weight="700" letter-spacing="-1.4">Velyndra × ChatGPT</text>
 <text x="54" y="181" fill="url(#accent)" font-size="26" font-weight="600">An MCP integration that shipped.</text>
 <text x="54" y="226" fill="#b7bdd8" font-size="17">Typed tools. Real event data. Cloud delivery.</text>
 <rect x="52" y="259" width="150" height="35" rx="16" fill="#222244" stroke="#7467b6" stroke-opacity=".72"/>
-<text x="127" y="282" fill="#d7d4ff" font-size="12" text-anchor="middle" letter-spacing="1.4" font-weight="700">PUBLIC · 2026</text>
+<text x="127" y="282" fill="#d7d4ff" font-size="12" text-anchor="middle" letter-spacing="1.4" font-weight="700">CLIENT ALIAS</text>
 <rect x="213" y="259" width="128" height="35" rx="16" fill="#153b40" stroke="#6bd5c3" stroke-opacity=".62"/>
 <text x="277" y="282" fill="#aaf4e6" font-size="12" text-anchor="middle" letter-spacing="1.2" font-weight="700">3 MCP TOOLS</text>
 </g>
@@ -34,5 +34,5 @@
 <g class="spark"><circle cx="888" cy="101" r="6" fill="#8debfa"/><circle cx="1022" cy="170" r="7" fill="#d5c6ff"/><circle cx="888" cy="240" r="6" fill="#d0b6ff"/><circle cx="1135" cy="101" r="4" fill="#8edff7"/><circle cx="1135" cy="240" r="4" fill="#e0b8ff"/></g>
 <g fill="#5c63a1" opacity=".22"><circle cx="760" cy="86" r="13"/><circle cx="1087" cy="284" r="10"/><circle cx="955" cy="53" r="7"/></g>
 <path d="M48 309H1132" stroke="#6c6592" stroke-opacity=".31"/>
-<text x="53" y="328" fill="#7781a9" font-family="Segoe UI,Arial,sans-serif" font-size="11" letter-spacing="1.15">MCP  /  LLM APPLICATION ARCHITECTURE  /  GOOGLE CLOUD</text>
+<text x="53" y="328" fill="#7781a9" font-family="Segoe UI,Arial,sans-serif" font-size="11" letter-spacing="1.15">MCP  /  LLM APPLICATION ARCHITECTURE  /  CLOUD PLATFORM</text>
 </svg>
