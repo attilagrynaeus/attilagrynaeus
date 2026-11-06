@@ -14,11 +14,21 @@
   </p>
 </div>
 
-I'm a Java/Spring engineer with **25+ years of enterprise software experience**. My work has spanned backend architecture, APIs, databases, CI/CD and the less glamorous job of keeping production systems dependable. I've also led teams and mentored developers.
+I'm a **software architect and hands-on engineer with 27+ years in enterprise software**. Java, Spring and cloud systems are my foundation. Today, much of my work is in **LLM application architecture**: connecting AI agents to business APIs through well-defined, secure tools.
 
-My background includes enterprise development at **Bison Schweiz AG**. I'm **Sun-certified** as a Java Programmer (SCJP) and Business Component Developer (SCBCD).
+I've built production systems in event technology, retail/ERP, banking and public services. I care about clear contracts, tests, and services that people can actually operate.
+
+**Sun certifications:** Java Programmer (SCJP) · Business Component Developer (SCBCD).
 
 ## Selected work
+
+### Eventfrog — ChatGPT app and MCP integration (2026)
+
+As Eventfrog's sole AI integration engineer, I designed, built and shipped its **public ChatGPT integration** end to end. I developed the MCP server and three typed tools for event categories, event search and event details, connected them through an API gateway and deployed the services on **Google Cloud Kubernetes**.
+
+The challenge was making agent tool calls reliable: validated inputs, localized results, controlled access and responses grounded in Eventfrog data. The integration is live, not a concept demo.
+
+**[Eventfrog in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6a3a779388f48191b85e9d2f28b8c95d)** · **[Official product information](https://eventfrog.de/en/help/organizer/boostprofits/promotion/ai-search.html)**
 
 ### R.A.M. FARM — multiplayer farming world
 
@@ -27,6 +37,10 @@ I'm building a multiplayer farming game. The difficult part isn't growing a crop
 The game uses server-owned gameplay state, transactional persistence and browser-driven gameplay tests. It's an engineering project as much as a game.
 
 **[Read the technical notes](docs/ram-farm.md)** · Private project, in development. No private source or gameplay screenshots are published here.
+
+### Bison Schweiz AG — cloud pricing and ERP modernization
+
+I built Spring Boot pricing services on **Azure and Kubernetes**, worked on REST and messaging integrations, and helped bring GitOps, automated testing and production observability into the delivery process.
 
 ### Public projects
 
@@ -47,7 +61,9 @@ The game uses server-owned gameplay state, transactional persistence and browser
   <img src="profile/stack.svg" width="440" alt="Java, Spring, PostgreSQL, Docker, Kubernetes, TypeScript, React, Python" />
 </div>
 
-Java, Spring Boot and SQL are my foundation. Around them: APIs, cloud infrastructure, containers, CI/CD, and TypeScript. I use Python where it fits the problem.
+**AI and LLM systems:** MCP, ChatGPT Apps, tool/function calling, typed tool schemas, agent workflows, RAG and secure API access. I test tool outcomes and failure cases, not just whether a model produces fluent text.
+
+**Backend and cloud:** Java 17–25, Spring Boot, PostgreSQL, REST/OpenAPI, Kafka, Redis, Node.js, TypeScript, Kubernetes, Docker, Azure, Google Cloud, GitOps and OpenTelemetry.
 
 ## GitHub activity
 
@@ -65,4 +81,4 @@ Java, Spring Boot and SQL are my foundation. Around them: APIs, cloud infrastruc
 
 ---
 
-I'm interested in teams that care about good engineering, clear ownership and software that survives real-world use. **[Connect on LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** or **[send me an email](mailto:attila@grynaeus.dev)**.
+I'm interested in engineering teams building reliable platforms and practical AI-enabled products — beyond prototypes and chatbot demos. **[Connect on LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** or **[send me an email](mailto:attila@grynaeus.dev)**.

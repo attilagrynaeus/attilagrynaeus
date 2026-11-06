@@ -52,5 +52,26 @@ class ProfileTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Private'):
             validate(self.root)
 
+class PositioningRegressionTests(unittest.TestCase):
+    """Keep public copy consistent with the approved professional experience."""
+
+    def test_27_year_claim_on_all_surfaces(self):
+        root = Path(__file__).resolve().parents[1]
+        readme = (root / 'README.md').read_text(encoding='utf-8')
+        self.assertIn('27+ years', readme)
+        self.assertNotIn('25+ years', readme)
+        for file_name in ('header.svg', 'header-mobile.svg'):
+            svg = (root / 'assets' / file_name).read_text(encoding='utf-8')
+            self.assertIn('27+ YEARS IN ENTERPRISE SOFTWARE', svg)
+            self.assertNotIn('25+ YEARS IN ENTERPRISE SOFTWARE', svg)
+
+    def test_ai_claim_is_backed_by_eventfrog_reference(self):
+        root = Path(__file__).resolve().parents[1]
+        readme = (root / 'README.md').read_text(encoding='utf-8')
+        for phrase in ('LLM application architecture', 'Eventfrog', 'three typed tools', 'MCP'):
+            self.assertIn(phrase, readme)
+        self.assertIn('https://eventfrog.de/en/help/organizer/boostprofits/promotion/ai-search.html', readme)
+        self.assertNotIn('OAuth integration completed', readme)
+
 if __name__ == '__main__':
     unittest.main()
