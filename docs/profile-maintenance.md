@@ -5,8 +5,9 @@ The profile is a native GitHub README, not a separately hosted application.
 ## Editing
 
 - `README.md`: public copy, project links and section order.
-- `assets/header*.svg`, `assets/typing.svg`: original header and typewriter artwork. No embedded fonts or JavaScript. Motion is disabled when reduced motion is requested.
-- `assets/system*.svg`: original simplified system diagram, with a separate mobile composition. This is not a screenshot or performance claim.
+- `assets/header*.svg`: original responsive hero panels with restrained animated cyan/violet filaments. No embedded fonts or JavaScript; motion respects reduced-motion settings.
+- `assets/cta-*.svg`: small visual labels wrapped by real README links; the SVGs themselves contain no interactive controls.
+- `assets/system*.svg`: original simplified system diagram used only by the engineering notes. It is not a screenshot or performance claim.
 - `docs/ram-farm.md`: public architectural overview only. Keep private source, internal endpoints, customer information and production assets out.
 - `config/profile-3d.json`: the two contribution-calendar palettes. The calendar is intentionally static to avoid competing with the animated header.
 
@@ -17,7 +18,7 @@ python3 -m unittest discover -s tests -p test_profile.py
 python3 tools/validate_profile.py
 ```
 
-Check the rendered README at desktop and mobile widths, in dark and light mode. Verify the typing text is visible after its reveal and with reduced motion enabled. XML validation alone cannot catch clipping or invisible animation text.
+Check the rendered README at desktop and mobile widths, in dark and light mode. Verify the hero text, both linked CTA labels and mobile art at narrow widths. The light-trail animation must not hide text when reduced motion is enabled. XML validation alone cannot catch clipping.
 
 ## Generated graphics
 

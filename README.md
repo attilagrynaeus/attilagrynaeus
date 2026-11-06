@@ -1,76 +1,68 @@
 <div align="center">
   <picture>
     <source media="(max-width: 600px)" srcset="assets/header-mobile.svg" />
-    <img src="assets/header.svg" width="100%" alt="Attila Grynaeus — Java and Spring engineer; software architecture and AI tools" />
+    <img src="assets/header.svg" width="100%" alt="Hi, I'm Attila. Senior software engineer working in Java, Spring, developer tools and multiplayer systems." />
   </picture>
-  <img src="assets/typing.svg" width="480" alt="25+ years of building software." />
   <p>
-    <a href="https://www.linkedin.com/in/attila-grynaeus">LinkedIn ↗</a> &nbsp; · &nbsp;
-    <a href="https://mindjourneylabs.com">MindJourney Labs ↗</a> &nbsp; · &nbsp;
-    <a href="mailto:attila@grynaeus.dev">Email ↗</a>
+    <a href="#selected-work"><img src="assets/cta-work.svg" width="176" alt="Explore my work" /></a>&nbsp;
+    <a href="mailto:attila@grynaeus.dev"><img src="assets/cta-contact.svg" width="152" alt="Get in touch by email" /></a>
+  </p>
+  <p>
+    <a href="https://www.linkedin.com/in/attila-grynaeus">LinkedIn</a> &nbsp;·&nbsp;
+    <a href="https://mindjourneylabs.com">Writing</a> &nbsp;·&nbsp;
+    <a href="#working-stack">Stack</a>
   </p>
 </div>
 
-I'm Attila, a **senior Java/Spring engineer** with **25+ years in enterprise software**. I work across backend design, delivery and the awkward bugs between services. I also lead and mentor engineers.
+I'm a Java/Spring engineer with **25+ years of enterprise software experience**. My work has spanned backend architecture, APIs, databases, CI/CD and the less glamorous job of keeping production systems dependable. I've also led teams and mentored developers.
 
-Alongside my enterprise work, I'm building a multiplayer farming game and experimenting with tools that make development less repetitive.
+My background includes enterprise development at **Bison Schweiz AG**. I'm **Sun-certified** as a Java Programmer (SCJP) and Business Component Developer (SCBCD).
 
-**Sun-certified:** Java Programmer (SCJP) · Business Component Developer (SCBCD)
+## Selected work
 
-## R.A.M. FARM
+### R.A.M. FARM — multiplayer farming world
 
-A multiplayer farming world I'm building. The interesting engineering problem isn't drawing a crop: it's making sure two players cannot harvest it twice, and that reconnecting doesn't bring old state back.
+I'm building a multiplayer farming game. The difficult part isn't growing a crop on screen; it's making sure two players can't harvest the same crop twice, and that an old update cannot undo a newer one after reconnecting.
 
-<a href="docs/ram-farm.md">
-  <picture>
-    <source media="(max-width: 900px)" srcset="assets/system-mobile.svg" />
-    <img src="assets/system.svg" width="100%" alt="R.A.M. FARM architecture: browser clients, Node.js gameplay runtime, Java/Spring transactions and PostgreSQL persistence" />
-  </picture>
-</a>
-<br />
+The game uses server-owned gameplay state, transactional persistence and browser-driven gameplay tests. It's an engineering project as much as a game.
 
-The client handles input and presentation. The server validates shared actions; persistent inventory and ownership changes are transactional. Browser-driven gameplay tests exercise the same paths a player uses.
+**[Read the technical notes](docs/ram-farm.md)** · Private project, in development. No private source or gameplay screenshots are published here.
 
-**[Read the engineering notes →](docs/ram-farm.md)**
-
-<sub>Private project · In development</sub>
-
-## Public code
+### Public projects
 
 <div align="center">
-  <a href="https://github.com/attilagrynaeus/Promptee"><img src="profile/promptee.svg" width="395" alt="PrompTee public repository" /></a>
-  <a href="https://github.com/attilagrynaeus/ai-test-generator"><img src="profile/ai-test-generator.svg" width="395" alt="AI Test Generator public Java demo repository" /></a>
+  <a href="https://github.com/attilagrynaeus/Promptee"><img src="profile/promptee.svg" width="395" alt="PrompTee GitHub repository card, generated from live repository data" /></a>
+  <a href="https://github.com/attilagrynaeus/ai-test-generator"><img src="profile/ai-test-generator.svg" width="395" alt="AI Test Generator GitHub repository card, generated from live repository data" /></a>
 </div>
 
-**[PrompTee](https://github.com/attilagrynaeus/Promptee)** — A shared workspace for saving, finding and reusing prompts. React, Supabase and a serverless backend. [A small UI regression test](https://github.com/attilagrynaeus/Promptee/blob/main/src/__tests__/PromptCard.deleteConfirm.test.jsx).
+**[PrompTee](https://github.com/attilagrynaeus/Promptee)** — A collaborative prompt workspace built with React, Supabase and serverless functions. [Example: UI regression test](https://github.com/attilagrynaeus/Promptee/blob/main/src/__tests__/PromptCard.deleteConfirm.test.jsx).
 
-**[AI Test Generator](https://github.com/attilagrynaeus/ai-test-generator)** — A Java/Spring experiment that turns API descriptions into JUnit test scaffolding. [Start with the input validator](https://github.com/attilagrynaeus/ai-test-generator/blob/main/server/src/main/java/com/ag/server/validation/ApiSpecValidator.java). A demo, not a maintained service.
+**[AI Test Generator](https://github.com/attilagrynaeus/ai-test-generator)** — A Java/Spring proof of concept that generates JUnit test scaffolding from API descriptions. [Example: input validator](https://github.com/attilagrynaeus/ai-test-generator/blob/main/server/src/main/java/com/ag/server/validation/ApiSpecValidator.java). This is a demo, not a maintained product.
 
-Also: **[WildFly AI Assist](https://github.com/attilagrynaeus/troubleshoot-ai-assist)** connects application errors with relevant internal documentation using retrieval-augmented generation.
+**[WildFly AI Assist](https://github.com/attilagrynaeus/troubleshoot-ai-assist)** — An experiment using internal documentation to suggest fixes for WildFly application errors.
 
 ## Working stack
 
-<p align="center">
-  <img src="profile/stack.svg" width="440" alt="Java, Spring, PostgreSQL, Docker, Kubernetes, TypeScript, React and Python" />
-</p>
+<div align="center">
+  <img src="profile/stack.svg" width="440" alt="Java, Spring, PostgreSQL, Docker, Kubernetes, TypeScript, React, Python" />
+</div>
 
-Java and Spring are my core. Around them: PostgreSQL, containers, CI/CD and TypeScript. Python is useful for the AI tooling.
+Java, Spring Boot and SQL are my foundation. Around them: APIs, cloud infrastructure, containers, CI/CD, and TypeScript. I use Python where it fits the problem.
 
 ## GitHub activity
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="profile/activity-dark.svg" />
-  <img src="profile/activity-light.svg" width="100%" alt="My actual GitHub contribution history, rendered as a 3D calendar" />
+  <img src="profile/activity-light.svg" width="100%" alt="3D calendar generated from GitHub's actual contribution history" />
 </picture>
 
 <details>
-  <summary>Activity details</summary>
-  <br />
-  <img src="profile/stats.svg" width="440" alt="GitHub activity statistics, generated from the GitHub API" />
+  <summary>Detailed GitHub statistics</summary>
+  <p><img src="profile/stats.svg" width="440" alt="GitHub activity statistics based on API data" /></p>
 </details>
 
-<sub>Updated daily. Only activity exposed by GitHub is shown; private project details stay private.</sub>
+<sub>Generated daily from GitHub data. Private repository names and source remain private.</sub>
 
 ---
 
-I write at **[MindJourney Labs](https://mindjourneylabs.com)**. For a conversation about Java/Spring engineering, architecture or developer tooling: **[LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** or **[attila@grynaeus.dev](mailto:attila@grynaeus.dev)**.
+I'm interested in teams that care about good engineering, clear ownership and software that survives real-world use. **[Connect on LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** or **[send me an email](mailto:attila@grynaeus.dev)**.
