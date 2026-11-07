@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
-    <source media="(max-width: 600px)" srcset="assets/header-mobile.svg" />
-    <img src="assets/header.svg" width="100%" alt="Attila Grynaeus — Software Architect and hands-on engineer. Java, distributed systems and agentic AI. 27+ years in enterprise software." />
+    <source media="(max-width: 600px)" srcset="assets/header-mobile-animated-v1.svg" />
+    <img src="assets/header-animated-v1.svg" width="100%" alt="Attila Grynaeus — Software Architect and hands-on engineer. Java, distributed systems and agentic AI. 27+ years in enterprise software." />
   </picture>
   <p>
     <strong><a href="mailto:attila.grynaeus@gmail.com">Let's talk →</a></strong> &nbsp;·&nbsp;

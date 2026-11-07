@@ -8,7 +8,8 @@ The approved contact is `attila.grynaeus@gmail.com`. Every email CTA must use `m
 
 ## Assets and layout
 
-- `assets/header.svg` and `assets/header-mobile.svg`: compact professional introduction, with searchable text repeated in Markdown.
+- `assets/header-animated-v1.svg` and `assets/header-mobile-animated-v1.svg`: restored original cyan/violet animated header; use versioned asset paths to avoid stale GitHub image caches. Motion honors reduced-motion preferences.
+- `assets/header.svg` and `assets/header-mobile.svg`: historical originals, retained for existing links. The README must point to the versioned copies.
 - `assets/system.svg` and `assets/system-mobile.svg`: the same logical multiplayer architecture at desktop and mobile widths. The direct browser-to-Spring path is mandatory on both. PostgreSQL persistence and Redis routing remain separate; the gateway is application infrastructure, not an AWS API Gateway claim.
 - `assets/velyndra-architecture*.svg`: the read-only AI integration and its business-data boundary, shown inline.
 - All six are original, self-contained SVGs with original schematic icons, descriptive titles, explicit viewBoxes, system fonts and no external resources, scripts or embedded fonts.

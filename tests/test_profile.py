@@ -109,10 +109,28 @@ class PositioningRegressionTests(unittest.TestCase):
         readme = (root / 'README.md').read_text(encoding='utf-8')
         self.assertIn('27+ years', readme)
         self.assertNotIn('25+ years', readme)
-        for file_name in ('header.svg', 'header-mobile.svg'):
+        for file_name in ('header-animated-v1.svg', 'header-mobile-animated-v1.svg'):
             svg = (root / 'assets' / file_name).read_text(encoding='utf-8')
             self.assertIn('27+ YEARS IN ENTERPRISE SOFTWARE', svg)
             self.assertNotIn('25+ YEARS IN ENTERPRISE SOFTWARE', svg)
+
+
+    def test_profile_loads_versioned_animated_hero_assets(self):
+        """A new asset URL bypasses the previous GitHub image cache."""
+        root = Path(__file__).resolve().parents[1]
+        readme = (root / 'README.md').read_text(encoding='utf-8')
+        desktop = 'assets/header-animated-v1.svg'
+        mobile = 'assets/header-mobile-animated-v1.svg'
+        self.assertIn('src="' + desktop + '"', readme)
+        self.assertIn('srcset="' + mobile + '"', readme)
+        self.assertNotIn('src="assets/header.svg"', readme)
+        self.assertNotIn('srcset="assets/header-mobile.svg"', readme)
+        for path in (desktop, mobile):
+            content = (root / path).read_text(encoding='utf-8')
+            self.assertIn('@keyframes flow', content)
+            self.assertIn('animation:flow', content)
+            self.assertIn('prefers-reduced-motion', content)
+            self.assertIn("Hi, I'm Attila.", content)
 
     def test_llm_case_study_is_anonymized(self):
         root = Path(__file__).resolve().parents[1]
