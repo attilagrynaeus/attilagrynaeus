@@ -26,11 +26,11 @@ class PortfolioTests(unittest.TestCase):
         self.assertNotIn('(docs/velyndra-mcp-case-study.md)', self.readme)
 
     def test_main_readme_owns_both_responsive_diagrams(self):
-        for name in ('system.svg', 'system-mobile.svg', 'velyndra-architecture.svg', 'velyndra-architecture-mobile.svg'):
+        for name in ('system-dark-v2.svg', 'system-mobile-dark-v2.svg', 'velyndra-architecture-dark-v2.svg', 'velyndra-architecture-mobile-dark-v2.svg'):
             self.assertIn(f'assets/{name}', self.readme)
 
     def test_stories_precede_optional_activity(self):
-        self.assertNotIn('## GitHub activity', self.readme)
+        self.assertGreater(self.readme.index('## GitHub activity'), self.readme.index('## Code you can actually inspect'))
         self.assertIn('27+ years', self.readme)
         self.assertIn('three read-only MCP tools', self.readme)
         self.assertIn('fictional client alias', self.readme)
@@ -55,9 +55,35 @@ class PortfolioTests(unittest.TestCase):
             self.assertIn('../README.md#' + anchor, text)
             self.assertLess(len(text.split()), 100)
 
+    def test_project_headings_are_clear_and_unsuffixed(self):
+        self.assertNotRegex(self.readme, r'(?m)^###\s*0[123]\s*/')
+        for heading in ('SHARDFORGE FARM', 'Velyndra Event Systems', 'Bison Schweiz AG'):
+            self.assertRegex(self.readme, r'(?m)^###\s+.*' + re.escape(heading))
+        for name in ('shardforge', 'velyndra', 'enterprise'):
+            self.assertIn(f'assets/project-{name}.svg', self.readme)
+            self.assertIn(f'assets/project-{name}-mobile.svg', self.readme)
+
+    def test_premium_dark_diagrams_instead_of_white(self):
+        for filename in ('system-dark-v2.svg', 'system-mobile-dark-v2.svg',
+                         'velyndra-architecture-dark-v2.svg', 'velyndra-architecture-mobile-dark-v2.svg'):
+            path=ROOT/'assets'/filename
+            doc=ET.parse(path).getroot()
+            contents=path.read_text()
+            self.assertIn('url(#night)', contents)
+            self.assertIn('prefers-reduced-motion', contents)
+            self.assertNotIn('#FFFFFF', contents)
+            self.assertNotIn('#F5F8FE', contents)
+            self.assertIn('@keyframes trace', contents)
+            self.assertGreater(len(list(doc.iter())), 25)
+
+    def test_activity_shows_real_profile_data_not_fabricated_numbers(self):
+        self.assertIn('profile/activity-dark.svg', self.readme)
+        self.assertIn('GitHub activity', self.readme)
+        self.assertNotIn('10K stars', self.readme)
+
     def test_diagrams_agree_on_authority_and_connection_edges(self):
         required = {'client-api', 'client-gateway', 'gateway-runtime', 'runtime-api', 'api-postgres', 'api-directory'}
-        for filename in ('system.svg', 'system-mobile.svg'):
+        for filename in ('system-dark-v2.svg', 'system-mobile-dark-v2.svg'):
             path = ROOT / 'assets' / filename
             self.assertTrue(path.is_file(), str(path))
             doc = ET.parse(path).getroot()

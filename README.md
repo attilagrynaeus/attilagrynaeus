@@ -21,7 +21,12 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 ## Selected systems · the work behind the stack
 
 <a id="shardforge-farm"></a>
-### 01 / SHARDFORGE FARM — multiplayer systems engineering
+### 🌾 SHARDFORGE FARM — multiplayer world systems
+
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/project-shardforge-mobile.svg" />
+  <img src="assets/project-shardforge.svg" width="100%" alt="ShardForge project signature: server-authoritative multiplayer with one crop, one winner and convergent clients." />
+</picture>
 
 **Cozy pixels. Serious backend.** *Public codename · private source · active development*
 
@@ -30,8 +35,8 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 **Built.** A TypeScript/Node.js world runtime with a separate Java/Spring persistence boundary: authenticated WebSocket routing, explicit world/map/instance identity, binary messages, versioned snapshots and transactional crop/inventory writes. Typed EventBus contracts connect gameplay modules; OpenAPI-generated clients connect services.
 
 <picture>
-  <source media="(max-width: 600px)" srcset="assets/system-mobile.svg" />
-  <img src="assets/system.svg" width="100%" alt="ShardForge runtime architecture. Browser sends WebSocket traffic through an authenticated gateway to a Node.js world shard, and HTTPS requests directly to Spring Boot. Node calls Spring for durable transactions. PostgreSQL stores durable state; Redis supplies the world-routing directory." />
+  <source media="(max-width: 600px)" srcset="assets/system-mobile-dark-v2.svg" />
+  <img src="assets/system-dark-v2.svg" width="100%" alt="ShardForge runtime architecture. Browser sends WebSocket traffic through an authenticated gateway to a Node.js world shard, and HTTPS requests directly to Spring Boot. Node calls Spring for durable transactions. PostgreSQL stores durable state; Redis supplies the world-routing directory." />
 </picture>
 
 **Result.** A competing harvest is resolved at the transaction boundary. Replaying the same accepted command cannot grant another reward. Clients reject stale or wrong-map state rather than letting an old packet rewrite the world.
@@ -45,7 +50,12 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 **The trade-off:** live simulation stays in Node; durable economic changes cross the Spring transaction boundary. Movement does not need a database round trip every frame. PlayBot exercises real input and protocol paths—not inventory edits disguised as tests.
 
 <a id="ai-systems"></a>
-### 02 / Velyndra Event Systems — AI that calls the real business
+### ✦ Velyndra Event Systems — AI/MCP integration
+
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/project-velyndra-mobile.svg" />
+  <img src="assets/project-velyndra.svg" width="100%" alt="Velyndra project signature: trusted agent tools connected to authoritative business data." />
+</picture>
 
 *Delivered client integration · Velyndra is a fictional client alias.*
 
@@ -54,8 +64,8 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 **Built.** I designed and delivered **three read-only MCP tools** for categories, search and event details: typed inputs, validation, controlled API access, localized results and explicit failure paths. The integration was deployed in a Kubernetes-based cloud environment.
 
 <picture>
-  <source media="(max-width: 600px)" srcset="assets/velyndra-architecture-mobile.svg" />
-  <img src="assets/velyndra-architecture.svg" width="100%" alt="AI integration: an assistant calls three read-only MCP tools, which validate input and access the existing business API. Authoritative event data returns through the same boundary. The integration runs in a Kubernetes-based cloud environment." />
+  <source media="(max-width: 600px)" srcset="assets/velyndra-architecture-mobile-dark-v2.svg" />
+  <img src="assets/velyndra-architecture-dark-v2.svg" width="100%" alt="AI integration: an assistant calls three read-only MCP tools, which validate input and access the existing business API. Authoritative event data returns through the same boundary. The integration runs in a Kubernetes-based cloud environment." />
 </picture>
 
 **Result.** An end-to-end connection between the assistant and existing platform data, verified through tool calls and failure-path testing. The model can request information; it cannot grant itself new business permissions.
@@ -63,7 +73,12 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 **The trade-off:** a narrow, read-only tool surface instead of a general-purpose API wrapper. Less room for ambiguous tool calls; a clearer boundary to test and operate.
 
 <a id="enterprise-delivery"></a>
-### 03 / Bison Schweiz AG — cloud pricing & ERP modernization
+### ⚙️ Bison Schweiz AG — cloud pricing & ERP modernization
+
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/project-enterprise-mobile.svg" />
+  <img src="assets/project-enterprise.svg" width="100%" alt="Bison project signature: Java Spring cloud pricing and operable enterprise integrations." />
+</picture>
 
 **Challenge.** Evolve enterprise pricing and integrations while keeping the delivery and operating model maintainable.
 
@@ -86,6 +101,14 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 **Cloud & delivery:** Kubernetes · Docker · Azure · Google Cloud · GitOps · OpenTelemetry · automated testing
 
 **Sun certifications:** Java Programmer (SCJP) · Business Component Developer (SCBCD).
+
+## GitHub activity · real commits, real history
+
+<p align="center">
+  <img src="profile/activity-dark.svg" width="100%" alt="Auto-generated 3D GitHub contribution calendar and activity summary based on public GitHub data." />
+</p>
+
+<sub>Generated from GitHub data. A contribution graph is activity, not a production performance benchmark.</sub>
 
 <a id="contact"></a>
 ## Need someone who can own the hard part?

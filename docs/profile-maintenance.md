@@ -10,10 +10,12 @@ The approved contact is `attila.grynaeus@gmail.com`. Every email CTA must use `m
 
 - `assets/header-animated-v1.svg` and `assets/header-mobile-animated-v1.svg`: restored original cyan/violet animated header; use versioned asset paths to avoid stale GitHub image caches. Motion honors reduced-motion preferences.
 - `assets/header.svg` and `assets/header-mobile.svg`: historical originals, retained for existing links. The README must point to the versioned copies.
-- `assets/system.svg` and `assets/system-mobile.svg`: the same logical multiplayer architecture at desktop and mobile widths. The direct browser-to-Spring path is mandatory on both. PostgreSQL persistence and Redis routing remain separate; the gateway is application infrastructure, not an AWS API Gateway claim.
-- `assets/velyndra-architecture*.svg`: the read-only AI integration and its business-data boundary, shown inline.
-- All six are original, self-contained SVGs with original schematic icons, descriptive titles, explicit viewBoxes, system fonts and no external resources, scripts or embedded fonts.
-- The supplied light architecture reference informs spacing, icon-led cards and hierarchy; it does not establish a deployed AWS topology.
+- `assets/system-dark-v2.svg` and `assets/system-mobile-dark-v2.svg`: new dark indigo/mint responsive architecture, matching the animated hero; old light assets remain for historical links. The same logical multiplayer architecture at desktop and mobile widths. The direct browser-to-Spring path is mandatory on both. PostgreSQL persistence and Redis routing remain separate; the gateway is application infrastructure, not an AWS API Gateway claim.
+- `assets/velyndra-architecture-dark-v2.svg` and `assets/velyndra-architecture-mobile-dark-v2.svg`: the read-only AI integration in the same dark visual language.
+- `assets/project-{shardforge,velyndra,enterprise}{,-mobile}.svg`: three original responsive signature banners. They are presentation, not substitute sources of truth; descriptive Markdown headings remain.
+- `profile/activity-dark.svg`: existing auto-generated, actual GitHub activity art, shown after the project evidence.
+- Original illustrations are self-contained SVGs with original schematic icons, descriptive titles, explicit viewBoxes, system fonts and no external resources, scripts or embedded fonts.
+- The original light reference informs card hierarchy, while the final palette follows the existing animated dark cyan/violet hero and the dark GitHub reference. No AWS deployment is implied.
 - Generated `profile/` graphics and their refresh workflow remain available but are not the main portfolio evidence. Existing unused decorative assets are retained to avoid unrelated deletions.
 
 ## Content and evidence
