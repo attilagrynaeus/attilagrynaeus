@@ -1,84 +1,100 @@
 <div align="center">
   <picture>
     <source media="(max-width: 600px)" srcset="assets/header-mobile.svg" />
-    <img src="assets/header.svg" width="100%" alt="Hi, I'm Attila. Senior software engineer working in Java, Spring, developer tools and multiplayer systems." />
+    <img src="assets/header.svg" width="100%" alt="Attila Grynaeus — Software Architect and hands-on engineer. Java, distributed systems and agentic AI. 27+ years in enterprise software." />
   </picture>
   <p>
-    <a href="#selected-work"><img src="assets/cta-work.svg" width="176" alt="Explore my work" /></a>&nbsp;
-    <a href="mailto:attila@grynaeus.dev"><img src="assets/cta-contact.svg" width="152" alt="Get in touch by email" /></a>
-  </p>
-  <p>
+    <strong><a href="mailto:attila.grynaeus@gmail.com">Let's talk →</a></strong> &nbsp;·&nbsp;
     <a href="https://www.linkedin.com/in/attila-grynaeus">LinkedIn</a> &nbsp;·&nbsp;
-    <a href="https://mindjourneylabs.com">Writing</a> &nbsp;·&nbsp;
+    <a href="#selected-work">Explore the systems</a> &nbsp;·&nbsp;
     <a href="#working-stack">Stack</a>
   </p>
 </div>
 
-I'm a **software architect and hands-on engineer with 27+ years in enterprise software**. Java, Spring and cloud systems are my foundation. Today, much of my work is in **LLM application architecture**: connecting AI agents to business APIs through well-defined, secure tools.
+**Software Architect. Hands-on builder. 27+ years in enterprise software.**
 
-I've built production systems in event technology, retail/ERP, banking and public services. I care about clear contracts, tests, and services that people can actually operate.
+I connect **Java/Spring engineering, distributed systems and LLM application architecture**. My work spans event technology, retail/ERP, banking and public services. I take systems from design through implementation, testing and deployment—not just the slide deck.
+
+**What I bring:** production Java depth, AI integrations grounded in real business APIs, and the persistence to chase a failure across the browser, network and database.
+
+<a id="selected-work"></a>
+## Selected systems · the work behind the stack
+
+<a id="shardforge-farm"></a>
+### 01 / SHARDFORGE FARM — multiplayer systems engineering
+
+**Cozy pixels. Serious backend.** *Public codename · private source · active development*
+
+**Challenge.** Two players harvest the same crop. A connection drops. One command gets retried. The crop, inventory and both players' screens still need to agree.
+
+**Built.** A TypeScript/Node.js world runtime with a separate Java/Spring persistence boundary: authenticated WebSocket routing, explicit world/map/instance identity, binary messages, versioned snapshots and transactional crop/inventory writes. Typed EventBus contracts connect gameplay modules; OpenAPI-generated clients connect services.
+
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/system-mobile.svg" />
+  <img src="assets/system.svg" width="100%" alt="ShardForge runtime architecture. Browser sends WebSocket traffic through an authenticated gateway to a Node.js world shard, and HTTPS requests directly to Spring Boot. Node calls Spring for durable transactions. PostgreSQL stores durable state; Redis supplies the world-routing directory." />
+</picture>
+
+**Result.** A competing harvest is resolved at the transaction boundary. Replaying the same accepted command cannot grant another reward. Clients reject stale or wrong-map state rather than letting an old packet rewrite the world.
+
+| Hard problem | Engineering decision | Player-visible effect |
+| --- | --- | --- |
+| Concurrent actions and retries | Atomic state + inventory commit; replay identity | No second reward from the same harvest |
+| Travel and reconnects | Explicit scope transitions; snapshot/version gates | Old-map updates cannot overwrite the new map |
+| A test that passes for only one player | Real-browser PlayBot actor + passive observer | Check the action **and** what another player sees |
+
+**The trade-off:** live simulation stays in Node; durable economic changes cross the Spring transaction boundary. Movement does not need a database round trip every frame. PlayBot exercises real input and protocol paths—not inventory edits disguised as tests.
+
+<a id="ai-systems"></a>
+### 02 / Velyndra Event Systems — AI that calls the real business
+
+*Delivered client integration · Velyndra is a fictional client alias.*
+
+**Challenge.** Give an AI assistant useful access to an event platform without inventing business records or expanding its permissions.
+
+**Built.** I designed and delivered **three read-only MCP tools** for categories, search and event details: typed inputs, validation, controlled API access, localized results and explicit failure paths. The integration was deployed in a Kubernetes-based cloud environment.
+
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/velyndra-architecture-mobile.svg" />
+  <img src="assets/velyndra-architecture.svg" width="100%" alt="AI integration: an assistant calls three read-only MCP tools, which validate input and access the existing business API. Authoritative event data returns through the same boundary. The integration runs in a Kubernetes-based cloud environment." />
+</picture>
+
+**Result.** An end-to-end connection between the assistant and existing platform data, verified through tool calls and failure-path testing. The model can request information; it cannot grant itself new business permissions.
+
+**The trade-off:** a narrow, read-only tool surface instead of a general-purpose API wrapper. Less room for ambiguous tool calls; a clearer boundary to test and operate.
+
+<a id="enterprise-delivery"></a>
+### 03 / Bison Schweiz AG — cloud pricing & ERP modernization
+
+**Challenge.** Evolve enterprise pricing and integrations while keeping the delivery and operating model maintainable.
+
+**Built.** Spring Boot pricing services on **Azure and Kubernetes**, REST and messaging integrations, plus work on GitOps, automated testing and production observability.
+
+**Result.** Delivered pricing-service and integration work as part of the broader modernization effort, with delivery automation and operational visibility treated as engineering concerns—not cleanup tasks.
+
+<a id="public-code"></a>
+## Code you can actually inspect
+
+**[PrompTee](https://github.com/attilagrynaeus/Promptee)** — Collaborative prompt workspace using React, Supabase and serverless functions. **[UI regression test →](https://github.com/attilagrynaeus/Promptee/blob/main/src/__tests__/PromptCard.deleteConfirm.test.jsx)**
+
+**[AI Test Generator](https://github.com/attilagrynaeus/ai-test-generator)** — Java/Spring proof of concept for generating JUnit scaffolding from API descriptions. **[Input validation code →](https://github.com/attilagrynaeus/ai-test-generator/blob/main/server/src/main/java/com/ag/server/validation/ApiSpecValidator.java)**
+
+<a id="working-stack"></a>
+## Working stack
+
+**Backend & data:** Java 17–25 · Spring Boot · PostgreSQL · REST/OpenAPI · Kafka · Redis · Node.js · TypeScript  
+**AI engineering:** LLM applications · MCP · tool/function calling · AI agents · RAG · secure API integration  
+**Cloud & delivery:** Kubernetes · Docker · Azure · Google Cloud · GitOps · OpenTelemetry · automated testing
 
 **Sun certifications:** Java Programmer (SCJP) · Business Component Developer (SCBCD).
 
-## Selected work
+<a id="contact"></a>
+## Need someone who can own the hard part?
 
-### Velyndra Event Systems — LLM/MCP integration *(anonymized client)*
+Interested in **Staff / Principal Engineer, Software Architect and AI Platform** roles where architecture and hands-on delivery belong together.
 
-I designed and delivered an AI-assisted event discovery integration: **three read-only MCP tools**, typed schemas, controlled API access and Kubernetes deployment. The important work was making tool calls reliable and results traceable to existing business data.
-
-**[Read the engineering case study →](docs/velyndra-mcp-case-study.md)**
-
-<sub>Velyndra Event Systems is a fictional client alias, not a real employer or company reference.</sub>
-
-### SHARDFORGE FARM — a multiplayer systems lab *(private case study)*
-
-**Cozy pixels. Hard-mode distributed systems.** A shared farming world where the real boss fight is keeping every player, crop, and coin in sync.
-
-Under the hood: a **Node.js authoritative world runtime**, **Java/Spring transactions**, **map-scoped multiplayer**, a **Redis-backed world directory**, and **real-browser PlayBot proof**. The tricky stuff—duplicate harvests, stale packets, reconnects, cross-map travel—is handled as an engineering problem, not a UI workaround.
-
-**[Explore the architecture →](docs/shardforge-farm.md)** · Public codename; private source. Actively developed, not presented as a shipped or scaled production game.
-
-### Bison Schweiz AG — cloud pricing and ERP modernization
-
-I built Spring Boot pricing services on **Azure and Kubernetes**, worked on REST and messaging integrations, and helped bring GitOps, automated testing and production observability into the delivery process.
-
-### Public projects
-
-<div align="center">
-  <a href="https://github.com/attilagrynaeus/Promptee"><img src="profile/promptee.svg" width="395" alt="PrompTee GitHub repository card, generated from live repository data" /></a>
-  <a href="https://github.com/attilagrynaeus/ai-test-generator"><img src="profile/ai-test-generator.svg" width="395" alt="AI Test Generator GitHub repository card, generated from live repository data" /></a>
-</div>
-
-**[PrompTee](https://github.com/attilagrynaeus/Promptee)** — A collaborative prompt workspace built with React, Supabase and serverless functions. [Example: UI regression test](https://github.com/attilagrynaeus/Promptee/blob/main/src/__tests__/PromptCard.deleteConfirm.test.jsx).
-
-**[AI Test Generator](https://github.com/attilagrynaeus/ai-test-generator)** — A Java/Spring proof of concept that generates JUnit test scaffolding from API descriptions. [Example: input validator](https://github.com/attilagrynaeus/ai-test-generator/blob/main/server/src/main/java/com/ag/server/validation/ApiSpecValidator.java). This is a demo, not a maintained product.
-
-**[WildFly AI Assist](https://github.com/attilagrynaeus/troubleshoot-ai-assist)** — An experiment using internal documentation to suggest fixes for WildFly application errors.
-
-## Working stack
-
-<div align="center">
-  <img src="profile/stack.svg" width="440" alt="Java, Spring, PostgreSQL, Docker, Kubernetes, TypeScript, React, Python" />
-</div>
-
-**AI and LLM systems:** MCP, ChatGPT Apps, tool/function calling, typed tool schemas, agent workflows, RAG and secure API access. I test tool outcomes and failure cases, not just whether a model produces fluent text.
-
-**Backend and cloud:** Java 17–25, Spring Boot, PostgreSQL, REST/OpenAPI, Kafka, Redis, Node.js, TypeScript, Kubernetes, Docker, Azure, Google Cloud, GitOps and OpenTelemetry.
-
-## GitHub activity
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="profile/activity-dark.svg" />
-  <img src="profile/activity-light.svg" width="100%" alt="3D calendar generated from GitHub's actual contribution history" />
-</picture>
+**[attila.grynaeus@gmail.com](mailto:attila.grynaeus@gmail.com)** · **[LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** · [Writing](https://mindjourneylabs.com)
 
 <details>
-  <summary>Detailed GitHub statistics</summary>
-  <p><img src="profile/stats.svg" width="440" alt="GitHub activity statistics based on API data" /></p>
+  <summary>More experiments &amp; GitHub activity</summary>
+  <p><a href="https://github.com/attilagrynaeus/troubleshoot-ai-assist">WildFly AI Assist</a> explores documentation-backed application troubleshooting. <a href="https://github.com/attilagrynaeus?tab=repositories">Browse public repositories</a> or <a href="https://github.com/attilagrynaeus">view contribution activity</a>.</p>
 </details>
-
-<sub>Generated daily from GitHub data. Private repository names and source remain private.</sub>
-
----
-
-I'm interested in engineering teams building reliable platforms and practical AI-enabled products — beyond prototypes and chatbot demos. **[Connect on LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** or **[send me an email](mailto:attila@grynaeus.dev)**.

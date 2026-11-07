@@ -1,4 +1,5 @@
 """Validate local README references and SVGs using only the Python standard library."""
+from html import unescape
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -10,9 +11,11 @@ class References(HTMLParser):
     def __init__(self):
         super().__init__()
         self.urls = []
+        self.anchors = set()
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        self.anchors.update(attrs[key] for key in ('id', 'name') if attrs.get(key))
         if tag == 'img' and not attrs.get('alt', '').strip():
             raise ValueError('Image is missing descriptive alt text')
         for key in ('href', 'src'):
@@ -20,6 +23,21 @@ class References(HTMLParser):
                 self.urls.append(attrs[key])
         if attrs.get('srcset'):
             self.urls.extend(part.strip().split()[0] for part in attrs['srcset'].split(','))
+
+
+def markdown_anchors(text: str) -> set[str]:
+    """Collect explicit HTML anchors and ordinary GitHub-style heading slugs."""
+    parser = References()
+    parser.feed(text)
+    anchors = set(parser.anchors)
+    counts: dict[str, int] = {}
+    for heading in re.findall(r'^#{1,6}\s+(.+?)\s*#*$', text, re.M):
+        heading = re.sub(r'<[^>]+>', '', unescape(heading)).strip().lower()
+        slug = re.sub(r'[^\w\- ]', '', heading).replace(' ', '-')
+        count = counts.get(slug, 0)
+        anchors.add(slug if count == 0 else f'{slug}-{count}')
+        counts[slug] = count + 1
+    return anchors
 
 
 def validate(root: Path) -> int:
@@ -30,6 +48,8 @@ def validate(root: Path) -> int:
         text = document.read_text(encoding='utf-8')
         if re.search(r'github\.com/attilagrynaeus/farm(?:[/\s)#"?]|$)', text):
             raise ValueError(f'Private source link in {document.name}')
+        if re.search(r'!\[\s*\]\(', text):
+            raise ValueError(f'Image is missing descriptive alt text: {document.name}')
         parser = References()
         parser.feed(text)
         urls = parser.urls + re.findall(r'\[[^\]]*\]\(([^\s)]+)\)', text)
@@ -38,16 +58,20 @@ def validate(root: Path) -> int:
             if parts.scheme:
                 if parts.scheme not in ('https', 'mailto'):
                     raise ValueError(f'Unsafe link scheme: {parts.scheme}')
+                if parts.scheme == 'mailto' and not re.fullmatch(r"[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+", unquote(parts.path)):
+                    raise ValueError(f'Invalid email target: {url}')
                 continue
             if parts.netloc:
                 raise ValueError('Use explicit HTTPS for external links')
-            if not parts.path:
-                continue
-            path = (document.parent / unquote(parts.path)).resolve()
+            path = (document.parent / unquote(parts.path)).resolve() if parts.path else document
             if not path.is_relative_to(root):
                 raise ValueError(f'Reference outside repository: {url}')
             if not path.is_file():
                 raise ValueError(f'Missing local reference: {url}')
+            if parts.fragment and path.suffix == '.md':
+                anchors = markdown_anchors(path.read_text(encoding='utf-8'))
+                if unquote(parts.fragment) not in anchors:
+                    raise ValueError(f'Missing local anchor: {url}')
             if path.suffix == '.svg':
                 assets.add(path)
     for path in assets:
@@ -62,6 +86,12 @@ def validate(root: Path) -> int:
             raise ValueError(f'Invalid SVG: {path.name}') from error
         if svg.tag != '{http://www.w3.org/2000/svg}svg' or not svg.get('viewBox'):
             raise ValueError(f'Invalid SVG root/viewBox: {path.name}')
+        for element in svg.iter():
+            for key, value in element.attrib.items():
+                if key.rsplit('}', 1)[-1] in ('href', 'src') and not value.startswith('#'):
+                    raise ValueError(f'Unsafe external SVG resource: {path.name}')
+        if re.search(r'url\(\s*[\"\']?(?!#)[a-z]+:', data, re.I):
+            raise ValueError(f'Unsafe external SVG resource: {path.name}')
         if 'Something went wrong' in data:
             raise ValueError(f'Upstream error card: {path.name}')
     return len(assets)

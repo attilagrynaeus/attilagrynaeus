@@ -32,6 +32,6 @@ jobs:
         with:
           persist-credentials: false
       - name: Run profile regression tests
-        run: python3 -m unittest discover -s tests -p test_profile.py
+        run: python3 -m unittest discover -s tests -p 'test_*.py'
       - name: Validate README links and SVGs
         run: python3 tools/validate_profile.py
