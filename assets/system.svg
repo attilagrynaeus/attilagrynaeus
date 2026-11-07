@@ -1,52 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300" role="img" aria-labelledby="title desc">
-  <title id="title">R.A.M. FARM: one shared world, explicit ownership</title>
-  <desc id="desc">Browser clients send player intent to a Node.js world runtime. Java and Spring own durable transactions in PostgreSQL. Confirmed, versioned state returns to the players. Simplified architecture, not a gameplay screenshot.</desc>
-  <defs>
-    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#263341"/></pattern>
-    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="none" stroke="#7b9dbc" stroke-width="1.2"/></marker>
-  </defs>
-  <style>
-    text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}
-    .label{font:11px ui-monospace,Consolas,monospace;fill:#91a3b6;letter-spacing:.7px}
-    .name{font-size:19px;font-weight:600;fill:#e6edf3}
-    .detail{font-size:13px;fill:#9baec0}
-    .pulse{stroke-dasharray:5 125;animation:flow 6s linear infinite}
-    @keyframes flow{to{stroke-dashoffset:-130}}
-    @media(prefers-reduced-motion:reduce){.pulse{animation:none;stroke-dasharray:none;opacity:.25}}
-  </style>
-  <rect x=".5" y=".5" width="899" height="299" rx="12" fill="#0d1117" stroke="#30363d"/>
-  <rect x="1" y="1" width="898" height="298" rx="12" fill="url(#grid)"/>
-  <text x="28" y="33" class="label">R.A.M. FARM / SYSTEM BOUNDARIES</text>
-  <text x="872" y="33" class="label" text-anchor="end">PRIVATE PROJECT · IN DEVELOPMENT</text>
-  <path d="M28 52H872" stroke="#263341"/>
-  <g fill="#141d27" stroke="#34475c">
-    <rect x="28" y="104" width="170" height="100" rx="7"/>
-    <rect x="254" y="104" width="180" height="100" rx="7"/>
-    <rect x="490" y="104" width="180" height="100" rx="7"/>
-    <rect x="726" y="104" width="146" height="100" rx="7"/>
-  </g>
-  <g stroke="#7b9dbc" fill="none" stroke-width="1.3" marker-end="url(#arrow)">
-    <path d="M200 150H250"/><path d="M436 150H486"/><path d="M672 150H722"/>
-    <path d="M344 206V250H113V206"/>
-  </g>
-  <path class="pulse" d="M200 150H250M436 150H486M672 150H722" stroke="#98d9cf" fill="none" stroke-width="2"/>
-  <text x="113" y="86" class="label" text-anchor="middle">PRESENTATION</text>
-  <text x="344" y="86" class="label" text-anchor="middle">LIVE GAMEPLAY</text>
-  <text x="580" y="86" class="label" text-anchor="middle">DURABLE STATE</text>
-  <text x="799" y="86" class="label" text-anchor="middle">STORAGE</text>
-  <text x="48" y="137" class="name">Browser clients</text>
-  <text x="48" y="165" class="detail">Input · UI · rendering</text>
-  <text x="48" y="186" class="detail">Send intent, not truth</text>
-  <text x="274" y="137" class="name">Node.js</text>
-  <text x="274" y="165" class="detail">World simulation</text>
-  <text x="274" y="186" class="detail">Scope · command checks</text>
-  <text x="510" y="137" class="name">Java / Spring</text>
-  <text x="510" y="165" class="detail">Inventory · ownership</text>
-  <text x="510" y="186" class="detail">Atomic transactions</text>
-  <text x="744" y="137" class="name">PostgreSQL</text>
-  <text x="744" y="165" class="detail">Persisted facts</text>
-  <text x="744" y="186" class="detail">Replay protection</text>
-  
-  <text x="331" y="274" class="label" text-anchor="middle">CONFIRMED STATE / MONOTONIC VERSIONS</text>
-  <text x="872" y="278" class="label" text-anchor="end">Simplified architecture</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="462" viewBox="0 0 1100 462" role="img" aria-labelledby="title desc">
+<title id="title">ShardForge Farm - multiplayer authority map</title>
+<desc id="desc">Browser and Portal send HTTPS directly to Spring and authenticated WebSocket traffic to a gateway, then a Node world runtime. Node calls Spring for durable gameplay transactions. Spring uses PostgreSQL for persistence and a Redis-backed directory for world routing.</desc>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B1025"/><stop offset="1" stop-color="#201638"/></linearGradient>
+<linearGradient id="client" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#263B78"/><stop offset="1" stop-color="#1B2B50"/></linearGradient>
+<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#666A93" opacity=".25"/></pattern>
+<marker id="arrow" markerWidth="8" markerHeight="8" refX="6.4" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="none" stroke="#97ABD5" stroke-width="1.6"/></marker>
+</defs>
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}
+.tag{font:700 13px ui-monospace,Consolas,monospace;letter-spacing:1.2px;fill:#8CE8CD}
+.name{font-size:23px;font-weight:700;fill:#F6F9FF}
+.detail{font-size:15px;fill:#BCCDE2}
+.micro{font:12px ui-monospace,Consolas,monospace;fill:#A1B7D5}
+.edge{fill:none;stroke:#97ABD5;stroke-width:2;marker-end:url(#arrow)}
+</style>
+<rect x="1" y="1" width="1098" height="460" rx="20" fill="url(#bg)" stroke="#3E4B75" stroke-width="2"/>
+<rect x="2" y="2" width="1096" height="458" rx="19" fill="url(#grid)"/>
+<text x="34" y="37" class="tag">SHARDFORGE // AUTHORITY MAP</text>
+<text x="1066" y="37" class="micro" text-anchor="end">LOGICAL VIEW · PRIVATE CODEBASE</text>
+<path d="M34 51H1066" stroke="#394363"/>
+<rect x="313" y="76" width="474" height="93" rx="14" fill="url(#client)" stroke="#6997F4" stroke-width="2"/>
+<text x="335" y="104" class="tag">PRESENTATION / INTENT</text>
+<text x="335" y="137" class="name" style="font-size:28px">Browser · Game · Portal</text>
+<text x="335" y="158" class="detail">Player intent in · confirmed state out</text>
+<path d="M415 169V213H188V234" class="edge"/>
+<path d="M690 169V213H911V234" class="edge"/>
+<text x="254" y="205" class="micro">WebSocket</text>
+<text x="808" y="205" class="micro">HTTPS</text>
+<rect x="32" y="238" width="305" height="111" rx="14" fill="#19223F" stroke="#5E7FB6" stroke-width="1.7"/>
+<rect x="397" y="238" width="305" height="111" rx="14" fill="#133239" stroke="#64D6B6" stroke-width="1.7"/>
+<rect x="762" y="238" width="305" height="111" rx="14" fill="#2B223C" stroke="#B08BE5" stroke-width="1.7"/>
+<text x="54" y="267" class="tag">INGRESS</text>
+<text x="54" y="302" class="name">WebSocket gateway</text>
+<text x="54" y="328" class="detail">Token validation · world routing</text>
+<text x="419" y="267" class="tag">REAL-TIME AUTHORITY</text>
+<text x="419" y="302" class="name">Node.js world shard</text>
+<text x="419" y="328" class="detail">Simulation · scoped game rules</text>
+<text x="784" y="267" class="tag">DURABLE AUTHORITY</text>
+<text x="784" y="302" class="name">Spring Boot API</text>
+<text x="784" y="328" class="detail">Economy · ownership · contracts</text>
+<path d="M337 293H393" class="edge"/>
+<path d="M702 293H758" class="edge"/>
+<text x="730" y="281" class="micro" text-anchor="middle">API</text>
+<path d="M851 349V372H827V389" class="edge"/>
+<path d="M972 349V372H996V389" class="edge"/>
+<rect x="709" y="393" width="222" height="52" rx="10" fill="#30291F" stroke="#ECAC5D" stroke-width="1.5"/>
+<rect x="948" y="393" width="119" height="52" rx="10" fill="#24263E" stroke="#A0ADE4" stroke-width="1.5"/>
+<text x="727" y="415" class="name" style="font-size:19px">PostgreSQL</text>
+<text x="727" y="434" class="micro">Durable facts</text>
+<text x="966" y="415" class="name" style="font-size:19px">Redis</text>
+<text x="966" y="434" class="micro">Directory</text>
+<text x="33" y="410" class="tag">NO GHOST STATE</text>
+<text x="33" y="435" class="detail">Scoped. Versioned. Replay-safe.</text>
 </svg>

@@ -30,13 +30,13 @@ I designed and delivered an AI-assisted event discovery integration: **three rea
 
 <sub>Velyndra Event Systems is a fictional client alias, not a real employer or company reference.</sub>
 
-### R.A.M. FARM — multiplayer farming world
+### SHARDFORGE FARM — a multiplayer systems lab *(private case study)*
 
-I'm building a multiplayer farming game. The difficult part isn't growing a crop on screen; it's making sure two players can't harvest the same crop twice, and that an old update cannot undo a newer one after reconnecting.
+**Cozy pixels. Hard-mode distributed systems.** A shared farming world where the real boss fight is keeping every player, crop, and coin in sync.
 
-The game uses server-owned gameplay state, transactional persistence and browser-driven gameplay tests. It's an engineering project as much as a game.
+Under the hood: a **Node.js authoritative world runtime**, **Java/Spring transactions**, **map-scoped multiplayer**, a **Redis-backed world directory**, and **real-browser PlayBot proof**. The tricky stuff—duplicate harvests, stale packets, reconnects, cross-map travel—is handled as an engineering problem, not a UI workaround.
 
-**[Read the technical notes](docs/ram-farm.md)** · Private project, in development. No private source or gameplay screenshots are published here.
+**[Explore the architecture →](docs/shardforge-farm.md)** · Public codename; private source. Actively developed, not presented as a shipped or scaled production game.
 
 ### Bison Schweiz AG — cloud pricing and ERP modernization
 

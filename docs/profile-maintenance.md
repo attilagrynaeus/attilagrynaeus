@@ -1,6 +1,6 @@
 # Profile maintenance
 
-The profile is a native GitHub README, not a separately hosted application.
+The profile is a native GitHub README, not a separately hosted application. SHARDFORGE FARM is a public engineering codename; the original game source remains private.
 
 ## Editing
 
@@ -8,7 +8,7 @@ The profile is a native GitHub README, not a separately hosted application.
 - `assets/header*.svg`: original responsive hero panels with restrained animated cyan/violet filaments. No embedded fonts or JavaScript; motion respects reduced-motion settings.
 - `assets/cta-*.svg`: small visual labels wrapped by real README links; the SVGs themselves contain no interactive controls.
 - `assets/system*.svg`: original simplified system diagram used only by the engineering notes. It is not a screenshot or performance claim.
-- `docs/ram-farm.md`: public architectural overview only. Keep private source, internal endpoints, customer information and production assets out.
+- `docs/shardforge-farm.md`: public architectural overview only. Keep private source, internal endpoints, customer information and production assets out.
 - `config/profile-3d.json`: the two contribution-calendar palettes. The calendar is intentionally static to avoid competing with the animated header.
 
 Run from the repository root:

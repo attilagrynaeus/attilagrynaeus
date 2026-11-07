@@ -1,3 +1,4 @@
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -80,7 +81,7 @@ class PositioningRegressionTests(unittest.TestCase):
     def test_case_study_is_linked_from_featured_work(self):
         root = Path(__file__).resolve().parents[1]
         readme = (root / 'README.md').read_text(encoding='utf-8')
-        client_section = readme.split('### Velyndra', 1)[1].split('### R.A.M.', 1)[0]
+        client_section = readme.split('### Velyndra', 1)[1].split('### SHARDFORGE FARM', 1)[0]
         self.assertIn('docs/velyndra-mcp-case-study.md', client_section)
         self.assertEqual(readme.count('(docs/velyndra-mcp-case-study.md)'), 1)
 
@@ -107,6 +108,30 @@ class PositioningRegressionTests(unittest.TestCase):
             self.assertNotIn(forbidden, path.name.lower())
         for path in (root / 'assets').glob('*.svg'):
             self.assertNotIn(forbidden, path.name.lower())
+
+    def test_game_case_study_is_linked_and_responsive(self):
+        root = Path(__file__).resolve().parents[1]
+        readme = (root / 'README.md').read_text(encoding='utf-8')
+        study = (root / 'docs/shardforge-farm.md').read_text(encoding='utf-8')
+        self.assertEqual(readme.count('(docs/shardforge-farm.md)'), 1)
+        self.assertIn('SHARDFORGE FARM', readme)
+        self.assertIn('system.svg', study)
+        self.assertIn('system-mobile.svg', study)
+        self.assertIn('private', study.lower())
+        for name in ('system.svg', 'system-mobile.svg'):
+            self.assertTrue((root / 'assets' / name).is_file())
+
+    def test_retired_game_brand_absent_from_public_tree(self):
+        root = Path(__file__).resolve().parents[1]
+        pattern = re.compile(r'\br\.?\s*a\.?\s*m\.?[\s_-]*farm\b', re.I)
+        for file_path in root.rglob('*'):
+            if not file_path.is_file() or '.git' in file_path.parts:
+                continue
+            if file_path.suffix.lower() not in {'.md', '.svg', '.py', '.yml', '.yaml', '.json'}:
+                continue
+            relative_path = file_path.relative_to(root)
+            self.assertIsNone(pattern.search(str(relative_path)), str(relative_path))
+            self.assertIsNone(pattern.search(file_path.read_text(encoding='utf-8')), str(relative_path))
 
 if __name__ == '__main__':
     unittest.main()
