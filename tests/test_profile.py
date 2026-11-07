@@ -172,7 +172,7 @@ class PositioningRegressionTests(unittest.TestCase):
             self.assertIsNone(pattern.search(file_path.read_text(encoding='utf-8')), str(relative_path))
 
     def test_repository_documents_and_assets_validate(self):
-        self.assertEqual(validate(Path(__file__).resolve().parents[1]), 13)
+        self.assertEqual(validate(Path(__file__).resolve().parents[1]), 16)
 
 if __name__ == '__main__':
     unittest.main()

@@ -78,6 +78,8 @@ class PortfolioTests(unittest.TestCase):
 
     def test_activity_shows_real_profile_data_not_fabricated_numbers(self):
         self.assertIn('profile/activity-dark.svg', self.readme)
+        self.assertIn('profile/stats.svg', self.readme)
+        self.assertLess(self.readme.index('## Working stack'), self.readme.index('## GitHub activity'))
         self.assertIn('GitHub activity', self.readme)
         self.assertNotIn('10K stars', self.readme)
 

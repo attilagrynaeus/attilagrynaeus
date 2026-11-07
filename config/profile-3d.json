@@ -1,14 +1,23 @@
 [
   {
-    "type": "normal",
+    "type": "rainbow",
     "fileName": "activity-dark.svg",
-    "backgroundColor": "#0d1117",
-    "foregroundColor": "#e6edf3",
-    "strongColor": "#91b7ed",
-    "weakColor": "#8b9bad",
-    "radarColor": "#5b91b8",
-    "growingAnimation": false,
-    "contribColors": ["#17212b", "#284968", "#3f7197", "#659db5", "#9acfc9"]
+    "backgroundColor": "#0B0E1C",
+    "foregroundColor": "#F6F7FF",
+    "strongColor": "#FFD166",
+    "weakColor": "#9CB0C9",
+    "radarColor": "#F2B64B",
+    "growingAnimation": true,
+    "saturation": "72%",
+    "contribLightness": [
+      "18%",
+      "28%",
+      "36%",
+      "44%",
+      "53%"
+    ],
+    "duration": "12s",
+    "hueRatio": -7
   },
   {
     "type": "normal",
@@ -19,6 +28,12 @@
     "weakColor": "#65778a",
     "radarColor": "#5b91b8",
     "growingAnimation": false,
-    "contribColors": ["#e9eff4", "#bbd6e4", "#84b4cb", "#4c8fac", "#2c657f"]
+    "contribColors": [
+      "#e9eff4",
+      "#bbd6e4",
+      "#84b4cb",
+      "#4c8fac",
+      "#2c657f"
+    ]
   }
 ]

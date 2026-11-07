@@ -96,16 +96,22 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 <a id="working-stack"></a>
 ## Working stack
 
-**Backend & data:** Java 17–25 · Spring Boot · PostgreSQL · REST/OpenAPI · Kafka · Redis · Node.js · TypeScript  
-**AI engineering:** LLM applications · MCP · tool/function calling · AI agents · RAG · secure API integration  
-**Cloud & delivery:** Kubernetes · Docker · Azure · Google Cloud · GitOps · OpenTelemetry · automated testing
+<picture>
+  <source media="(max-width: 600px)" srcset="assets/stack-icons-mobile-v1.svg" />
+  <img src="assets/stack-icons-v1.svg" width="100%" alt="Java, Spring Boot, TypeScript, Node.js, PostgreSQL, Redis, Kafka, Docker, Kubernetes, AWS, Azure, Google Cloud, GitLab CI, Grafana, GitHub Actions, UC4 / Automic." />
+</picture>
+
+**Core:** Java/Spring · Node.js/TypeScript · PostgreSQL/Redis · Kafka · OpenAPI  
+**AI:** MCP · agentic AI · secure tools and APIs  
+**Cloud & operations:** Kubernetes/Docker · Azure/GCP · AWS (target architecture) · GitOps · Grafana · **UC4 / Automic** (workload automation)
 
 **Sun certifications:** Java Programmer (SCJP) · Business Component Developer (SCBCD).
 
 ## GitHub activity · real commits, real history
 
 <p align="center">
-  <img src="profile/activity-dark.svg" width="100%" alt="Auto-generated 3D GitHub contribution calendar and activity summary based on public GitHub data." />
+  <img src="profile/activity-dark.svg" width="100%" alt="Rainbow 3D GitHub contribution graph generated from real GitHub data." />
+  <img src="profile/stats.svg" width="440" alt="GitHub statistics generated from the account activity API." />
 </p>
 
 <sub>Generated from GitHub data. A contribution graph is activity, not a production performance benchmark.</sub>
