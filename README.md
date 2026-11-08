@@ -50,14 +50,14 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 **The trade-off:** live simulation stays in Node; durable economic changes cross the Spring transaction boundary. Movement does not need a database round trip every frame. PlayBot exercises real input and protocol paths—not inventory edits disguised as tests.
 
 <a id="ai-systems"></a>
-### ✦ Velyndra Event Systems — AI/MCP integration
+### ✦ Eventfrog — ChatGPT AI/MCP integration
 
 <picture>
   <source media="(max-width: 600px)" srcset="assets/project-velyndra-mobile.svg" />
-  <img src="assets/project-velyndra.svg" width="100%" alt="Velyndra project signature: trusted agent tools connected to authoritative business data." />
+  <img src="assets/project-velyndra.svg" width="100%" alt="Eventfrog integration signature: trusted agent tools connected to authoritative business data." />
 </picture>
 
-*Delivered client integration · Velyndra is a fictional client alias.*
+*Publicly released integration · [Eventfrog product announcement](https://eventfrog.ch/en/about-us/product-updates.html) (August 2026).*
 
 **Challenge.** Give an AI assistant useful access to an event platform without inventing business records or expanding its permissions.
 
