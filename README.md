@@ -130,6 +130,22 @@ Contributed to Spring Boot pricing services, enterprise REST and messaging integ
 
 ---
 
+<a id="real-time-concurrency"></a>
+## Real-Time Concurrency Demo
+
+**Two players. One shared crop. One durable reward.** This animated real-time system illustration shows how competing WebSocket actions reach a Node.js world shard, while Spring Boot and PostgreSQL enforce a single transactional outcome. Redis supports world-routing coordination.
+
+<picture>
+  <source media="(max-width: 700px)" srcset="assets/realtime-simulation-mobile.svg" />
+  <img src="assets/realtime-simulation.svg" width="100%" alt="Animated real-time multiplayer architecture: two browser players submit competing harvest commands, Node.js handles real-time gameplay, Spring Boot enforces a single reward, PostgreSQL persists the transaction, and Redis provides a world directory." />
+</picture>
+
+<sub>Looped technical illustration of the system design, not a live production dashboard or a concurrency benchmark.</sub>
+
+**The engineering principle:** keep simulation responsive, make durable rewards replay-safe, and converge both clients on the same authoritative state.
+
+---
+
 <a id="contact"></a>
 ## Available for serious independent engineering work
 
