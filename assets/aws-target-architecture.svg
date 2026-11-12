@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1140" viewBox="0 0 1440 1140" role="img" aria-labelledby="archTitle archDesc">
+<title id="archTitle">RAM FARM: AWS target deployment architecture</title><desc id="archDesc">Conceptual AWS deployment topology, not a live production deployment. A player browser receives static assets from CloudFront and S3, calls Spring Boot through CloudFront and an API load balancer, and uses WebSockets via a second load balancer and an authenticated gateway to a private Node.js world shard. Node calls Spring Boot for durable transactions. Spring uses PostgreSQL; Redis is the world-routing directory. A separate single-host EC2 test stack has been validated.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0B1220"/><stop offset="1" stop-color="#14253A"/></linearGradient><pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".7" fill="#87A4C6" opacity=".16"/></pattern><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#91A8C9" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="1440" height="1140" rx="22" fill="url(#bg)"/><rect width="1440" height="1140" rx="22" fill="url(#dots)"/><rect x="1" y="1" width="1438" height="1138" rx="21" fill="none" stroke="#415C7A" stroke-opacity=".60" stroke-width="2"/>
+<text x="54" y="48" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="14" font-weight="770" fill="#56D5BF" letter-spacing="2">RAM FARM  /  ENGINEERING CASE STUDY</text>
+<text x="54" y="98" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="43" font-weight="770" fill="#F0F5FF" letter-spacing="-1.2">AWS target architecture</text>
+<text x="54" y="132" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="19" font-weight="480" fill="#A3B5D2" >Deployment reference: runtime ownership, ingress and durable state</text>
+<rect x="1076" y="47" width="308" height="38" rx="19" fill="#29243A" stroke="#B29BFF" stroke-opacity=".6"/>
+<text x="1230" y="71" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="14" font-weight="750" fill="#B29BFF" text-anchor="middle" letter-spacing=".35">TARGET DESIGN · NOT LIVE</text>
+<path d="M720 276 V317" fill="none" stroke="#7691B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"  />
+<path d="M261 317 H1177" fill="none" stroke="#7691B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"  />
+<path d="M261 317 V356" fill="none" stroke="#7691B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arrow)"/>
+<path d="M719 317 V356" fill="none" stroke="#7691B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arrow)"/>
+<path d="M1177 317 V356" fill="none" stroke="#7691B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arrow)"/>
+<path d="M719 488 V597" fill="none" stroke="#7691B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arrow)"/>
+<path d="M1177 488 V597" fill="none" stroke="#7691B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arrow)"/>
+<path d="M719 738 V852" fill="none" stroke="#7691B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arrow)"/>
+<path d="M1177 738 V852" fill="none" stroke="#7691B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"  marker-end="url(#arrow)"/>
+<path d="M970 921 H943 V670 H927" fill="none" stroke="#56D5BF" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 9" marker-end="url(#arrow)"/>
+<path d="M1177 993 V1024 H261 V993" fill="none" stroke="#7691B8" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="6 9" marker-end="url(#arrow)"/>
+<text x="54" y="335" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#A3B5D2" letter-spacing="1.5">EDGE / CLIENT ROUTES</text>
+<text x="54" y="575" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#A3B5D2" letter-spacing="1.5">PRIVATE COMPUTE / ECS FARGATE TARGET</text>
+<text x="54" y="830" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#A3B5D2" letter-spacing="1.5">STATE / ROUTING / SIMULATION</text>
+<text x="744" y="548" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="14" font-weight="650" fill="#79B8FF" >HTTPS API</text>
+<text x="1202" y="548" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="14" font-weight="650" fill="#79B8FF" >WSS</text>
+<text x="744" y="802" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="650" fill="#56D5BF" >TRANSACTIONS</text>
+<text x="1202" y="801" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="650" fill="#79B8FF" >OWNER SHARD</text>
+<text x="1052" y="1017" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="12" font-weight="550" fill="#A3B5D2" >WORLD DIRECTORY</text>
+<g><rect x="532" y="163" width="376" height="113" rx="16" fill="#121F32" stroke="#79B8FF" stroke-opacity=".70" stroke-width="1.5"/><rect x="532" y="183" width="4" height="73" rx="2" fill="#79B8FF"/>
+<text x="558" y="193" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#79B8FF" letter-spacing="1.35">CLIENT</text>
+<text x="558" y="229" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="27" font-weight="730" fill="#F0F5FF" >Player / Browser</text>
+<text x="558" y="257" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="470" fill="#A3B5D2" >Game and portal</text>
+<text x="558" y="279" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="420" fill="#A3B5D2" >HTTPS + authenticated WebSocket</text>
+</g>
+<g><rect x="54" y="356" width="414" height="132" rx="16" fill="#121F32" stroke="#B29BFF" stroke-opacity=".70" stroke-width="1.5"/><rect x="54" y="376" width="4" height="92" rx="2" fill="#B29BFF"/>
+<text x="80" y="386" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#B29BFF" letter-spacing="1.35">STATIC DELIVERY</text>
+<text x="80" y="422" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="27" font-weight="730" fill="#F0F5FF" >CloudFront + S3</text>
+<text x="80" y="450" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="470" fill="#A3B5D2" >Game and portal assets</text>
+<text x="80" y="472" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="420" fill="#A3B5D2" >Cacheable static origin</text>
+</g>
+<g><rect x="512" y="356" width="414" height="132" rx="16" fill="#121F32" stroke="#79B8FF" stroke-opacity=".70" stroke-width="1.5"/><rect x="512" y="376" width="4" height="92" rx="2" fill="#79B8FF"/>
+<text x="538" y="386" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#79B8FF" letter-spacing="1.35">API INGRESS</text>
+<text x="538" y="422" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="27" font-weight="730" fill="#F0F5FF" >CloudFront / API ALB</text>
+<text x="538" y="450" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="470" fill="#A3B5D2" >HTTPS routes to Spring Boot</text>
+<text x="538" y="472" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="420" fill="#A3B5D2" >Application requests</text>
+</g>
+<g><rect x="970" y="356" width="414" height="132" rx="16" fill="#121F32" stroke="#79B8FF" stroke-opacity=".70" stroke-width="1.5"/><rect x="970" y="376" width="4" height="92" rx="2" fill="#79B8FF"/>
+<text x="996" y="386" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#79B8FF" letter-spacing="1.35">REAL-TIME INGRESS</text>
+<text x="996" y="422" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="27" font-weight="730" fill="#F0F5FF" >WebSocket ALB</text>
+<text x="996" y="450" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="470" fill="#A3B5D2" >WSS connections</text>
+<text x="996" y="472" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="420" fill="#A3B5D2" >Gateway admission</text>
+</g>
+<g><rect x="512" y="597" width="414" height="141" rx="16" fill="#121F32" stroke="#56D5BF" stroke-opacity=".70" stroke-width="1.5"/><rect x="512" y="617" width="4" height="101" rx="2" fill="#56D5BF"/>
+<text x="538" y="627" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#56D5BF" letter-spacing="1.35">DURABLE AUTHORITY</text>
+<text x="538" y="663" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="27" font-weight="730" fill="#F0F5FF" >Spring Boot API</text>
+<text x="538" y="691" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="470" fill="#A3B5D2" >Auth, economy, inventory</text>
+<text x="538" y="713" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="420" fill="#A3B5D2" >Atomic state and inventory writes</text>
+</g>
+<g><rect x="970" y="597" width="414" height="141" rx="16" fill="#121F32" stroke="#79B8FF" stroke-opacity=".70" stroke-width="1.5"/><rect x="970" y="617" width="4" height="101" rx="2" fill="#79B8FF"/>
+<text x="996" y="627" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#79B8FF" letter-spacing="1.35">AUTHENTICATED ROUTING</text>
+<text x="996" y="663" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="27" font-weight="730" fill="#F0F5FF" >WebSocket Gateway</text>
+<text x="996" y="691" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="470" fill="#A3B5D2" >Validate and route connections</text>
+<text x="996" y="713" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="420" fill="#A3B5D2" >World and shard identity checks</text>
+</g>
+<g><rect x="54" y="852" width="414" height="141" rx="16" fill="#121F32" stroke="#FFC77C" stroke-opacity=".70" stroke-width="1.5"/><rect x="54" y="872" width="4" height="101" rx="2" fill="#FFC77C"/>
+<text x="80" y="882" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#FFC77C" letter-spacing="1.35">ROUTING DATA</text>
+<text x="80" y="918" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="27" font-weight="730" fill="#F0F5FF" >Redis</text>
+<text x="80" y="946" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="470" fill="#A3B5D2" >World directory</text>
+<text x="80" y="968" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="420" fill="#A3B5D2" >Shard assignment coordination</text>
+</g>
+<g><rect x="512" y="852" width="414" height="141" rx="16" fill="#121F32" stroke="#FFC77C" stroke-opacity=".70" stroke-width="1.5"/><rect x="512" y="872" width="4" height="101" rx="2" fill="#FFC77C"/>
+<text x="538" y="882" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#FFC77C" letter-spacing="1.35">DURABLE STORAGE</text>
+<text x="538" y="918" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="27" font-weight="730" fill="#F0F5FF" >PostgreSQL</text>
+<text x="538" y="946" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="470" fill="#A3B5D2" >Transactional game state</text>
+<text x="538" y="968" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="420" fill="#A3B5D2" >Persistent accounts and inventory</text>
+</g>
+<g><rect x="970" y="852" width="414" height="141" rx="16" fill="#121F32" stroke="#56D5BF" stroke-opacity=".70" stroke-width="1.5"/><rect x="970" y="872" width="4" height="101" rx="2" fill="#56D5BF"/>
+<text x="996" y="882" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="750" fill="#56D5BF" letter-spacing="1.35">GAMEPLAY AUTHORITY</text>
+<text x="996" y="918" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="27" font-weight="730" fill="#F0F5FF" >Node.js world shard</text>
+<text x="996" y="946" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="470" fill="#A3B5D2" >Live simulation and events</text>
+<text x="996" y="968" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="420" fill="#A3B5D2" >Scoped, versioned world state</text>
+</g>
+<path d="M54 1053 H1384" stroke="#3C526D" stroke-width="1"/>
+<text x="54" y="1081" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="16" font-weight="600" fill="#F0F5FF" >Validated separately: EC2 single-host test environment.</text>
+<text x="54" y="1107" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="450" fill="#A3B5D2" >Fargate, ALBs and managed production deployment shown here are a reference design, not a live deployment.</text>
+</svg>
