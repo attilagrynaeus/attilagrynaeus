@@ -1,34 +1,48 @@
 <div align="center">
   <picture>
     <source media="(max-width: 600px)" srcset="assets/header-mobile-animated-v1.svg" />
-    <img src="assets/header-animated-v1.svg" width="100%" alt="Attila Grynaeus — Software Architect and hands-on engineer. Java, distributed systems and agentic AI. 27+ years in enterprise software." />
+    <img src="assets/header-animated-v1.svg" width="100%" alt="Attila Grynaeus, independent Software Architect and hands-on Java engineer. Available for fully remote contracts." />
   </picture>
+  <p><strong>AVAILABLE FOR FULLY REMOTE CONTRACTS AND SENIOR ENGINEERING ROLES</strong></p>
   <p>
-    <strong><a href="mailto:attila.grynaeus@gmail.com">Let's talk →</a></strong> &nbsp;·&nbsp;
+    <strong><a href="mailto:attila.grynaeus@gmail.com?subject=Remote%20engineering%20project">Discuss a project</a></strong> &nbsp;·&nbsp;
     <a href="https://www.linkedin.com/in/attila-grynaeus">LinkedIn</a> &nbsp;·&nbsp;
-    <a href="#selected-work">Explore the systems</a> &nbsp;·&nbsp;
-    <a href="#working-stack">Stack</a>
+    <a href="#selected-work">Engineering evidence</a> &nbsp;·&nbsp;
+    <a href="#public-code">Public code</a>
   </p>
 </div>
 
-**Software Architect. Hands-on builder. 27+ years in enterprise software.**
+# Independent Software Architect | Senior Java / Distributed Systems Engineer
 
-I connect **Java/Spring engineering, distributed systems and LLM application architecture**. My work spans event technology, retail/ERP, banking and public services. I take systems from design through implementation, testing and deployment—not just the slide deck.
+**I take ownership of complex software, from architecture through implementation, testing and deployment.** I bring **27+ years of enterprise engineering** across Java/Spring, distributed backends, cloud platforms and real-world AI integrations. I can lead a critical workstream independently, join a delivery team as a senior individual contributor, or own a backend/platform build end to end.
 
-**What I bring:** production Java depth, AI integrations grounded in real business APIs, and the persistence to chase a failure across the browser, network and database.
+**Based in Albania (European time zone).** Open to **100% remote international contracts**, independent consulting, and **Staff/Principal Engineer or Software Architect** engagements. Interested in substantive engineering work, not architecture advice without delivery.
+
+## What you can hire me to deliver
+
+| Your problem | What I can own | Evidence |
+| --- | --- | --- |
+| Complex Java backend or service architecture | Design, implementation, transactions, APIs, integration tests and release readiness | [Multiplayer platform](#shardforge-farm), [public Java code](#public-code) |
+| Real-time or distributed systems | WebSocket protocols, authoritative state, replay protection, reconnect consistency and fault handling | [Multiplayer case study](#shardforge-farm) |
+| AI agents that connect to business systems | MCP tools, scoped permissions, API validation, deployment and tests | [Eventfrog integration](#ai-systems) |
+| Cloud / platform modernization | Kubernetes, GitOps, observability, AWS staging and deployment engineering | [Enterprise work](#enterprise-delivery), [AWS target diagram](assets/aws-target-architecture.svg) |
+
+**Have a difficult system to build or stabilize?** [Email me with the problem, scope and timeline](mailto:attila.grynaeus@gmail.com?subject=Independent%20architecture%20contract).
 
 <a id="selected-work"></a>
-## Selected systems · the work behind the stack
+## Selected work: systems I designed and built
 
 <a id="shardforge-farm"></a>
-### 🌾 SHARDFORGE FARM — multiplayer world systems
+### Independent Software Architect — Real-Time Multiplayer Platform
 
 <picture>
   <source media="(max-width: 600px)" srcset="assets/project-shardforge-mobile.svg" />
   <img src="assets/project-shardforge.svg" width="100%" alt="ShardForge project signature: server-authoritative multiplayer with one crop, one winner and convergent clients." />
 </picture>
 
-**Cozy pixels. Serious backend.** *Public codename · private source · active development*
+**SHARDFORGE FARM / RAM FARM** · Independent product engineering · Private source · Active development
+
+**Ownership.** I designed and implemented the real-time multiplayer backend and its Java/Spring transaction boundary, with test coverage and cloud test deployment. This is a working engineering case study, **not a claim of a launched production-scale game**. Architecture and selected technical evidence are available for review.
 
 **Challenge.** Two players harvest the same crop. A connection drops. One command gets retried. The crop, inventory and both players' screens still need to agree.
 
@@ -38,6 +52,12 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
   <source media="(max-width: 600px)" srcset="assets/system-mobile-dark-v2.svg" />
   <img src="assets/system-dark-v2.svg" width="100%" alt="ShardForge runtime architecture. Browser sends WebSocket traffic through an authenticated gateway to a Node.js world shard, and HTTPS requests directly to Spring Boot. Node calls Spring for durable transactions. PostgreSQL stores durable state; Redis supplies the world-routing directory." />
 </picture>
+
+<details>
+  <summary><strong>AWS architecture reference — target deployment diagram</strong></summary>
+  <p><img src="assets/aws-target-architecture.svg" width="100%" alt="AWS target topology: browser, CloudFront and S3, API and WebSocket load balancers, Spring Boot API, authenticated WebSocket gateway, private Node.js world shard, PostgreSQL and Redis. Fargate is a reference design, not a live deployment." /></p>
+  <p>The separate AWS EC2 single-host test environment has verified service health, HTTPS and authenticated WSS. The production-style Fargate topology shown above remains a target design; no production-scale load claim is implied.</p>
+</details>
 
 **Result.** A competing harvest is resolved at the transaction boundary. Replaying the same accepted command cannot grant another reward. Clients reject stale or wrong-map state rather than letting an old packet rewrite the world.
 
@@ -50,7 +70,7 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 **The trade-off:** live simulation stays in Node; durable economic changes cross the Spring transaction boundary. Movement does not need a database round trip every frame. PlayBot exercises real input and protocol paths—not inventory edits disguised as tests.
 
 <a id="ai-systems"></a>
-### ✦ Eventfrog — ChatGPT AI/MCP integration
+### Eventfrog — ChatGPT AI / MCP integration
 
 <picture>
   <source media="(max-width: 600px)" srcset="assets/project-velyndra-mobile.svg" />
@@ -73,7 +93,7 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 **The trade-off:** a narrow, read-only tool surface instead of a general-purpose API wrapper. Less room for ambiguous tool calls; a clearer boundary to test and operate.
 
 <a id="enterprise-delivery"></a>
-### ⚙️ Bison Schweiz AG — cloud pricing & ERP modernization
+### Bison Schweiz AG — cloud pricing and ERP modernization
 
 <picture>
   <source media="(max-width: 600px)" srcset="assets/project-enterprise-mobile.svg" />
@@ -87,7 +107,7 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 **Result.** Delivered pricing-service and integration work as part of the broader modernization effort, with delivery automation and operational visibility treated as engineering concerns—not cleanup tasks.
 
 <a id="public-code"></a>
-## Code you can actually inspect
+## Public code and engineering evidence
 
 **[PrompTee](https://github.com/attilagrynaeus/Promptee)** — Collaborative prompt workspace using React, Supabase and serverless functions. **[UI regression test →](https://github.com/attilagrynaeus/Promptee/blob/main/src/__tests__/PromptCard.deleteConfirm.test.jsx)**
 
@@ -107,21 +127,25 @@ I connect **Java/Spring engineering, distributed systems and LLM application arc
 
 **Sun certifications:** Java Programmer (SCJP) · Business Component Developer (SCBCD).
 
-## GitHub activity · real commits, real history
+<details>
+<summary><strong>GitHub contribution activity (optional)</strong></summary>
 
 <p align="center">
   <img src="profile/activity-dark.svg" width="100%" alt="Rainbow 3D GitHub contribution graph generated from real GitHub data." />
   <img src="profile/stats.svg" width="440" alt="GitHub statistics generated from the account activity API." />
 </p>
 
-<sub>Generated from GitHub data. A contribution graph is activity, not a production performance benchmark.</sub>
+<sub>Generated from GitHub data. Contribution charts are not performance benchmarks.</sub>
+</details>
 
 <a id="contact"></a>
-## Need someone who can own the hard part?
+## Available for serious independent engineering work
 
-Interested in **Staff / Principal Engineer, Software Architect and AI Platform** roles where architecture and hands-on delivery belong together.
+I am available for **fully remote international engagements from Albania**, including independent architecture and development contracts, senior technical ownership, Staff/Principal engineering and AI platform integration work.
 
-**[attila.grynaeus@gmail.com](mailto:attila.grynaeus@gmail.com)** · **[LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** · [Writing](https://mindjourneylabs.com)
+**I don't stop at diagrams.** I can take a defined outcome from requirements and architecture to working code, tests, deployment and operational handover. I am equally comfortable working independently or alongside your existing engineering team.
+
+**Contact:** **[attila.grynaeus@gmail.com](mailto:attila.grynaeus@gmail.com?subject=Remote%20software%20architecture%20contract)** · **[LinkedIn](https://www.linkedin.com/in/attila-grynaeus)** · [Website / writing](https://mindjourneylabs.com)
 
 <details>
   <summary>More experiments &amp; GitHub activity</summary>
