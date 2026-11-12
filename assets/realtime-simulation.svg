@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="584" viewBox="0 0 1200 584" role="img" aria-labelledby="title description">
+<title id="title">Real-time multiplayer concurrency simulation</title>
+<desc id="description">An animated conceptual demonstration: two browser players try to harvest the same crop. Node.js handles the real-time messages; Spring Boot commits the first inventory change, protects against duplicate rewards, and clients converge to the same state. PostgreSQL stores durable state, Redis coordinates world routing. This is an animated explanation, not live telemetry.</desc>
+<defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0B1426"/><stop offset="1" stop-color="#172940"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#5796D7" stop-opacity=".30"/><stop offset="1" stop-color="#5796D7" stop-opacity="0"/></radialGradient>
+    <pattern id="specks" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".7" fill="#B2C5E6" opacity=".19"/></pattern>
+  </defs>
+  <style>
+  text{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif}
+  .flow{stroke-dasharray:7 13;animation:flow 5s linear infinite}
+  .breathe{animation:breathe 2s ease-in-out infinite alternate}
+  .accepted{animation:accepted 6.8s linear infinite}
+  .blocked{animation:blocked 6.8s linear infinite}
+  .synced{animation:synced 6.8s linear infinite}
+  @keyframes flow{to{stroke-dashoffset:-160}}
+  @keyframes breathe{to{opacity:.38}}
+  @keyframes accepted{0%,12%{opacity:.37}20%,94%{opacity:1}100%{opacity:.37}}
+  @keyframes blocked{0%,38%{opacity:.35}48%,94%{opacity:1}100%{opacity:.35}}
+  @keyframes synced{0%,65%{opacity:.32}75%,94%{opacity:1}100%{opacity:.32}}
+  @media(prefers-reduced-motion:reduce){.flow,.breathe,.accepted,.blocked,.synced{animation:none}animateMotion{display:none}}
+  </style>
+<rect x="1" y="1" width="1198" height="582" rx="24" fill="url(#base)" stroke="#3F5879" stroke-width="1.6"/>
+<rect x="1.5" y="1.5" width="1197" height="581" rx="23" fill="url(#specks)"/>
+<ellipse cx="933" cy="112" rx="350" ry="180" fill="url(#halo)"/>
+<rect x="1" y="18" width="6" height="548" rx="3" fill="#5EE0C2"/>
+<text x="39" y="43" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="780" fill="#8FD4FF" letter-spacing="1.35">REAL-TIME  /  MULTIPLAYER ENGINEERING</text>
+<text x="38" y="92" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="38" font-weight="790" fill="#F6F9FF" letter-spacing="-1.0">One crop. One reward. Both clients in sync.</text>
+<text x="39" y="126" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="18" font-weight="480" fill="#B2C3DE" >Animated transaction flow  |  two competing players  |  one durable outcome</text>
+<rect x="937" y="26" width="225" height="39" rx="19" fill="#163335" stroke="#367A73" stroke-width="1.5"/>
+<circle cx="960" cy="45.5" r="6" fill="#5EE0C2" class="breathe"/>
+<text x="976" y="51" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="14" font-weight="780" fill="#5EE0C2" letter-spacing=".6">REAL-TIME FLOW</text>
+<rect x="38" y="172" width="214" height="110" rx="15" fill="#14243B" stroke="#8FD4FF" stroke-width="1.5"/>
+<rect x="38" y="190" width="4" height="74" rx="2" fill="#8FD4FF"/>
+<text x="58" y="200" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="760" fill="#8FD4FF" letter-spacing=".9">PLAYER A</text>
+<text x="58" y="231" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="24" font-weight="760" fill="#F6F9FF" >Browser session</text>
+<text x="58" y="264" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="470" fill="#B2C3DE" >Harvest request</text>
+<rect x="38" y="316" width="214" height="110" rx="15" fill="#14243B" stroke="#8FD4FF" stroke-width="1.5"/>
+<rect x="38" y="334" width="4" height="74" rx="2" fill="#8FD4FF"/>
+<text x="58" y="344" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="760" fill="#8FD4FF" letter-spacing=".9">PLAYER B</text>
+<text x="58" y="375" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="24" font-weight="760" fill="#F6F9FF" >Browser session</text>
+<text x="58" y="408" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="470" fill="#B2C3DE" >Retry / competing action</text>
+<rect x="324" y="241" width="246" height="138" rx="15" fill="#14243B" stroke="#B7A3FF" stroke-width="1.5"/>
+<rect x="324" y="259" width="4" height="102" rx="2" fill="#B7A3FF"/>
+<text x="344" y="269" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="760" fill="#B7A3FF" letter-spacing=".9">GAMEPLAY AUTHORITY</text>
+<text x="344" y="300" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="24" font-weight="760" fill="#F6F9FF" >Node.js world</text>
+<text x="344" y="361" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="470" fill="#B2C3DE" >Live world state and events</text>
+<rect x="617" y="241" width="248" height="138" rx="15" fill="#14243B" stroke="#5EE0C2" stroke-width="1.5"/>
+<rect x="617" y="259" width="4" height="102" rx="2" fill="#5EE0C2"/>
+<text x="637" y="269" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="760" fill="#5EE0C2" letter-spacing=".9">DURABLE AUTHORITY</text>
+<text x="637" y="300" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="24" font-weight="760" fill="#F6F9FF" >Spring Boot</text>
+<text x="637" y="361" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="470" fill="#B2C3DE" >Atomic reward transaction</text>
+<rect x="913" y="241" width="249" height="138" rx="15" fill="#14243B" stroke="#F2C17E" stroke-width="1.5"/>
+<rect x="913" y="259" width="4" height="102" rx="2" fill="#F2C17E"/>
+<text x="933" y="269" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="760" fill="#F2C17E" letter-spacing=".9">PERSISTENT STORAGE</text>
+<text x="933" y="300" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="24" font-weight="760" fill="#F6F9FF" >PostgreSQL</text>
+<text x="933" y="361" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="470" fill="#B2C3DE" >Crop / inventory writes</text>
+<rect x="915" y="402" width="247" height="39" rx="10" fill="#192D40" stroke="#38516F" stroke-width="1.5"/>
+<text x="932" y="428" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="620" fill="#8FD4FF" >Redis  /  world directory</text>
+<path d="M252 230 H286 V280 H324" fill="none" stroke="#38516F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M252 230 H286 V280 H324" fill="none" stroke="#8FD4FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="flow"/>
+<path d="M252 374 H286 V338 H324" fill="none" stroke="#38516F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M252 374 H286 V338 H324" fill="none" stroke="#8FD4FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="flow"/>
+<path d="M570 309 H617" fill="none" stroke="#38516F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M570 309 H617" fill="none" stroke="#B7A3FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="flow"/>
+<path d="M865 309 H913" fill="none" stroke="#38516F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M865 309 H913" fill="none" stroke="#5EE0C2" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="flow"/>
+<path d="M447 379 V420 H915" fill="none" stroke="#38516F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M447 379 V420 H915" fill="none" stroke="#8FD4FF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="flow"/>
+<text x="263" y="212" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="660" fill="#B2C3DE" >WSS</text>
+<text x="582" y="294" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="660" fill="#B2C3DE" >API</text>
+<text x="874" y="294" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="660" fill="#B2C3DE" >TX</text>
+<circle r="7" fill="#8FD4FF" stroke="#FFFFFF" stroke-opacity=".25" stroke-width="1"><animateMotion path="M252 230 H286 V280 H324 H570 V309 H617 H865 H913" dur="6.8s" begin="0s" repeatCount="indefinite" calcMode="linear" /></circle>
+<circle r="7" fill="#B7A3FF" stroke="#FFFFFF" stroke-opacity=".25" stroke-width="1"><animateMotion path="M252 374 H286 V338 H324 H570 V309 H617" dur="6.8s" begin="-2.3s" repeatCount="indefinite" calcMode="linear" /></circle>
+<circle r="7" fill="#5EE0C2" stroke="#FFFFFF" stroke-opacity=".25" stroke-width="1"><animateMotion path="M865 309 H913" dur="6.8s" begin="-3.7s" repeatCount="indefinite" calcMode="linear" /></circle>
+<g class="accepted">
+<rect x="38" y="466" width="354" height="79" rx="13" fill="#112335" stroke="#5EE0C2" stroke-width="1.5"/>
+<circle cx="60" cy="491" r="7" fill="#5EE0C2" class="breathe"/>
+<text x="76" y="497" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="780" fill="#5EE0C2" >ACCEPTED</text>
+<text x="57" y="521" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="460" fill="#B2C3DE" >First reward committed</text>
+</g>
+<g class="blocked">
+<rect x="422" y="466" width="354" height="79" rx="13" fill="#112335" stroke="#FF91A0" stroke-width="1.5"/>
+<circle cx="444" cy="491" r="7" fill="#FF91A0" class="breathe"/>
+<text x="460" y="497" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="16" font-weight="780" fill="#FF91A0" >NO SECOND REWARD</text>
+<text x="441" y="521" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="460" fill="#B2C3DE" >Duplicate command blocked</text>
+</g>
+<g class="synced">
+<rect x="806" y="466" width="356" height="79" rx="13" fill="#112335" stroke="#8FD4FF" stroke-width="1.5"/>
+<circle cx="828" cy="491" r="7" fill="#8FD4FF" class="breathe"/>
+<text x="844" y="497" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="17" font-weight="780" fill="#8FD4FF" >CLIENTS IN SYNC</text>
+<text x="825" y="521" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="15" font-weight="460" fill="#B2C3DE" >Both views converge</text>
+</g>
+<text x="39" y="572" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif" font-size="13" font-weight="620" fill="#B2C3DE" letter-spacing=".45">ILLUSTRATIVE LOOP  ·  NOT LIVE PRODUCTION TELEMETRY</text>
+</svg>
