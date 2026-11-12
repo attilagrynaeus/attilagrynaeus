@@ -155,11 +155,10 @@ Contributed to Spring Boot pricing services, enterprise REST and messaging integ
 
 **[Discuss a project by email](mailto:attila.grynaeus@gmail.com?subject=Independent%20remote%20engineering%20contract)** &nbsp;|&nbsp; [LinkedIn](https://www.linkedin.com/in/attila-grynaeus) &nbsp;|&nbsp; [Website / writing](https://mindjourneylabs.com)
 
-<details>
-<summary>GitHub contribution history</summary>
+## GitHub contribution history
+
 <p align="center">
   <img src="profile/activity-dark.svg" width="100%" alt="Historical GitHub contributions" />
   <img src="profile/stats.svg" width="440" alt="GitHub account activity statistics" />
 </p>
 <sub>Activity charts are not engineering performance or production availability benchmarks.</sub>
-</details>
