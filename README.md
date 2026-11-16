@@ -18,7 +18,7 @@
 
 **I take ownership of difficult software projects, from architecture through working code, integration tests, deployment and handover.** With **27+ years in enterprise software**, I combine Java/Spring depth, distributed systems engineering, cloud delivery and practical AI integrations.
 
-**Based in Albania, European time zone.** Available for **100% remote international contracts**, independent consulting and Staff/Principal-level engineering engagements. I work hands-on, independently or with an existing team.
+Available for **100% remote international contracts**, independent consulting and Staff/Principal-level engineering engagements. I work hands-on, independently or with an existing team.
 
 <a id="selected-work"></a>
 ## Selected engineering evidence
