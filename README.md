@@ -151,7 +151,6 @@ Contributed to Spring Boot pricing services, enterprise REST and messaging integ
 
 **Need someone who can own the hard part and deliver it?** I am open to remote software architecture, Java backend, distributed platform, AI integration and cloud engineering engagements, including short-to-long-term contracts.
 
-**Based in Albania. Working internationally in European business hours.**
 
 **[Discuss a project by email](mailto:attila.grynaeus@gmail.com?subject=Independent%20remote%20engineering%20contract)** &nbsp;|&nbsp; [LinkedIn](https://www.linkedin.com/in/attila-grynaeus) &nbsp;|&nbsp; [Website / writing](https://mindjourneylabs.com)
 
